@@ -10,6 +10,7 @@
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 
 source accelerator.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 508.727 ; gain = 95.176
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/A_Verilog_DA/ip_repo/myip_1_0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2022.2/data/ip'.
@@ -25,15 +26,15 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 26948
+INFO: [Synth 8-7075] Helper process launched with PID 2288
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [E:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
-INFO: [Synth 8-11241] undeclared symbol 'first_line', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:507]
-INFO: [Synth 8-11241] undeclared symbol 'o_r_enable1', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:65]
-INFO: [Synth 8-11241] undeclared symbol 'o_valid1', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:82]
-INFO: [Synth 8-11241] undeclared symbol 'o_r_enable3', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:102]
-INFO: [Synth 8-11241] undeclared symbol 'i_enable', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:109]
+INFO: [Synth 8-11241] undeclared symbol 'first_line', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:527]
+INFO: [Synth 8-11241] undeclared symbol 'o_r_enable1', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:68]
+INFO: [Synth 8-11241] undeclared symbol 'o_valid1', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:85]
+INFO: [Synth 8-11241] undeclared symbol 'i_enable', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:112]
+INFO: [Synth 8-11241] undeclared symbol 'i_pwdone', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:118]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1889.762 ; gain = 335.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1889.676 ; gain = 334.680
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'accelerator' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:3]
 INFO: [Synth 8-6157] synthesizing module 'receptor' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:25]
@@ -44,6 +45,7 @@ INFO: [Synth 8-6157] synthesizing module 'simple_dual_two_clocks' [E:/A_Verilog_
 INFO: [Synth 8-6155] done synthesizing module 'simple_dual_two_clocks' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
 INFO: [Synth 8-6157] synthesizing module 'depth_mem_control' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/depthwise.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'depth_mem_control' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/depthwise.v:1]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:89]
 INFO: [Synth 8-6157] synthesizing module 'simple_dual_two_clocks__parameterized0' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
 	Parameter DEPTH bound to: 26952 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'simple_dual_two_clocks__parameterized0' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
@@ -53,11 +55,13 @@ INFO: [Synth 8-6157] synthesizing module 'simple_dual_two_clocks__parameterized1
 CRITICAL WARNING: [Synth 8-4445] could not open $readmem data file 'image_64bit_debug.hex'; please make sure the file is added to project and has read permission, ignoring [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:161]
 INFO: [Synth 8-6155] done synthesizing module 'simple_dual_two_clocks__parameterized1' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
 INFO: [Synth 8-6157] synthesizing module 'data_controller' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:178]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:459]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:398]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:183]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:479]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:418]
 INFO: [Synth 8-6155] done synthesizing module 'data_controller' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'accelerator' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:3]
+WARNING: [Synth 8-3848] Net data_out2 in module/entity accelerator does not have driver. [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:12]
+WARNING: [Synth 8-3848] Net i_pwdone in module/entity accelerator does not have driver. [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:118]
 WARNING: [Synth 8-7129] Port addra[14] in module simple_dual_two_clocks is either unconnected or has no load
 WARNING: [Synth 8-7129] Port addra[13] in module simple_dual_two_clocks is either unconnected or has no load
 WARNING: [Synth 8-7129] Port addra[12] in module simple_dual_two_clocks is either unconnected or has no load
@@ -66,19 +70,83 @@ WARNING: [Synth 8-7129] Port addrb[14] in module simple_dual_two_clocks is eithe
 WARNING: [Synth 8-7129] Port addrb[13] in module simple_dual_two_clocks is either unconnected or has no load
 WARNING: [Synth 8-7129] Port addrb[12] in module simple_dual_two_clocks is either unconnected or has no load
 WARNING: [Synth 8-7129] Port addrb[11] in module simple_dual_two_clocks is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[63] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[62] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[61] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[60] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[59] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[58] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[57] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[56] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[55] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[54] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[53] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[52] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[51] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[50] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[49] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[48] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[47] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[46] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[45] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[44] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[43] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[42] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[41] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[40] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[39] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[38] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[37] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[36] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[35] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[34] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[33] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[32] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[31] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[30] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[29] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[28] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[27] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[26] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[25] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[24] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[23] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[22] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[21] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[20] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[19] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[18] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[17] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[16] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[15] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[14] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[13] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[12] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[11] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[10] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[9] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[8] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[7] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[6] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[5] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[4] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[3] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[2] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[1] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[0] in module accelerator is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2023.027 ; gain = 468.266
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2023.086 ; gain = 468.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2023.027 ; gain = 468.266
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2023.086 ; gain = 468.090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2023.027 ; gain = 468.266
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2023.086 ; gain = 468.090
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.068 . Memory (MB): peak = 2023.027 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.083 . Memory (MB): peak = 2023.086 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -88,16 +156,16 @@ INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as o
 Finished Parsing XDC File [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/constrs_1/new/clk.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2100.953 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2111.656 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 2100.953 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 2111.656 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [E:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2100.953 ; gain = 546.191
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2111.656 ; gain = 556.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -105,13 +173,13 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2100.953 ; gain = 546.191
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2111.656 ; gain = 556.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 2100.953 ; gain = 546.191
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2111.656 ; gain = 556.660
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'o_stage_reg' in module 'receptor'
 INFO: [Synth 8-802] inferred FSM for state register 'load_stage_reg' in module 'depth_mem_control'
@@ -168,7 +236,7 @@ INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 6 because memory depth
 INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 6 and width 9 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 1 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 2100.953 ; gain = 546.191
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2111.656 ; gain = 556.660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -176,14 +244,16 @@ Start RTL Component Statistics
 Detailed RTL Component Info : 
 +---Adders : 
 	   2 Input   15 Bit       Adders := 4     
-	   3 Input   15 Bit       Adders := 1     
-	   5 Input   14 Bit       Adders := 1     
+	   4 Input   15 Bit       Adders := 1     
+	   3 Input   14 Bit       Adders := 1     
+	   2 Input   14 Bit       Adders := 1     
 	   2 Input   11 Bit       Adders := 1     
 	   2 Input   10 Bit       Adders := 1     
 	   2 Input    9 Bit       Adders := 3     
-	   2 Input    8 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 3     
+	   3 Input    8 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 3     
-	   2 Input    4 Bit       Adders := 5     
+	   2 Input    4 Bit       Adders := 3     
 	   2 Input    3 Bit       Adders := 1     
 	   2 Input    2 Bit       Adders := 5     
 +---Registers : 
@@ -196,9 +266,9 @@ Detailed RTL Component Info :
 	                9 Bit    Registers := 2     
 	                8 Bit    Registers := 1     
 	                5 Bit    Registers := 5     
-	                4 Bit    Registers := 8     
-	                2 Bit    Registers := 4     
-	                1 Bit    Registers := 7     
+	                4 Bit    Registers := 9     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 9     
 +---RAMs : 
 	            1684K Bit	(26952 X 64 bit)          RAMs := 1     
 	            1536K Bit	(24576 X 64 bit)          RAMs := 1     
@@ -207,8 +277,10 @@ Detailed RTL Component Info :
 	   4 Input  544 Bit        Muxes := 1     
 	   2 Input  544 Bit        Muxes := 1     
 	   3 Input  544 Bit        Muxes := 1     
+	   6 Input  320 Bit        Muxes := 2     
 	   7 Input  320 Bit        Muxes := 2     
-	   2 Input  289 Bit        Muxes := 2     
+	   2 Input  305 Bit        Muxes := 3     
+	   3 Input  305 Bit        Muxes := 1     
 	   3 Input  288 Bit        Muxes := 1     
 	   2 Input  288 Bit        Muxes := 1     
 	   2 Input  272 Bit        Muxes := 2     
@@ -216,44 +288,52 @@ Detailed RTL Component Info :
 	   2 Input  256 Bit        Muxes := 3     
 	   3 Input  256 Bit        Muxes := 2     
 	   3 Input  240 Bit        Muxes := 1     
-	   2 Input  240 Bit        Muxes := 1     
+	   2 Input  240 Bit        Muxes := 2     
 	   4 Input  144 Bit        Muxes := 2     
 	   3 Input  144 Bit        Muxes := 1     
 	   3 Input  128 Bit        Muxes := 1     
-	   2 Input  128 Bit        Muxes := 2     
+	   2 Input  128 Bit        Muxes := 3     
 	   3 Input   64 Bit        Muxes := 1     
 	   2 Input   64 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 1     
 	   2 Input   15 Bit        Muxes := 2     
 	   8 Input   15 Bit        Muxes := 1     
 	   4 Input   15 Bit        Muxes := 1     
 	   5 Input   15 Bit        Muxes := 1     
 	  10 Input   15 Bit        Muxes := 1     
-	   5 Input   14 Bit        Muxes := 1     
-	  10 Input   14 Bit        Muxes := 2     
-	   5 Input   12 Bit        Muxes := 1     
+	   5 Input   14 Bit        Muxes := 2     
+	  10 Input   14 Bit        Muxes := 3     
+	   2 Input   14 Bit        Muxes := 1     
 	   2 Input   11 Bit        Muxes := 1     
 	   8 Input   11 Bit        Muxes := 1     
+	   9 Input   11 Bit        Muxes := 1     
 	   5 Input   11 Bit        Muxes := 1     
 	   2 Input    9 Bit        Muxes := 9     
-	   4 Input    9 Bit        Muxes := 1     
+	   4 Input    9 Bit        Muxes := 2     
 	   9 Input    9 Bit        Muxes := 1     
 	   5 Input    8 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 1     
+	   9 Input    8 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 3     
+	   4 Input    8 Bit        Muxes := 1     
 	   3 Input    7 Bit        Muxes := 1     
 	  10 Input    6 Bit        Muxes := 1     
 	   4 Input    5 Bit        Muxes := 1     
-	   3 Input    4 Bit        Muxes := 3     
-	   9 Input    4 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 2     
+	   5 Input    5 Bit        Muxes := 1     
+	   9 Input    4 Bit        Muxes := 3     
+	   2 Input    4 Bit        Muxes := 10    
+	   4 Input    4 Bit        Muxes := 2     
+	   3 Input    4 Bit        Muxes := 2     
+	   6 Input    4 Bit        Muxes := 1     
+	   9 Input    3 Bit        Muxes := 5     
 	   4 Input    3 Bit        Muxes := 1     
-	   9 Input    3 Bit        Muxes := 4     
+	   6 Input    3 Bit        Muxes := 2     
 	  10 Input    3 Bit        Muxes := 2     
 	   4 Input    2 Bit        Muxes := 4     
 	   2 Input    2 Bit        Muxes := 5     
 	   3 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 32    
+	   2 Input    1 Bit        Muxes := 45    
 	   4 Input    1 Bit        Muxes := 6     
-	   5 Input    1 Bit        Muxes := 13    
+	   5 Input    1 Bit        Muxes := 7     
 	  10 Input    1 Bit        Muxes := 12    
 	   3 Input    1 Bit        Muxes := 1     
 	   9 Input    1 Bit        Muxes := 4     
@@ -273,20 +353,38 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port data_out2[63] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[62] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[61] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[60] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[59] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[58] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[57] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[56] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[55] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[54] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[53] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[52] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[51] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[50] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[49] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[48] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[47] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[46] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[45] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[44] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[43] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[42] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[41] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[40] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[39] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[38] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[37] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_out2[36] in module accelerator is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-6794] RAM ("accelerator/depth_mem/ram_reg") will be automatically implemented using URAM. 
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/depth_mem/ram_reg"'.
-INFO: [Synth 8-6793] RAM ("accelerator/point_mem/ram_reg") is implemented using BRAM instead of URAM due to insufficient pipeline registers. Available pipeline stages = 0, Minimum required pipeline stages = 4 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/point_mem/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/point_mem/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/point_mem/ram_reg"
-INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 3 because memory depth for RAM "accelerator/point_mem/ram_reg" is not power of 2. 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 3 and width 36 for RAM "accelerator/point_mem/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 18 for RAM "accelerator/point_mem/ram_reg"
-INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 6 because memory depth for RAM "accelerator/point_mem/ram_reg" is not power of 2. 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 6 and width 18 for RAM "accelerator/point_mem/ram_reg"
-INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 7 because memory depth for RAM "accelerator/point_mem/ram_reg" is not power of 2. 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 7 and width 9 for RAM "accelerator/point_mem/ram_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 1 for RAM "accelerator/point_mem/ram_reg"
+WARNING: [Synth 8-6014] Unused sequential element point_mem/ram_reg was removed. 
 INFO: [Synth 8-6793] RAM ("accelerator/image_mem/ram_reg") is implemented using BRAM instead of URAM due to insufficient pipeline registers. Available pipeline stages = 0, Minimum required pipeline stages = 3 
 INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/image_mem/ram_reg"
 INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/image_mem/ram_reg"
@@ -299,9 +397,14 @@ INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 6 and width 9
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 1 for RAM "accelerator/image_mem/ram_reg"
 INFO: [Synth 8-6794] RAM ("accelerator/depth_mem/ram_reg") will be automatically implemented using URAM. 
 INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/depth_mem/ram_reg"'.
-WARNING: [Synth 8-3332] Sequential element (point_mem/ram_reg_mux_sel_a_pos_0__0) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-3332] Sequential element (dmc/FSM_sequential_mapping_stage_reg[1]) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-3332] Sequential element (dmc/FSM_sequential_mapping_stage_reg[0]) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-3332] Sequential element (dmc/FSM_onehot_load_stage_reg[2]) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-3332] Sequential element (dmc/FSM_onehot_load_stage_reg[1]) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-3332] Sequential element (dmc/FSM_onehot_load_stage_reg[0]) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-3332] Sequential element (image_mem/ram_reg_mux_sel_b_pos_0__0) is unused and will be removed from module accelerator.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:22 . Memory (MB): peak = 2100.953 ; gain = 546.191
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2111.656 ; gain = 556.660
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6057] Memory: "depth_mem/ram_reg" defined in module: "accelerator" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 ---------------------------------------------------------------------------------
@@ -321,7 +424,6 @@ Block RAM: Preliminary Mapping Report (see note below)
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 |Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|accelerator | point_mem/ram_reg | 26 K x 64(READ_FIRST)  | W | R |                        |   |   | Port A           | 0      | 49     | 8,8,8,3,8,6,7,1 | 
 |accelerator | image_mem/ram_reg | 24 K x 64(READ_FIRST)  | W |   | 24 K x 64(WRITE_FIRST) |   | R | Port A and B     | 0      | 43     | 8,8,8,8,4,6,1   | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 
@@ -333,13 +435,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2609.695 ; gain = 1054.934
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 2585.746 ; gain = 1030.750
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2627.719 ; gain = 1072.957
+Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 2603.289 ; gain = 1048.293
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6057] Memory: "depth_mem/ram_reg" defined in module: "accelerator" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 ---------------------------------------------------------------------------------
@@ -358,7 +460,6 @@ Block RAM: Final Mapping Report
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 |Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|accelerator | point_mem/ram_reg | 26 K x 64(READ_FIRST)  | W | R |                        |   |   | Port A           | 0      | 49     | 8,8,8,3,8,6,7,1 | 
 |accelerator | image_mem/ram_reg | 24 K x 64(READ_FIRST)  | W |   | 24 K x 64(WRITE_FIRST) |   | R | Port A and B     | 0      | 43     | 8,8,8,8,4,6,1   | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 
@@ -368,20 +469,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_34 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_47 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_48 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_15 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_23 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_31 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_35 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_41 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_42 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 INFO: [Synth 8-7052] The timing for the instance depth_mem/ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2651.125 ; gain = 1096.363
+Finished Technology Mapping : Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 2616.688 ; gain = 1061.691
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -399,37 +493,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -446,44 +540,44 @@ Report Cell Usage:
 |      |Cell     |Count |
 +------+---------+------+
 |1     |BUFG     |     1|
-|2     |CARRY8   |    11|
-|3     |LUT1     |    16|
-|4     |LUT2     |    33|
-|5     |LUT3     |    87|
-|6     |LUT4     |    76|
-|7     |LUT5     |   161|
-|8     |LUT6     |   186|
-|9     |RAMB36E2 |    67|
-|29    |URAM288  |     1|
-|30    |FDRE     |   187|
-|31    |FDSE     |     2|
-|32    |IBUF     |    68|
-|33    |OBUF     |   197|
+|2     |CARRY8   |     4|
+|3     |LUT1     |     4|
+|4     |LUT2     |     2|
+|5     |LUT3     |    13|
+|6     |LUT4     |    14|
+|7     |LUT5     |    21|
+|8     |LUT6     |    19|
+|9     |RAMB36E2 |    23|
+|19    |URAM288  |     1|
+|20    |FDRE     |    43|
+|21    |IBUF     |    67|
+|22    |OBUF     |   133|
+|23    |OBUFT    |    64|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 4 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 2663.918 ; gain = 1031.230
-Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2663.918 ; gain = 1109.156
+Synthesis finished with 0 errors, 0 critical warnings and 74 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2626.176 ; gain = 982.609
+Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 2626.176 ; gain = 1071.180
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.024 . Memory (MB): peak = 2675.992 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 80 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2638.191 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 72 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2695.859 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2663.406 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 69 instances were transformed.
+  A total of 68 instances were transformed.
   BUFG => BUFGCE: 1 instance 
-  IBUF => IBUF (IBUFCTRL, INBUF): 68 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 67 instances
 
-Synth Design complete, checksum: 7c6f9a02
+Synth Design complete, checksum: 5511ec3
 INFO: [Common 17-83] Releasing license: Synthesis
-117 Infos, 12 Warnings, 1 Critical Warnings and 0 Errors encountered.
+99 Infos, 113 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 2695.859 ; gain = 2145.133
+synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:00:58 . Memory (MB): peak = 2663.406 ; gain = 2112.496
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint 'E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.runs/synth_1/accelerator.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file accelerator_utilization_synth.rpt -pb accelerator_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Feb 20 21:29:02 2026...
+INFO: [Common 17-206] Exiting Vivado at Sat Feb 21 23:51:24 2026...

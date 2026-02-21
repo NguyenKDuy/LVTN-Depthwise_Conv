@@ -54,11 +54,11 @@ parameter ADDRESS = 15;
     wire [`PIXEL_WIDTH * 4 - 1 : 0] t_rdata_out;
     wire [9*16 - 1: 0] o_data1;
     wire [544 - 1: 0] o_data3; 
-    
+   
 /////////////////////////////////////////////////////////////////////////     
     
     wire r_enable_mux = (top_stage == 'd1 || top_stage == 'd0) ? 1 : 0;
-//    wire i_data_mux = (top_stage == 'd1 || top_stage == 'd0) ? data_out3 : data_out2;
+     wire [63 : 0] i_data_mux = (top_stage == 'd1 || top_stage == 'd0) ? data_out3 : data_out2;
     
     simple_dual_two_clocks 
     #(.DEPTH(2030)) depth_mem
@@ -116,7 +116,7 @@ parameter ADDRESS = 15;
         .i_rst_n(i_rst_n),
         .i_enable(i_enable),
         .i_pwdone(i_pwdone),
-        .i_data(data_out3), // choose from data_3 or data_2
+        .i_data(i_data_mux), // choose from data_3 or data_2
         .i_dready(i_ready),
         .o_stage(top_stage),
         .o_r_address(o_r_address3),
@@ -127,17 +127,17 @@ parameter ADDRESS = 15;
         
        
     
-//    simple_dual_two_clocks 
-//    #(.DEPTH(32768), .INIT_FILE("downs1_ram_q0.hex")) imm_data
-//    (.clka(clk),
-//    .clkb (clk),
-//    .ena (1'b1), // always allow
-//    .enb (!r_enable_mux), // TEMP
-//    .wea (t_data_valid3),
-//    .addra (t_wr_address3),
-//    .addrb (o_r_address3), // TEMP
-//    .dia (t_data_out),
-//    .dob (data_out2));
+    simple_dual_two_clocks 
+    #(.DEPTH(32768), .INIT_FILE("downs1_ram_q0.hex")) imm_data
+    (.clka(clk),
+    .clkb (clk),
+    .ena (1'b1), // always allow
+    .enb (!r_enable_mux), // TEMP
+    .wea (t_data_valid3),
+    .addra (t_wr_address3),
+    .addrb (o_r_address3), // TEMP
+    .dia (t_data_out),
+    .dob (data_out2));
     
       
 endmodule

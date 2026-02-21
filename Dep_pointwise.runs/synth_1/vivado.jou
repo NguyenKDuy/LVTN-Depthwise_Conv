@@ -2,8 +2,8 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Feb 20 21:28:09 2026
-# Process ID: 16644
+# Start of session at: Sat Feb 21 23:50:07 2026
+# Process ID: 12696
 # Current directory: E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.runs/synth_1
 # Command line: vivado.exe -log accelerator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source accelerator.tcl
 # Log file: E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.runs/synth_1/accelerator.vds

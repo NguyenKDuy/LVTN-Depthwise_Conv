@@ -3,9 +3,9 @@
 Oct 14 2022
 05:20:55
 E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.sim/sim_1/behav/xsim/glbl.v,1665704903,verilog,,,,glbl,,,,,,,,
-E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sim_1/new/tb_controller.v,1771686629,verilog,,,,tb_accelerator_file,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,
-E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v,1771687799,verilog,,E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/depthwise.v,,data_controller,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,
+E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sim_1/new/tb_controller.v,1771695796,verilog,,,,tb_accelerator_file,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,
+E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v,1771697917,verilog,,E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/depthwise.v,,data_controller,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,
 E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/default.vh,1771520413,verilog,,,,,,,,,,,,
 E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/depthwise.v,1770992656,verilog,,E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v,,depth_mem_control,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,
 E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v,1771520204,verilog,,E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v,E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/default.vh,receptor;simple_dual_two_clocks,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,
-E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v,1771687082,verilog,,E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sim_1/new/tb_controller.v,,accelerator,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,
+E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v,1771693515,verilog,,E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sim_1/new/tb_controller.v,,accelerator,,,../../../../Dep_pointwise.srcs/sources_1/new,,,,,

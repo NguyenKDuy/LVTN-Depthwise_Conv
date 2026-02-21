@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="274.201 ns"></ZoomEndTime>
-      <Cursor1Time time="125.000 ns"></Cursor1Time>
+      <ZoomStartTime time="514,267.967 ns"></ZoomStartTime>
+      <ZoomEndTime time="514,550.168 ns"></ZoomEndTime>
+      <Cursor1Time time="514,365.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="390"></NameColumnWidth>
+      <NameColumnWidth column_width="350"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="48" />
+   <WVObjectSize size="51" />
    <wave_markers>
       <marker time="20540000" label="" />
       <marker time="20545000" label="" />
@@ -121,14 +121,21 @@
          <obj_property name="ElementShortName">[0][0:2][319:0]</obj_property>
          <obj_property name="ObjectShortName">[0][0:2][319:0]</obj_property>
          <obj_property name="isExpanded"></obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[1]" type="array">
-         <obj_property name="ElementShortName">[1][0:2][319:0]</obj_property>
-         <obj_property name="ObjectShortName">[1][0:2][319:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0]" type="array">
-         <obj_property name="ElementShortName">[0][0:2][319:0]</obj_property>
-         <obj_property name="ObjectShortName">[0][0:2][319:0]</obj_property>
+         <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0][0]" type="array">
+            <obj_property name="ElementShortName">[0][319:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][319:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0][1]" type="array">
+            <obj_property name="ElementShortName">[1][319:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][319:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0][2]" type="array">
+            <obj_property name="ElementShortName">[2][319:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][319:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
    <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_addr_fixed" type="array">
@@ -267,5 +274,17 @@
    <wvobject fp_name="/tb_accelerator_file/dut/data_control/first_line" type="logic">
       <obj_property name="ElementShortName">first_line</obj_property>
       <obj_property name="ObjectShortName">first_line</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/i_pwdone" type="logic">
+      <obj_property name="ElementShortName">i_pwdone</obj_property>
+      <obj_property name="ObjectShortName">i_pwdone</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/stop" type="logic">
+      <obj_property name="ElementShortName">stop</obj_property>
+      <obj_property name="ObjectShortName">stop</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/buf_s2_load" type="logic">
+      <obj_property name="ElementShortName">buf_s2_load</obj_property>
+      <obj_property name="ObjectShortName">buf_s2_load</obj_property>
    </wvobject>
 </wave_config>

@@ -152,6 +152,8 @@ reg [320 - 1: 0] line_buf [1:0][0:2]; //maximum then selection
 reg [1:0] buf_cnt;
 reg [3:0] load_stage;   
 reg channel_swap;
+reg stop;
+
 
 reg [4:0] line_counter;
 reg [4:0] line_buffer_size;
@@ -195,7 +197,7 @@ always @(*) begin
 //            if (tile_y == 1)
 //                tile_y_addr = 'd480 + line_addr;
 //            else 
-            tile_y_addr = 'd480;
+            tile_y_addr = 'd512;
         end 
         TAIL: begin
             line_buffer_size = 'd8; 
@@ -386,7 +388,7 @@ always @(*) begin
     endcase
 end
 
-wire load_enable = ((stride < 'd2 && buf_cnt < 'd2) || (stride == 'd2 && buf_cnt <= 'd3)) && o_stage != IDLE;
+wire load_enable = ((stride < 'd2 && buf_cnt < 'd2) || (stride == 'd2 && buf_cnt <= 'd3)) && o_stage != IDLE && !stop;
 
 always @(posedge i_clk) begin
     if (!i_rst_n) begin
@@ -403,7 +405,7 @@ always @(posedge i_clk) begin
         tile_addr_fixed <= 'd0; base_addr_fixed <= 'd0; dynamic_offset <= 'd0;
 //        fl_off_set <= 'd0;
     end
-    else if (i_dready && o_valid && !buf_s2_load) begin
+    else if (i_dready && o_valid && buf_s2_load == 'd0) begin
         if (buf_cnt - 1'b1 <= 1'b0) begin
             o_valid <= 'b0;    
             buf_cnt <= buf_cnt - 1'b1;    
@@ -462,7 +464,7 @@ always @(posedge i_clk) begin
             end 
             4'd5: begin : stride_2_non_pre_padding
                 load_stage  <= 'd7;
-                line_buf[channel_swap][target_idx] <= {i_data,line_buf[channel_swap][target_idx][255:0]};
+                line_buf[channel_swap][target_idx] <= {16'b0,i_data,line_buf[channel_swap][target_idx][255:16]};
             end
             4'd6, 4'd7, 4'd8, 4'd9, 4'd10, 4'd11: begin
                 
@@ -485,7 +487,7 @@ always @(posedge i_clk) begin
                     5'b10_011, 5'b10_001: begin
                         o_valid <= 1'b1;
                     end
-                    5'b11_101: begin
+                    5'b10_101: begin
                         o_valid <= 1'b1;
                     end
                     default: o_valid <= 'b0;
@@ -505,7 +507,7 @@ always @(posedge i_clk) begin
                 load_stage <= 4'd13;
                 // Nhóm các thành ph?n ít thay ð?i l?i v?i nhau
                 base_addr_fixed <= (tile_z + channel_swap) * space_size + quarter[1] * quarter_y_addr + quarter[0] * quarter_x_addr;
-                tile_addr_fixed <= tile_y * tile_y_addr + tile_x * tile_x_addr - (!up_padding ? ('d2 - stride) * line_addr : 0);
+                tile_addr_fixed <= tile_y * tile_y_addr + tile_x * tile_x_addr - (!up_padding ? ('d2 - |stride) * line_addr : 0);
                 
                 // Tính ph?n offset ð?ng
                 dynamic_offset  <=  line_counter * line_addr  - ((!first_line && up_padding)? line_addr : 0) ;
@@ -537,11 +539,11 @@ always @(posedge i_clk) begin
     if (!i_rst_n) begin
         buf_s2_load <= 1'b0;      
     end
-    else if (target_idx == 'd2) begin
+    else if (target_idx == 'd2 && !o_valid) begin
         buf_s2_load <= 1'b1;
     end
-    else if (i_dready && o_valid && buf_s2_load) begin
-        buf_s2_load <= 1'b0;
+    else if (i_dready && o_valid && buf_s2_load != 'd0) begin
+        buf_s2_load <= 0;
     end
     
 end
@@ -550,12 +552,11 @@ end
 wire line_done    = (line_counter == line_buffer_size - 1'b1);
 wire z_done       = (tile_z == tile_channel - 2'd2) && line_done;
 wire x_done       = (tile_x + 1'b1 == tile_ref) && z_done; // Gi? s? TAIL_TILE_X
-wire y_done  = (tile_y + 1'b1 == tile_ref) && x_done  && i_pwdone; // them 1 dieu kien gi nua vi du doi pointwise xong
-//wire y_done       = y_done_wait && i_pwdone;
+wire y_done  = (tile_y + 1'b1 == tile_ref) && x_done; // them 1 dieu kien gi nua vi du doi pointwise xong
+//wire y_done       = y_done_wait && ;
 wire stage_done   = (o_stage == TANH) && y_done;
 wire image_done   = 1'b1 && stage_done && (quarter == 2'b11); // tin hieu tu 1 module nao do bao xong thi moi xong 
 wire is_updating_stage = (load_stage >= 4'd6 && load_stage <= 4'd11) && (channel_swap == 1'b1);
-
 //handle update line_counter and buffer available
 // ... (gi? nguyên ph?n wire khai báo bên trên) ...
 
@@ -567,11 +568,21 @@ always @(posedge i_clk) begin
         tile_x       <= 'd0;
         tile_y       <= 'd0;
         tile_z       <= 'd0;
+        stop <= 'd0;
         o_stage      <= IDLE;
     end
     else if (i_enable && o_stage == IDLE) begin
         o_stage <= HEAD;
-    end        
+    end  
+    else if (stop && i_pwdone) begin
+            stop <= 1'b0;
+            tile_y  <= 'd0;
+            o_stage <= o_stage + 1'b1;
+            line_counter <= 'd0;
+            tile_x <= 'd0;
+            tile_z <= 'd0;
+            tile   <= quarter[1] * tile_y_ref + quarter[0] * tile_ref;
+    end      
     else if (is_updating_stage) begin
         
         // --- LOGIC Ð?M CÓ TH? T? ---
@@ -625,13 +636,8 @@ always @(posedge i_clk) begin
 //        end
         
         else if (y_done) begin
-            tile_y  <= 'd0;
-            o_stage <= o_stage + 1'b1;
-            line_counter <= 'd0;
-            tile_x <= 'd0;
-            tile_z <= 'd0;
+            stop <= 1'b1;
         end
-//        else if (y_done_wait) begin end
         else if (x_done) begin
             tile_x <= 'd0;
             tile_y <= tile_y + 1'b1;
@@ -665,7 +671,7 @@ assign o_data = (stride == 2'd0) ? (
                     (buf_cnt == 2'd1) ? {line_buf[1][1][303:32], line_buf[0][1][303:32]} : 544'b0
                 ) :
                 (stride == 2'd2) ? (
-                    (buf_s2_load == 1'b1) ? {line_buf[1][2][303:32], line_buf[0][2][303:32]} :
+                    (buf_s2_load != 1'b0) ? {line_buf[1][2][303:32], line_buf[0][2][303:32]} :
                     (buf_cnt == 2'd2) ? {line_buf[1][0][303:32], line_buf[0][0][303:32]} : 
                     (buf_cnt == 2'd1) ? {line_buf[1][1][303:32], line_buf[0][1][303:32]} : 544'b0
                 ) : 544'b0; // Giá tr? m?c ð?nh n?u không th?a m?n stride nào
