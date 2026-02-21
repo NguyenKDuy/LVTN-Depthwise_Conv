@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_accelerator_file_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_accelerator_file" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="274.201 ns"></ZoomEndTime>
+      <Cursor1Time time="125.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="390"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="48" />
+   <wave_markers>
+      <marker time="20540000" label="" />
+      <marker time="20545000" label="" />
+      <marker time="20685000" label="" />
+      <marker time="45000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb_accelerator_file/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/i_rst_n" type="logic">
+      <obj_property name="ElementShortName">i_rst_n</obj_property>
+      <obj_property name="ObjectShortName">i_rst_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/i_enable" type="logic">
+      <obj_property name="ElementShortName">i_enable</obj_property>
+      <obj_property name="ObjectShortName">i_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/o_stage" type="array">
+      <obj_property name="ElementShortName">o_stage[3:0]</obj_property>
+      <obj_property name="ObjectShortName">o_stage[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/o_data" type="array">
+      <obj_property name="ElementShortName">o_data[543:0]</obj_property>
+      <obj_property name="ObjectShortName">o_data[543:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/o_valid" type="logic">
+      <obj_property name="ElementShortName">o_valid</obj_property>
+      <obj_property name="ObjectShortName">o_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/i_dready" type="logic">
+      <obj_property name="ElementShortName">i_dready</obj_property>
+      <obj_property name="ObjectShortName">i_dready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/image_mem/dob" type="array">
+      <obj_property name="ElementShortName">dob[63:0]</obj_property>
+      <obj_property name="ObjectShortName">dob[63:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/i_data" type="array">
+      <obj_property name="ElementShortName">i_data[63:0]</obj_property>
+      <obj_property name="ObjectShortName">i_data[63:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/image_mem/enb" type="logic">
+      <obj_property name="ElementShortName">enb</obj_property>
+      <obj_property name="ObjectShortName">enb</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/image_mem/addrb" type="array">
+      <obj_property name="ElementShortName">addrb[14:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[14:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/load_stage" type="array">
+      <obj_property name="ElementShortName">load_stage[3:0]</obj_property>
+      <obj_property name="ObjectShortName">load_stage[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/channel_swap" type="logic">
+      <obj_property name="ElementShortName">channel_swap</obj_property>
+      <obj_property name="ObjectShortName">channel_swap</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_counter" type="array">
+      <obj_property name="ElementShortName">line_counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">line_counter[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/buf_cnt" type="array">
+      <obj_property name="ElementShortName">buf_cnt[1:0]</obj_property>
+      <obj_property name="ObjectShortName">buf_cnt[1:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/stride" type="array">
+      <obj_property name="ElementShortName">stride[1:0]</obj_property>
+      <obj_property name="ObjectShortName">stride[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/target_idx" type="array">
+      <obj_property name="ElementShortName">target_idx[1:0]</obj_property>
+      <obj_property name="ObjectShortName">target_idx[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf" type="array">
+      <obj_property name="ElementShortName">line_buf[1:0][0:2][319:0]</obj_property>
+      <obj_property name="ObjectShortName">line_buf[1:0][0:2][319:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[1]" type="array">
+         <obj_property name="ElementShortName">[1][0:2][319:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][0:2][319:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0]" type="array">
+         <obj_property name="ElementShortName">[0][0:2][319:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][0:2][319:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[1]" type="array">
+         <obj_property name="ElementShortName">[1][0:2][319:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][0:2][319:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0]" type="array">
+         <obj_property name="ElementShortName">[0][0:2][319:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][0:2][319:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_addr_fixed" type="array">
+      <obj_property name="ElementShortName">tile_addr_fixed[13:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_addr_fixed[13:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/base_addr_fixed" type="array">
+      <obj_property name="ElementShortName">base_addr_fixed[13:0]</obj_property>
+      <obj_property name="ObjectShortName">base_addr_fixed[13:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/dynamic_offset" type="array">
+      <obj_property name="ElementShortName">dynamic_offset[13:0]</obj_property>
+      <obj_property name="ObjectShortName">dynamic_offset[13:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile" type="array">
+      <obj_property name="ElementShortName">tile[7:0]</obj_property>
+      <obj_property name="ObjectShortName">tile[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_x" type="array">
+      <obj_property name="ElementShortName">tile_x[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_x[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_y" type="array">
+      <obj_property name="ElementShortName">tile_y[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_y[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_z" type="array">
+      <obj_property name="ElementShortName">tile_z[8:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_z[8:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_channel" type="array">
+      <obj_property name="ElementShortName">tile_channel[8:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_channel[8:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/quarter" type="array">
+      <obj_property name="ElementShortName">quarter[1:0]</obj_property>
+      <obj_property name="ObjectShortName">quarter[1:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buffer_size" type="array">
+      <obj_property name="ElementShortName">line_buffer_size[4:0]</obj_property>
+      <obj_property name="ObjectShortName">line_buffer_size[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_addr" type="array">
+      <obj_property name="ElementShortName">line_addr[5:0]</obj_property>
+      <obj_property name="ObjectShortName">line_addr[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/padding_tile" type="array">
+      <obj_property name="ElementShortName">padding_tile[3:0]</obj_property>
+      <obj_property name="ObjectShortName">padding_tile[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/up_padding" type="logic">
+      <obj_property name="ElementShortName">up_padding</obj_property>
+      <obj_property name="ObjectShortName">up_padding</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/down_padding" type="logic">
+      <obj_property name="ElementShortName">down_padding</obj_property>
+      <obj_property name="ObjectShortName">down_padding</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/pre_padding" type="logic">
+      <obj_property name="ElementShortName">pre_padding</obj_property>
+      <obj_property name="ObjectShortName">pre_padding</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/post_padding" type="logic">
+      <obj_property name="ElementShortName">post_padding</obj_property>
+      <obj_property name="ObjectShortName">post_padding</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_x_addr" type="array">
+      <obj_property name="ElementShortName">tile_x_addr[2:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_x_addr[2:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_y_addr" type="array">
+      <obj_property name="ElementShortName">tile_y_addr[8:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_y_addr[8:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_ref" type="array">
+      <obj_property name="ElementShortName">tile_ref[3:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_ref[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/quarter_x_addr" type="array">
+      <obj_property name="ElementShortName">quarter_x_addr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">quarter_x_addr[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/quarter_y_addr" type="array">
+      <obj_property name="ElementShortName">quarter_y_addr[10:0]</obj_property>
+      <obj_property name="ObjectShortName">quarter_y_addr[10:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/load_enable" type="logic">
+      <obj_property name="ElementShortName">load_enable</obj_property>
+      <obj_property name="ObjectShortName">load_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_done" type="logic">
+      <obj_property name="ElementShortName">line_done</obj_property>
+      <obj_property name="ObjectShortName">line_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/z_done" type="logic">
+      <obj_property name="ElementShortName">z_done</obj_property>
+      <obj_property name="ObjectShortName">z_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/x_done" type="logic">
+      <obj_property name="ElementShortName">x_done</obj_property>
+      <obj_property name="ObjectShortName">x_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/y_done" type="logic">
+      <obj_property name="ElementShortName">y_done</obj_property>
+      <obj_property name="ObjectShortName">y_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/stage_done" type="logic">
+      <obj_property name="ElementShortName">stage_done</obj_property>
+      <obj_property name="ObjectShortName">stage_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/image_done" type="logic">
+      <obj_property name="ElementShortName">image_done</obj_property>
+      <obj_property name="ObjectShortName">image_done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/is_updating_stage" type="logic">
+      <obj_property name="ElementShortName">is_updating_stage</obj_property>
+      <obj_property name="ObjectShortName">is_updating_stage</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_accelerator_file/dut/data_control/first_line" type="logic">
+      <obj_property name="ElementShortName">first_line</obj_property>
+      <obj_property name="ObjectShortName">first_line</obj_property>
+   </wvobject>
+</wave_config>

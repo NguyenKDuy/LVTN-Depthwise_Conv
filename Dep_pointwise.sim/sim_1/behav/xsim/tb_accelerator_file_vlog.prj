@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../Dep_pointwise.srcs/sources_1/new" \
+"../../../../Dep_pointwise.srcs/sources_1/new/data_controller.v" \
+"../../../../Dep_pointwise.srcs/sources_1/new/depthwise.v" \
+"../../../../Dep_pointwise.srcs/sources_1/new/image_memory.v" \
+"../../../../Dep_pointwise.srcs/sources_1/new/top.v" \
+"../../../../Dep_pointwise.srcs/sim_1/new/tb_controller.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
