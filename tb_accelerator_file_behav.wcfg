@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="514,267.967 ns"></ZoomStartTime>
-      <ZoomEndTime time="514,550.168 ns"></ZoomEndTime>
-      <Cursor1Time time="514,365.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.001116217300 s"></ZoomStartTime>
+      <ZoomEndTime time="0.001116503501 s"></ZoomEndTime>
+      <Cursor1Time time="0.001116334500 s"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="350"></NameColumnWidth>
+      <NameColumnWidth column_width="330"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="51" />
@@ -25,6 +25,8 @@
       <marker time="20545000" label="" />
       <marker time="20685000" label="" />
       <marker time="45000" label="" />
+      <marker time="122045000" label="" />
+      <marker time="122345000" label="" />
    </wave_markers>
    <wvobject fp_name="/tb_accelerator_file/clk" type="logic">
       <obj_property name="ElementShortName">clk</obj_property>
@@ -73,6 +75,8 @@
       <obj_property name="ElementShortName">addrb[14:0]</obj_property>
       <obj_property name="ObjectShortName">addrb[14:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#0000FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_accelerator_file/dut/data_control/load_stage" type="array">
       <obj_property name="ElementShortName">load_stage[3:0]</obj_property>
@@ -112,31 +116,6 @@
       <obj_property name="ObjectShortName">line_buf[1:0][0:2][319:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[1]" type="array">
-         <obj_property name="ElementShortName">[1][0:2][319:0]</obj_property>
-         <obj_property name="ObjectShortName">[1][0:2][319:0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0]" type="array">
-         <obj_property name="ElementShortName">[0][0:2][319:0]</obj_property>
-         <obj_property name="ObjectShortName">[0][0:2][319:0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-         <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0][0]" type="array">
-            <obj_property name="ElementShortName">[0][319:0]</obj_property>
-            <obj_property name="ObjectShortName">[0][319:0]</obj_property>
-            <obj_property name="Radix">HEXRADIX</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0][1]" type="array">
-            <obj_property name="ElementShortName">[1][319:0]</obj_property>
-            <obj_property name="ObjectShortName">[1][319:0]</obj_property>
-            <obj_property name="Radix">HEXRADIX</obj_property>
-         </wvobject>
-         <wvobject fp_name="/tb_accelerator_file/dut/data_control/line_buf[0][2]" type="array">
-            <obj_property name="ElementShortName">[2][319:0]</obj_property>
-            <obj_property name="ObjectShortName">[2][319:0]</obj_property>
-            <obj_property name="Radix">HEXRADIX</obj_property>
-         </wvobject>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_addr_fixed" type="array">
       <obj_property name="ElementShortName">tile_addr_fixed[13:0]</obj_property>
@@ -220,8 +199,8 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_y_addr" type="array">
-      <obj_property name="ElementShortName">tile_y_addr[8:0]</obj_property>
-      <obj_property name="ObjectShortName">tile_y_addr[8:0]</obj_property>
+      <obj_property name="ElementShortName">tile_y_addr[9:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_y_addr[9:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_accelerator_file/dut/data_control/tile_ref" type="array">

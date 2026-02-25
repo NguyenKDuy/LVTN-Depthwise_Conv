@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
-| Date         : Sat Feb 21 23:51:24 2026
+| Date         : Wed Feb 25 00:44:12 2026
 | Host         : LAPTOP-92N761HV running 64-bit major release  (build 9200)
 | Command      : report_utilization -file accelerator_utilization_synth.rpt -pb accelerator_utilization_synth.pb
 | Design       : accelerator
@@ -32,13 +32,13 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| CLB LUTs*               |   58 |     0 |          0 |    117120 |  0.05 |
-|   LUT as Logic          |   58 |     0 |          0 |    117120 |  0.05 |
+| CLB LUTs*               | 2911 |     0 |          0 |    117120 |  2.49 |
+|   LUT as Logic          | 2911 |     0 |          0 |    117120 |  2.49 |
 |   LUT as Memory         |    0 |     0 |          0 |     57600 |  0.00 |
-| CLB Registers           |   43 |     0 |          0 |    234240 |  0.02 |
-|   Register as Flip Flop |   43 |     0 |          0 |    234240 |  0.02 |
+| CLB Registers           | 1998 |     0 |          0 |    234240 |  0.85 |
+|   Register as Flip Flop | 1998 |     0 |          0 |    234240 |  0.85 |
 |   Register as Latch     |    0 |     0 |          0 |    234240 |  0.00 |
-| CARRY8                  |    4 |     0 |          0 |     14640 |  0.03 |
+| CARRY8                  |   15 |     0 |          0 |     14640 |  0.10 |
 | F7 Muxes                |    0 |     0 |          0 |     58560 |  0.00 |
 | F8 Muxes                |    0 |     0 |          0 |     29280 |  0.00 |
 | F9 Muxes                |    0 |     0 |          0 |     14640 |  0.00 |
@@ -61,8 +61,8 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
-| 0     |          Yes |         Set |            - |
-| 43    |          Yes |       Reset |            - |
+| 832   |          Yes |         Set |            - |
+| 1166  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -72,11 +72,11 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-------------------+------+-------+------------+-----------+-------+
 |     Site Type     | Used | Fixed | Prohibited | Available | Util% |
 +-------------------+------+-------+------------+-----------+-------+
-| Block RAM Tile    |   23 |     0 |          0 |       144 | 15.97 |
-|   RAMB36/FIFO*    |   23 |     0 |          0 |       144 | 15.97 |
-|     RAMB36E2 only |   23 |       |            |           |       |
+| Block RAM Tile    |   28 |     0 |          0 |       144 | 19.44 |
+|   RAMB36/FIFO*    |   28 |     0 |          0 |       144 | 19.44 |
+|     RAMB36E2 only |   28 |       |            |           |       |
 |   RAMB18          |    0 |     0 |          0 |       288 |  0.00 |
-| URAM              |    1 |     0 |          0 |        64 |  1.56 |
+| URAM              |    6 |     0 |          0 |        64 |  9.38 |
 +-------------------+------+-------+------------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E2 or one FIFO18E2. However, if a FIFO18E2 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E2
 
@@ -97,7 +97,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +------------+------+-------+------------+-----------+--------+
 |  Site Type | Used | Fixed | Prohibited | Available |  Util% |
 +------------+------+-------+------------+-----------+--------+
-| Bonded IOB |  264 |     0 |          0 |       189 | 139.68 |
+| Bonded IOB |  745 |     0 |          0 |       189 | 394.18 |
 +------------+------+-------+------------+-----------+--------+
 
 
@@ -158,20 +158,20 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| OBUF     |  133 |                 I/O |
-| INBUF    |   67 |                 I/O |
-| IBUFCTRL |   67 |              Others |
-| OBUFT    |   64 |                 I/O |
-| FDRE     |   43 |            Register |
-| RAMB36E2 |   23 |            BLOCKRAM |
-| LUT5     |   21 |                 CLB |
-| LUT6     |   19 |                 CLB |
-| LUT4     |   14 |                 CLB |
-| LUT3     |   13 |                 CLB |
-| LUT1     |    4 |                 CLB |
-| CARRY8   |    4 |                 CLB |
-| LUT2     |    2 |                 CLB |
-| URAM288  |    1 |            BLOCKRAM |
+| LUT6     | 1337 |                 CLB |
+| FDRE     | 1166 |            Register |
+| FDSE     |  832 |            Register |
+| OBUF     |  677 |                 I/O |
+| LUT5     |  607 |                 CLB |
+| LUT4     |  602 |                 CLB |
+| LUT3     |  582 |                 CLB |
+| LUT2     |  191 |                 CLB |
+| INBUF    |   68 |                 I/O |
+| IBUFCTRL |   68 |              Others |
+| RAMB36E2 |   28 |            BLOCKRAM |
+| LUT1     |   16 |                 CLB |
+| CARRY8   |   15 |                 CLB |
+| URAM288  |    6 |            BLOCKRAM |
 | BUFGCE   |    1 |               Clock |
 +----------+------+---------------------+
 

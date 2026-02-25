@@ -31,8 +31,10 @@ module data_controller(
     o_r_address,
     o_r_enable,
     o_data,
-    o_valid
+    o_valid,
+    tile_z
 );
+parameter ADDRESS = 17;
     input i_clk;
     input i_rst_n;
     input i_enable;
@@ -40,10 +42,11 @@ module data_controller(
     input [63:0] i_data;    
     input i_dready;
     output reg [3:0] o_stage; //
-    output reg [14:0] o_r_address;
+    output reg [ADDRESS - 1:0] o_r_address;
     output reg o_r_enable;
     output [17*16*2 - 1: 0] o_data;
     output reg o_valid;
+    output [8:0] tile_z;
 
 ///////////////////////////////////////////////////////////////////
 // FSM:    
@@ -97,8 +100,8 @@ localparam TAIL_TILE_Z = 'd32;
 // Base address of depthwise:
 localparam HEAD_WIDTH = 'd128 /4; //keep
 localparam DOWNS1_WIDTH = 'd128 / 'd8; //divide to 2
-localparam DOWNS2_WIDTH = 'd32 / 'd8;
-localparam BOTT_WIDTH = 'd32 / 'd8;
+localparam DOWNS2_WIDTH = 'd32 / 'd2; //not divide by tile but by block of 64-bit
+localparam BOTT_WIDTH = 'd32 / 'd4;
 localparam UPS1_WIDTH = 'd32 / 'd8;
 localparam UPS2_WIDTH = 'd64 / 'd8;
 localparam UPS3_WIDTH = 'd64 / 'd8;
@@ -106,8 +109,8 @@ localparam TAIL_WIDTH = 'd128 / 'd8;
 
 localparam HEAD_LADDR = HEAD_WIDTH ; //line address for each line buffer
 localparam DOWNS1_LADDR = DOWNS1_WIDTH;
-localparam DOWNS2_LADDR = DOWNS2_WIDTH;
-localparam BOTT_LADDR = BOTT_WIDTH;
+localparam DOWNS2_LADDR = DOWNS2_WIDTH / 2;
+localparam BOTT_LADDR = BOTT_WIDTH / 2;
 localparam UPS1_LADDR = UPS1_WIDTH;
 localparam UPS2_LADDR = UPS2_WIDTH;
 localparam UPS3_LADDR = UPS3_WIDTH;
@@ -164,7 +167,7 @@ reg down_padding;
 reg pre_padding;
 reg post_padding;
 reg [2:0] tile_x_addr;
-reg [8:0] tile_y_addr;
+reg [9:0] tile_y_addr;
 reg [3:0] tile_ref;
 reg [8:0] tile_y_ref;
 
@@ -179,32 +182,33 @@ always @(*) begin
     line_buffer_size = 'd0; 
     stride = 'd0;
     tile_x_addr = 0;
-    tile_y_addr = 0;
     case (o_stage)
-        HEAD, UPS1, UPS2, UPS3: begin
+        HEAD: begin
             line_buffer_size = 'd10;    
             stride = 'd1;
             tile_x_addr = 2;
-//            if (tile_y == 1)
-//                tile_y_addr = 'd256 + line_addr;
-//            else 
-            tile_y_addr = 'd256;
         end 
+        UPS1, UPS2, UPS3: begin
+            line_buffer_size = 'd10;    
+            stride = 'd1;
+            tile_x_addr = 2;
+//            tile_y_addr = 'd128;
+        end
         DOWNS1, DOWNS2, BOTT: begin
             line_buffer_size = 'd17; 
             stride = 'd2;   
             tile_x_addr = 4;  
-//            if (tile_y == 1)
-//                tile_y_addr = 'd480 + line_addr;
-//            else 
-            tile_y_addr = 'd512;
+//            tile_y_addr = 256;
         end 
         TAIL: begin
             line_buffer_size = 'd8; 
             stride = 'd0;
             tile_x_addr = 2;  
-            tile_y_addr = 'd256;
+//            tile_y_addr = 'd256;
         end  
+        default: begin
+        
+        end
     endcase
 end
 
@@ -222,6 +226,8 @@ always @(*) begin
     quarter_x_addr = 0;
     quarter_y_addr = 0;
     tile_y_ref = 0;
+    tile_y_addr = 0;
+
     case (o_stage)
         HEAD: begin
             space_size = HEAD_WIDTH * HEAD_WIDTH * 4;
@@ -232,6 +238,8 @@ always @(*) begin
             quarter_x_addr = HEAD_QXADDR;
             quarter_y_addr = HEAD_QYADDR;
             tile_y_ref = HEAD_TILE_X * HEAD_TILE_Y;
+            tile_y_addr = 'd256;
+
             if (tile < HEAD_TILE_X) 
                 up_padding = 1'b1;
             
@@ -252,6 +260,7 @@ always @(*) begin
             line_addr = DOWNS1_LADDR;
 //            quarter_x_addr = DOWNS1_QXADDR;
 //            quarter_y_addr = DOWNS1_QYADDR;
+            tile_y_addr = 'd256;
             tile_y_ref = DOWNS1_TILE_X * DOWNS1_TILE_Y;
             if (tile < DOWNS1_TILE_X) 
                 up_padding = 1'b1;
@@ -266,7 +275,7 @@ always @(*) begin
                 post_padding = 1'b1;
         end
         DOWNS2: begin
-            space_size = DOWNS2_WIDTH * DOWNS2_WIDTH * 4;
+            space_size = DOWNS2_WIDTH * DOWNS2_WIDTH;
             padding_tile = DOWNS2_TILE_X;              
             tile_channel = DOWNS2_TILE_Z;
             tile_ref = DOWNS2_TILE_Y;
@@ -274,6 +283,7 @@ always @(*) begin
 //            quarter_x_addr = DOWNS2_QXADDR;
 //            quarter_y_addr = DOWNS2_QYADDR;
             tile_y_ref = DOWNS2_TILE_X * DOWNS2_TILE_Y;
+            tile_y_addr = 'd128;
             if (tile < padding_tile) 
                 up_padding = 1'b1;
             
@@ -287,11 +297,12 @@ always @(*) begin
                 post_padding = 1'b1;
         end     
         BOTT: begin
-            space_size = BOTT_WIDTH * BOTT_WIDTH * 4;
+            space_size = BOTT_WIDTH * BOTT_WIDTH;
             padding_tile = BOTT_TILE_X;
             tile_channel = BOTT_TILE_Z;
             tile_ref = BOTT_TILE_Y;
             line_addr = BOTT_LADDR;
+            tile_y_addr = 'd64;
 //            quarter_x_addr = BOTT_QXADDR;
 //            quarter_y_addr = BOTT_QYADDR;
             tile_y_ref = BOTT_TILE_X * BOTT_TILE_Y;
@@ -507,7 +518,7 @@ always @(posedge i_clk) begin
                 load_stage <= 4'd13;
                 // Nhóm các thành ph?n ít thay ð?i l?i v?i nhau
                 base_addr_fixed <= (tile_z + channel_swap) * space_size + quarter[1] * quarter_y_addr + quarter[0] * quarter_x_addr;
-                tile_addr_fixed <= tile_y * tile_y_addr + tile_x * tile_x_addr - (!up_padding ? ('d2 - |stride) * line_addr : 0);
+                tile_addr_fixed <= tile_y * tile_y_addr + tile_x * tile_x_addr - (!up_padding ? ('d2 - (stride[0] + stride [1])) * line_addr : 0);
                 
                 // Tính ph?n offset ð?ng
                 dynamic_offset  <=  line_counter * line_addr  - ((!first_line && up_padding)? line_addr : 0) ;

@@ -2,8 +2,8 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 05:00:03 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Sat Feb 21 23:50:07 2026
-# Process ID: 12696
+# Start of session at: Wed Feb 25 00:43:00 2026
+# Process ID: 8528
 # Current directory: E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.runs/synth_1
 # Command line: vivado.exe -log accelerator.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source accelerator.tcl
 # Log file: E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.runs/synth_1/accelerator.vds
@@ -11,7 +11,6 @@
 # Running On: LAPTOP-92N761HV, OS: Windows, CPU Frequency: 3194 MHz, CPU Physical cores: 16, Host memory: 16371 MB
 #-----------------------------------------------------------
 source accelerator.tcl -notrace
-create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 508.727 ; gain = 95.176
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/A_Verilog_DA/ip_repo/myip_1_0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2022.2/data/ip'.
@@ -27,15 +26,16 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 2288
+INFO: [Synth 8-7075] Helper process launched with PID 40896
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [E:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
-INFO: [Synth 8-11241] undeclared symbol 'first_line', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:527]
-INFO: [Synth 8-11241] undeclared symbol 'o_r_enable1', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:68]
-INFO: [Synth 8-11241] undeclared symbol 'o_valid1', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:85]
-INFO: [Synth 8-11241] undeclared symbol 'i_enable', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:112]
-INFO: [Synth 8-11241] undeclared symbol 'i_pwdone', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:118]
+INFO: [Synth 8-11241] undeclared symbol 'first_line', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:542]
+INFO: [Synth 8-11241] undeclared symbol 'dw_data_valid', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:59]
+INFO: [Synth 8-11241] undeclared symbol 'pw_data_valid', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:62]
+INFO: [Synth 8-11241] undeclared symbol 'top_data_valid', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:65]
+INFO: [Synth 8-11241] undeclared symbol 'dw_valid', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:125]
+INFO: [Synth 8-11241] undeclared symbol 'i_enable', assumed default net type 'wire' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:158]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1889.676 ; gain = 334.680
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1889.668 ; gain = 334.867
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'accelerator' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:3]
 INFO: [Synth 8-6157] synthesizing module 'receptor' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:25]
@@ -43,111 +43,72 @@ INFO: [Synth 8-226] default block is never used [E:/A_Verilog_DA/Dep_pointwise/D
 INFO: [Synth 8-6155] done synthesizing module 'receptor' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:25]
 INFO: [Synth 8-6157] synthesizing module 'simple_dual_two_clocks' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
 	Parameter DEPTH bound to: 2030 - type: integer 
+	Parameter ADDRESS bound to: 11 - type: integer 
+	Parameter RAM_STYLE bound to: block - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'simple_dual_two_clocks' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
 INFO: [Synth 8-6157] synthesizing module 'depth_mem_control' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/depthwise.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'depth_mem_control' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/depthwise.v:1]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:89]
 INFO: [Synth 8-6157] synthesizing module 'simple_dual_two_clocks__parameterized0' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
 	Parameter DEPTH bound to: 26952 - type: integer 
+	Parameter ADDRESS bound to: 15 - type: integer 
+	Parameter RAM_STYLE bound to: block - type: string 
 INFO: [Synth 8-6155] done synthesizing module 'simple_dual_two_clocks__parameterized0' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
-INFO: [Synth 8-6157] synthesizing module 'simple_dual_two_clocks__parameterized1' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_one_clocks' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
 	Parameter DEPTH bound to: 24576 - type: integer 
-	Parameter INIT_FILE bound to: image_64bit_debug.hex - type: string 
-CRITICAL WARNING: [Synth 8-4445] could not open $readmem data file 'image_64bit_debug.hex'; please make sure the file is added to project and has read permission, ignoring [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:161]
-INFO: [Synth 8-6155] done synthesizing module 'simple_dual_two_clocks__parameterized1' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:132]
+	Parameter ADDRESS bound to: 15 - type: integer 
+	Parameter RAM_STYLE bound to: ultra - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_one_clocks' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
 INFO: [Synth 8-6157] synthesizing module 'data_controller' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:23]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:183]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:479]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:418]
+	Parameter ADDRESS bound to: 17 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:494]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:429]
 INFO: [Synth 8-6155] done synthesizing module 'data_controller' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/data_controller.v:23]
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_one_clocks__parameterized0' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+	Parameter DEPTH bound to: 32768 - type: integer 
+	Parameter ADDRESS bound to: 15 - type: integer 
+	Parameter RAM_STYLE bound to: ultra - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_one_clocks__parameterized0' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_one_clocks__parameterized1' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+	Parameter DEPTH bound to: 16384 - type: integer 
+	Parameter ADDRESS bound to: 14 - type: integer 
+	Parameter RAM_STYLE bound to: ultra - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_one_clocks__parameterized1' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_one_clocks__parameterized2' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+	Parameter DEPTH bound to: 8192 - type: integer 
+	Parameter ADDRESS bound to: 14 - type: integer 
+	Parameter RAM_STYLE bound to: ultra - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_one_clocks__parameterized2' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_one_clocks__parameterized3' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+	Parameter DEPTH bound to: 65536 - type: integer 
+	Parameter ADDRESS bound to: 17 - type: integer 
+	Parameter RAM_STYLE bound to: ultra - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_one_clocks__parameterized3' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+INFO: [Synth 8-6157] synthesizing module 'simple_dual_one_clocks__parameterized4' [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
+	Parameter DEPTH bound to: 32768 - type: integer 
+	Parameter ADDRESS bound to: 16 - type: integer 
+	Parameter RAM_STYLE bound to: ultra - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'simple_dual_one_clocks__parameterized4' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/image_memory.v:168]
 INFO: [Synth 8-6155] done synthesizing module 'accelerator' (0#1) [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:3]
-WARNING: [Synth 8-3848] Net data_out2 in module/entity accelerator does not have driver. [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:12]
-WARNING: [Synth 8-3848] Net i_pwdone in module/entity accelerator does not have driver. [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:118]
-WARNING: [Synth 8-7129] Port addra[14] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addra[13] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addra[12] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addra[11] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addrb[14] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addrb[13] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addrb[12] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port addrb[11] in module simple_dual_two_clocks is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[63] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[62] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[61] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[60] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[59] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[58] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[57] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[56] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[55] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[54] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[53] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[52] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[51] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[50] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[49] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[48] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[47] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[46] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[45] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[44] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[43] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[42] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[41] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[40] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[39] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[38] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[37] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[36] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[35] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[34] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[33] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[32] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[31] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[30] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[29] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[28] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[27] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[26] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[25] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[24] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[23] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[22] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[21] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[20] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[19] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[18] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[17] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[16] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[15] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[14] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[13] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[12] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[11] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[10] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[9] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[8] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[7] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[6] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[5] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[4] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[3] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[2] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[1] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[0] in module accelerator is either unconnected or has no load
+WARNING: [Synth 8-3848] Net top_pw_addr_read in module/entity accelerator does not have driver. [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/sources_1/new/top.v:39]
+WARNING: [Synth 8-7129] Port addra[15] in module simple_dual_one_clocks__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[15] in module simple_dual_one_clocks__parameterized4 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addra[16] in module simple_dual_one_clocks__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[16] in module simple_dual_one_clocks__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addra[13] in module simple_dual_one_clocks__parameterized2 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[13] in module simple_dual_one_clocks__parameterized2 is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2023.086 ; gain = 468.090
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 2089.750 ; gain = 534.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2023.086 ; gain = 468.090
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2089.750 ; gain = 534.949
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 2023.086 ; gain = 468.090
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2089.750 ; gain = 534.949
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.083 . Memory (MB): peak = 2023.086 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.090 . Memory (MB): peak = 2089.750 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -157,16 +118,16 @@ INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as o
 Finished Parsing XDC File [E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.srcs/constrs_1/new/clk.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2111.656 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2119.770 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.050 . Memory (MB): peak = 2111.656 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.049 . Memory (MB): peak = 2119.770 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [E:/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2111.656 ; gain = 556.660
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2119.770 ; gain = 564.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -174,13 +135,13 @@ Start Loading Part and Timing Information
 Loading part: xck26-sfvc784-2LV-c
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2111.656 ; gain = 556.660
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2119.770 ; gain = 564.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2111.656 ; gain = 556.660
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2119.770 ; gain = 564.969
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'o_stage_reg' in module 'receptor'
 INFO: [Synth 8-802] inferred FSM for state register 'load_stage_reg' in module 'depth_mem_control'
@@ -227,27 +188,24 @@ INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 6 and width 1
 INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 7 because memory depth for RAM "simple_dual_two_clocks__parameterized0:/ram_reg" is not power of 2. 
 INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 7 and width 9 for RAM "simple_dual_two_clocks__parameterized0:/ram_reg"
 INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 1 for RAM "simple_dual_two_clocks__parameterized0:/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 18 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
-INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 4 because memory depth for RAM "simple_dual_two_clocks__parameterized1:/ram_reg" is not power of 2. 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 18 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
-INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 6 because memory depth for RAM "simple_dual_two_clocks__parameterized1:/ram_reg" is not power of 2. 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 6 and width 9 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 1 for RAM "simple_dual_two_clocks__parameterized1:/ram_reg"
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"simple_dual_one_clocks:/ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"simple_dual_one_clocks__parameterized0:/ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"simple_dual_one_clocks__parameterized1:/ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"simple_dual_one_clocks__parameterized2:/ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"simple_dual_one_clocks__parameterized3:/ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"simple_dual_one_clocks__parameterized4:/ram_reg"'.
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2111.656 ; gain = 556.660
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 2119.770 ; gain = 564.969
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   15 Bit       Adders := 4     
-	   4 Input   15 Bit       Adders := 1     
-	   3 Input   14 Bit       Adders := 1     
-	   2 Input   14 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input   16 Bit       Adders := 1     
+	   2 Input   15 Bit       Adders := 5     
+	   3 Input   14 Bit       Adders := 2     
 	   2 Input   11 Bit       Adders := 1     
 	   2 Input   10 Bit       Adders := 1     
 	   2 Input    9 Bit       Adders := 3     
@@ -260,8 +218,9 @@ Detailed RTL Component Info :
 +---Registers : 
 	              320 Bit    Registers := 6     
 	              144 Bit    Registers := 2     
-	               64 Bit    Registers := 6     
-	               15 Bit    Registers := 4     
+	               64 Bit    Registers := 17    
+	               17 Bit    Registers := 1     
+	               15 Bit    Registers := 3     
 	               14 Bit    Registers := 3     
 	               11 Bit    Registers := 1     
 	                9 Bit    Registers := 2     
@@ -271,8 +230,12 @@ Detailed RTL Component Info :
 	                2 Bit    Registers := 5     
 	                1 Bit    Registers := 9     
 +---RAMs : 
+	            4096K Bit	(65536 X 64 bit)          RAMs := 1     
+	            2048K Bit	(32768 X 64 bit)          RAMs := 2     
 	            1684K Bit	(26952 X 64 bit)          RAMs := 1     
 	            1536K Bit	(24576 X 64 bit)          RAMs := 1     
+	            1024K Bit	(16384 X 64 bit)          RAMs := 1     
+	             512K Bit	(8192 X 64 bit)          RAMs := 1     
 	             126K Bit	(2030 X 64 bit)          RAMs := 1     
 +---Muxes : 
 	   4 Input  544 Bit        Muxes := 1     
@@ -297,45 +260,46 @@ Detailed RTL Component Info :
 	   3 Input   64 Bit        Muxes := 1     
 	   2 Input   64 Bit        Muxes := 3     
 	   2 Input   32 Bit        Muxes := 1     
+	  11 Input   17 Bit        Muxes := 1     
+	  11 Input   16 Bit        Muxes := 1     
 	   2 Input   15 Bit        Muxes := 2     
 	   8 Input   15 Bit        Muxes := 1     
 	   4 Input   15 Bit        Muxes := 1     
 	   5 Input   15 Bit        Muxes := 1     
-	  10 Input   15 Bit        Muxes := 1     
-	   5 Input   14 Bit        Muxes := 2     
-	  10 Input   14 Bit        Muxes := 3     
+	   5 Input   14 Bit        Muxes := 1     
 	   2 Input   14 Bit        Muxes := 1     
+	   9 Input   14 Bit        Muxes := 1     
+	  11 Input   14 Bit        Muxes := 1     
 	   2 Input   11 Bit        Muxes := 1     
 	   8 Input   11 Bit        Muxes := 1     
-	   9 Input   11 Bit        Muxes := 1     
-	   5 Input   11 Bit        Muxes := 1     
+	   9 Input   11 Bit        Muxes := 2     
 	   2 Input    9 Bit        Muxes := 9     
-	   4 Input    9 Bit        Muxes := 2     
-	   9 Input    9 Bit        Muxes := 1     
-	   5 Input    8 Bit        Muxes := 1     
+	   4 Input    9 Bit        Muxes := 1     
+	   9 Input    9 Bit        Muxes := 2     
 	   9 Input    8 Bit        Muxes := 3     
+	   5 Input    8 Bit        Muxes := 1     
 	   2 Input    8 Bit        Muxes := 3     
 	   4 Input    8 Bit        Muxes := 1     
 	   3 Input    7 Bit        Muxes := 1     
 	  10 Input    6 Bit        Muxes := 1     
-	   4 Input    5 Bit        Muxes := 1     
-	   5 Input    5 Bit        Muxes := 1     
+	   5 Input    5 Bit        Muxes := 2     
 	   9 Input    4 Bit        Muxes := 3     
-	   2 Input    4 Bit        Muxes := 10    
+	   3 Input    4 Bit        Muxes := 3     
+	   2 Input    4 Bit        Muxes := 9     
 	   4 Input    4 Bit        Muxes := 2     
-	   3 Input    4 Bit        Muxes := 2     
 	   6 Input    4 Bit        Muxes := 1     
-	   9 Input    3 Bit        Muxes := 5     
+	   9 Input    3 Bit        Muxes := 3     
 	   4 Input    3 Bit        Muxes := 1     
 	   6 Input    3 Bit        Muxes := 2     
-	  10 Input    3 Bit        Muxes := 2     
-	   4 Input    2 Bit        Muxes := 4     
+	  11 Input    3 Bit        Muxes := 2     
+	   4 Input    2 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 5     
+	   5 Input    2 Bit        Muxes := 2     
 	   3 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 45    
+	   2 Input    1 Bit        Muxes := 46    
 	   4 Input    1 Bit        Muxes := 6     
 	   5 Input    1 Bit        Muxes := 7     
-	  10 Input    1 Bit        Muxes := 12    
+	  11 Input    1 Bit        Muxes := 12    
 	   3 Input    1 Bit        Muxes := 1     
 	   9 Input    1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
@@ -354,60 +318,37 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-7129] Port data_out2[63] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[62] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[61] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[60] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[59] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[58] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[57] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[56] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[55] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[54] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[53] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[52] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[51] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[50] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[49] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[48] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[47] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[46] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[45] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[44] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[43] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[42] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[41] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[40] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[39] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[38] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[37] in module accelerator is either unconnected or has no load
-WARNING: [Synth 8-7129] Port data_out2[36] in module accelerator is either unconnected or has no load
-INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-6794] RAM ("accelerator/depth_mem/ram_reg") will be automatically implemented using URAM. 
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/depth_mem/ram_reg"'.
-WARNING: [Synth 8-6014] Unused sequential element point_mem/ram_reg was removed. 
-INFO: [Synth 8-6793] RAM ("accelerator/image_mem/ram_reg") is implemented using BRAM instead of URAM due to insufficient pipeline registers. Available pipeline stages = 0, Minimum required pipeline stages = 3 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/image_mem/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/image_mem/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/image_mem/ram_reg"
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 18 for RAM "accelerator/image_mem/ram_reg"
-INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 4 because memory depth for RAM "accelerator/image_mem/ram_reg" is not power of 2. 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 4 and width 18 for RAM "accelerator/image_mem/ram_reg"
-INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 6 because memory depth for RAM "accelerator/image_mem/ram_reg" is not power of 2. 
-INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 6 and width 9 for RAM "accelerator/image_mem/ram_reg"
-INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 1 for RAM "accelerator/image_mem/ram_reg"
-INFO: [Synth 8-6794] RAM ("accelerator/depth_mem/ram_reg") will be automatically implemented using URAM. 
-INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/depth_mem/ram_reg"'.
-WARNING: [Synth 8-3332] Sequential element (dmc/FSM_sequential_mapping_stage_reg[1]) is unused and will be removed from module accelerator.
-WARNING: [Synth 8-3332] Sequential element (dmc/FSM_sequential_mapping_stage_reg[0]) is unused and will be removed from module accelerator.
-WARNING: [Synth 8-3332] Sequential element (dmc/FSM_onehot_load_stage_reg[2]) is unused and will be removed from module accelerator.
-WARNING: [Synth 8-3332] Sequential element (dmc/FSM_onehot_load_stage_reg[1]) is unused and will be removed from module accelerator.
-WARNING: [Synth 8-3332] Sequential element (dmc/FSM_onehot_load_stage_reg[0]) is unused and will be removed from module accelerator.
-WARNING: [Synth 8-3332] Sequential element (image_mem/ram_reg_mux_sel_b_pos_0__0) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-7129] Port addra[16] in module simple_dual_one_clocks__parameterized3 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port addrb[16] in module simple_dual_one_clocks__parameterized3 is either unconnected or has no load
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 2 and width 36 for RAM "accelerator/depth_mem/ram_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 18 for RAM "accelerator/depth_mem/ram_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 10 for RAM "accelerator/depth_mem/ram_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 36 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 3 because memory depth for RAM "accelerator/point_mem/ram_reg" is not power of 2. 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 3 and width 36 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 8 and width 18 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 6 because memory depth for RAM "accelerator/point_mem/ram_reg" is not power of 2. 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 6 and width 18 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-5800] Cascade chain of height 8 reduced to 7 because memory depth for RAM "accelerator/point_mem/ram_reg" is not power of 2. 
+INFO: [Synth 8-5555] Implemented Block Ram Cascade chain of height 7 and width 9 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 1 for RAM "accelerator/point_mem/ram_reg"
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/image_mem/ram_reg"'.
+WARNING: [Synth 8-6014] Unused sequential element head_mem/ram_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element downs1_mem/ram_reg was removed. 
+WARNING: [Synth 8-6014] Unused sequential element downs2_mem/ram_reg was removed. 
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/bott_up2_mem/ram_reg"'.
+WARNING: [Synth 8-6014] Unused sequential element up1_up3_mem/ram_reg was removed. 
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/image_mem/ram_reg"'.
+INFO: [Synth 8-5780] Default cascade height of 8 will be used for URAM '"accelerator/bott_up2_mem/ram_reg"'.
+CRITICAL WARNING: [Synth 8-6013] UltraRAM "accelerator/image_mem/ram_reg" is under-pipelined and may not meet performance target : Pipeline stages found = 1; Recommended pipeline stages =3. 
+INFO: [Synth 8-5814] Pipeline result for URAM ("accelerator/image_mem/ram_reg"): Matrix size= (1 cols x 6 rows) | Pipeline stages => ( available = 1, absorbed = 1 )
+WARNING: [Synth 8-3332] Sequential element (point_mem/ram_reg_mux_sel_b_pos_0__0) is unused and will be removed from module accelerator.
+WARNING: [Synth 8-3332] Sequential element (bott_up2_mem/ram_reg_mux_sel_A_mat_0_col_1) is unused and will be removed from module accelerator.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2111.656 ; gain = 556.660
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:29 . Memory (MB): peak = 2150.395 ; gain = 595.594
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-6057] Memory: "depth_mem/ram_reg" defined in module: "accelerator" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
@@ -416,7 +357,7 @@ Ultra RAM: Preliminary Mapping Report (see note below)
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
 |Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
-|accelerator | depth_mem/ram_reg | 1 K x 64               |   | R | 1 K x 64               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|accelerator | image_mem/ram_reg | 24 K x 64              |   | R | 24 K x 64              | W |   | Port A and B     | 6       | 6x1          | 1                        | 1           | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
 
 Note: The table above is a preliminary report that shows the Ultra RAMs at the current stage of the synthesis flow. Some Ultra RAMs may be reimplemented as non Ultra RAM primitives later in the synthesis flow. Multiple instantiated Ultra RAMs are reported only once. Fields "FF provided for Pipeline" and "FF absorbed" respectively indicate number of registers available for pipelining and number of registers absorbed in the URAM matrix for pipelining. 
@@ -425,7 +366,8 @@ Block RAM: Preliminary Mapping Report (see note below)
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 |Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|accelerator | image_mem/ram_reg | 24 K x 64(READ_FIRST)  | W |   | 24 K x 64(WRITE_FIRST) |   | R | Port A and B     | 0      | 43     | 8,8,8,8,4,6,1   | 
+|accelerator | depth_mem/ram_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 4      | 2,1,1           | 
+|accelerator | point_mem/ram_reg | 26 K x 64(READ_FIRST)  | W |   | 26 K x 64(WRITE_FIRST) |   | R | Port A and B     | 0      | 49     | 8,8,8,3,8,6,7,1 | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 
 Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
@@ -436,15 +378,14 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 2585.746 ; gain = 1030.750
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2632.328 ; gain = 1077.527
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 2603.289 ; gain = 1048.293
+Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 2934.270 ; gain = 1379.469
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-6057] Memory: "depth_mem/ram_reg" defined in module: "accelerator" implemented as Ultra-Ram has no pipeline registers. It is recommended to use pipeline registers to achieve high performance.
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
@@ -453,7 +394,7 @@ Ultra RAM: Final Mapping Report (see note below)
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
 |Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | URAM288 | Matrix Shape | FF provided for Pipeline | FF absorbed | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
-|accelerator | depth_mem/ram_reg | 1 K x 64               |   | R | 1 K x 64               | W |   | Port A and B     | 1       | 1x1          | 0                        | 0           | 
+|accelerator | image_mem/ram_reg | 24 K x 64              |   | R | 24 K x 64              | W |   | Port A and B     | 6       | 6x1          | 1                        | 1           | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+---------+--------------+--------------------------+-------------+
 
 
@@ -461,7 +402,8 @@ Block RAM: Final Mapping Report
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 |Module Name | RTL Object        | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
-|accelerator | image_mem/ram_reg | 24 K x 64(READ_FIRST)  | W |   | 24 K x 64(WRITE_FIRST) |   | R | Port A and B     | 0      | 43     | 8,8,8,8,4,6,1   | 
+|accelerator | depth_mem/ram_reg | 1 K x 64(READ_FIRST)   | W |   | 1 K x 64(WRITE_FIRST)  |   | R | Port A and B     | 0      | 4      | 2,1,1           | 
+|accelerator | point_mem/ram_reg | 26 K x 64(READ_FIRST)  | W |   | 26 K x 64(WRITE_FIRST) |   | R | Port A and B     | 0      | 49     | 8,8,8,3,8,6,7,1 | 
 +------------+-------------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
 
 ---------------------------------------------------------------------------------
@@ -470,13 +412,15 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_31 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_41 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance image_mem/ram_reg_bram_42 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
-INFO: [Synth 8-7052] The timing for the instance depth_mem/ram_reg_uram_0 (implemented as a Ultra RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance depth_mem/ram_reg_bram_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance depth_mem/ram_reg_bram_2 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance depth_mem/ram_reg_bram_3 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_7 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_34 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_47 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance point_mem/ram_reg_bram_48 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:32 ; elapsed = 00:00:36 . Memory (MB): peak = 2616.688 ; gain = 1061.691
+Finished Technology Mapping : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -494,37 +438,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -541,44 +485,45 @@ Report Cell Usage:
 |      |Cell     |Count |
 +------+---------+------+
 |1     |BUFG     |     1|
-|2     |CARRY8   |     4|
-|3     |LUT1     |     4|
-|4     |LUT2     |     2|
-|5     |LUT3     |    13|
-|6     |LUT4     |    14|
-|7     |LUT5     |    21|
-|8     |LUT6     |    19|
-|9     |RAMB36E2 |    23|
-|19    |URAM288  |     1|
-|20    |FDRE     |    43|
-|21    |IBUF     |    67|
-|22    |OBUF     |   133|
-|23    |OBUFT    |    64|
+|2     |CARRY8   |    15|
+|3     |LUT1     |    16|
+|4     |LUT2     |   191|
+|5     |LUT3     |   582|
+|6     |LUT4     |   602|
+|7     |LUT5     |   607|
+|8     |LUT6     |  1337|
+|9     |RAMB36E2 |    28|
+|20    |URAM288  |     6|
+|23    |FDRE     |  1166|
+|24    |FDSE     |   832|
+|25    |IBUF     |    68|
+|26    |OBUF     |   677|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:40 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 74 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 2626.176 ; gain = 982.609
-Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:41 . Memory (MB): peak = 2626.176 ; gain = 1071.180
+Synthesis finished with 0 errors, 1 critical warnings and 9 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:38 ; elapsed = 00:00:49 . Memory (MB): peak = 2952.270 ; gain = 1367.449
+Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 2952.270 ; gain = 1397.469
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 2638.191 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 72 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.081 . Memory (MB): peak = 2955.113 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 84 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+WARNING: [Netlist 29-101] Netlist 'accelerator' is not ideal for floorplanning, since the cellview 'data_controller' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2663.406 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 2969.016 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 68 instances were transformed.
+  A total of 69 instances were transformed.
   BUFG => BUFGCE: 1 instance 
-  IBUF => IBUF (IBUFCTRL, INBUF): 67 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 68 instances
 
-Synth Design complete, checksum: 5511ec3
+Synth Design complete, checksum: 73a157d9
 INFO: [Common 17-83] Releasing license: Synthesis
-99 Infos, 113 Warnings, 1 Critical Warnings and 0 Errors encountered.
+112 Infos, 17 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:00:58 . Memory (MB): peak = 2663.406 ; gain = 2112.496
+synth_design: Time (s): cpu = 00:00:59 ; elapsed = 00:01:03 . Memory (MB): peak = 2969.016 ; gain = 2418.391
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint 'E:/A_Verilog_DA/Dep_pointwise/Dep_pointwise.runs/synth_1/accelerator.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file accelerator_utilization_synth.rpt -pb accelerator_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sat Feb 21 23:51:24 2026...
+INFO: [Common 17-206] Exiting Vivado at Wed Feb 25 00:44:12 2026...

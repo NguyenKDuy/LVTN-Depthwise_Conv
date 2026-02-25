@@ -133,12 +133,15 @@ module simple_dual_two_clocks (clka,clkb,ena,enb,wea,addra,addrb,dia,dob);
 parameter DEPTH = 0;
 parameter ADDRESS = 15;
 parameter INIT_FILE = "";
-input clka,clkb,ena,enb,wea;
+parameter RAM_STYLE = "block";
+parameter DATA_WIDTH = 64;
+parameter DELAY = 1;
+input clka, clkb, ena,enb,wea;
 input [ADDRESS - 1:0] addra,addrb;
-input [16 * 4 - 1:0] dia;
-output [16 * 4 - 1:0] dob;
-reg [16 * 4 - 1:0] ram [0: DEPTH-1];
-reg [16 * 4 - 1:0] dob;
+input [DATA_WIDTH - 1:0] dia;
+output [DATA_WIDTH - 1:0] dob;
+(* ram_style = RAM_STYLE *) reg [DATA_WIDTH - 1:0] ram [0: DEPTH-1];
+reg [DATA_WIDTH - 1 : 0] regpp[DELAY - 1 : 0];
 
     always @(posedge clka)
         begin
@@ -148,20 +151,78 @@ reg [16 * 4 - 1:0] dob;
                 ram[addra] <= dia;
                 end
             end
-
+generate
+integer i;
     always @(posedge clkb)
         begin
             if (enb)
                 begin
-                dob <= ram[addrb];
+                    regpp[0] <= ram[addrb];
+                    for (i = 0; i < DELAY - 1; i = i + 1) begin: pipeline_reg_shift
+                        regpp[i + 1] <= regpp[i];
+                    end
                 end
         end
-    initial begin
-        if (INIT_FILE != "") begin
-            $readmemh(INIT_FILE, ram);
-        end
-    end
+endgenerate
+
+generate
+
+if (DELAY == 0) begin
+    assign dob = ram[addrb];
+end
+else begin
+    assign dob = regpp[DELAY - 1];
+end
+endgenerate
 endmodule
+
+
+module simple_dual_one_clock (clk,ena,enb,wea,addra,addrb,dia,dob);
+parameter DEPTH = 0;
+parameter ADDRESS = 15;
+parameter RAM_STYLE = "ultra";
+parameter DATA_WIDTH = 64;
+parameter DELAY = 1;
+input clk,ena,enb,wea;
+input [ADDRESS - 1:0] addra,addrb;
+input [DATA_WIDTH - 1:0] dia;
+output [DATA_WIDTH - 1:0] dob;
+(* ram_style = RAM_STYLE *) reg [DATA_WIDTH - 1:0] ram [0: DEPTH-1];
+reg [DATA_WIDTH - 1 : 0] regpp[DELAY - 1 : 0];
+
+    always @(posedge clk)
+        begin
+            if (ena)
+                begin
+                if (wea)
+                ram[addra] <= dia;
+                end
+            end
+generate
+integer i;
+    always @(posedge clk)
+        begin
+            if (enb)
+                begin
+                    regpp[0] <= ram[addrb];
+                    for (i = 0; i < DELAY - 1; i = i + 1) begin: pipeline_reg_shift
+                        regpp[i + 1] <= regpp[i];
+                    end
+                end
+        end
+endgenerate
+
+generate
+
+if (DELAY == 0) begin
+    assign dob = ram[addrb];
+end
+else begin
+    assign dob = regpp[DELAY - 1];
+end
+endgenerate
+endmodule
+
 
 
 
