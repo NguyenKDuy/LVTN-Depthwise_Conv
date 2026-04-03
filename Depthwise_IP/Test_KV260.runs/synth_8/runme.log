@@ -1,0 +1,1150 @@
+
+*** Running vivado
+    with args -log Depthwise_Core_Top.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source Depthwise_Core_Top.tcl
+
+
+
+****** Vivado v2024.2 (64-bit)
+  **** SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+  **** IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+  **** SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+  **** Start of session at: Thu Apr  2 18:46:42 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source Depthwise_Core_Top.tcl -notrace
+Command: synth_design -top Depthwise_Core_Top -part xck26-sfvc784-2LV-c
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xck26'
+INFO: [Device 21-403] Loading part xck26-sfvc784-2LV-c
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 20020
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1589.395 ; gain = 178.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Depthwise_Core_Top' [D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/Depthwise_Top.v:24]
+INFO: [Synth 8-6157] synthesizing module 'MAC_9DSP' [D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/MAC_9DSP.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'MAC_9DSP' (0#1) [D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/MAC_9DSP.v:24]
+INFO: [Synth 8-6157] synthesizing module 'Post_Processor' [D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/Post_Processor.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'Post_Processor' (0#1) [D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/Post_Processor.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'Depthwise_Core_Top' (0#1) [D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/Depthwise_Top.v:24]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1730.453 ; gain = 319.059
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1730.453 ; gain = 319.059
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1730.453 ; gain = 319.059
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.139 . Memory (MB): peak = 1730.453 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [D:/LAB/Test_KV260/Test_KV260.srcs/constrs_1/new/constraints_update.xdc]
+Finished Parsing XDC File [D:/LAB/Test_KV260/Test_KV260.srcs/constrs_1/new/constraints_update.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1838.270 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.119 . Memory (MB): peak = 1838.270 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1838.270 ; gain = 426.875
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xck26-sfvc784-2LV-c
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1838.270 ; gain = 426.875
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1838.270 ; gain = 426.875
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1838.270 ; gain = 426.875
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input   36 Bit       Adders := 16    
+	   2 Input   36 Bit       Adders := 16    
+	   2 Input   34 Bit       Adders := 32    
+	   2 Input   33 Bit       Adders := 64    
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               36 Bit    Registers := 32    
+	               34 Bit    Registers := 32    
+	               33 Bit    Registers := 64    
+	               32 Bit    Registers := 32    
+	               16 Bit    Registers := 160   
+	                6 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
++---Muxes : 
+	   2 Input   16 Bit        Muxes := 324   
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 16    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1248 (col length:96)
+BRAMs: 288 (col length: RAMB18 96 RAMB36 48)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+DSP Report: Generating DSP prod_reg[7], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[7] is absorbed into DSP prod_reg[7].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[7].
+DSP Report: Generating DSP prod_reg[6], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[6] is absorbed into DSP prod_reg[6].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[6].
+DSP Report: Generating DSP prod_reg[5], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[5] is absorbed into DSP prod_reg[5].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[5].
+DSP Report: Generating DSP prod_reg[4], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[4] is absorbed into DSP prod_reg[4].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[4].
+DSP Report: Generating DSP prod8_d1_reg, operation Mode is: (A*B)'.
+DSP Report: register prod8_d1_reg is absorbed into DSP prod8_d1_reg.
+DSP Report: register prod_reg[8] is absorbed into DSP prod8_d1_reg.
+DSP Report: operator p_0_out is absorbed into DSP prod8_d1_reg.
+DSP Report: Generating DSP prod_reg[3], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[3] is absorbed into DSP prod_reg[3].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[3].
+DSP Report: Generating DSP prod_reg[2], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[2] is absorbed into DSP prod_reg[2].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[2].
+DSP Report: Generating DSP prod_reg[1], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[1] is absorbed into DSP prod_reg[1].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[1].
+DSP Report: Generating DSP prod_reg[0], operation Mode is: (A*B)'.
+DSP Report: register prod_reg[0] is absorbed into DSP prod_reg[0].
+DSP Report: operator p_0_out is absorbed into DSP prod_reg[0].
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1838.270 ; gain = 426.875
+---------------------------------------------------------------------------------
+ Sort Area is  prod8_d1_reg_18 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_21 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_2a : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_33 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_3c : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_45 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_4e : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_5 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_57 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_60 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_69 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_72 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_7b : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_84 : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_8d : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod8_d1_reg_f : 0 0 : 2001 2001 : Used 1 time 100
+ Sort Area is  prod_reg[0]_0 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_14 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_1d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_26 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_2f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_38 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_41 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_4a : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_53 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_5c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_65 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_6e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_77 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_80 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_89 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[0]_b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_15 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_1e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_2 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_27 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_30 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_39 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_42 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_4b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_54 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_5d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_66 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_6f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_78 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_81 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_8a : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[1]_c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_16 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_1f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_28 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_3 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_31 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_3a : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_43 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_4c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_55 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_5e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_67 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_70 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_79 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_82 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_8b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[2]_d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_17 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_20 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_29 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_32 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_3b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_4 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_44 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_4d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_56 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_5f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_68 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_71 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_7a : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_83 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_8c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[3]_e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_10 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_19 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_22 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_2b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_34 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_3d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_46 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_4f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_58 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_61 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_6a : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_7 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_73 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_7c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_85 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[4]_8e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_11 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_1a : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_23 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_2c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_35 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_3e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_47 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_50 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_59 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_62 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_6b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_74 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_7d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_8 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_86 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[5]_8f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_12 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_1b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_24 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_2d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_36 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_3f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_48 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_51 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_5a : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_63 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_6c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_75 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_7e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_87 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_9 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[6]_90 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_13 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_1c : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_25 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_2e : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_37 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_40 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_49 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_52 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_5b : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_64 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_6d : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_76 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_7f : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_88 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_91 : 0 0 : 1969 1969 : Used 1 time 100
+ Sort Area is  prod_reg[7]_a : 0 0 : 1969 1969 : Used 1 time 100
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
+|MAC_9DSP    | (A*B)'      | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 1    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2500.883 ; gain = 1089.488
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 2608.906 ; gain = 1197.512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 2632.953 ; gain = 1221.559
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 2820.750 ; gain = 1409.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 2820.750 ; gain = 1409.355
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 2850.992 ; gain = 1439.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 2850.992 ; gain = 1439.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 2850.992 ; gain = 1439.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 2850.992 ; gain = 1439.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+DSP Final Report (the ' indicates corresponding REG is set)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | ((A*B')')'  | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|MAC_9DSP    | (A*B')'     | 30     | 18     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 0    | 1    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+----------------+------+
+|      |Cell            |Count |
++------+----------------+------+
+|1     |BUFG            |     1|
+|2     |CARRY8          |   624|
+|3     |DSP_ALU         |   144|
+|5     |DSP_A_B_DATA    |   144|
+|6     |DSP_C_DATA      |   144|
+|8     |DSP_MULTIPLIER  |   144|
+|9     |DSP_M_DATA      |   144|
+|11    |DSP_OUTPUT      |   144|
+|12    |DSP_PREADD      |   144|
+|13    |DSP_PREADD_DATA |   144|
+|14    |LUT1            |   113|
+|15    |LUT2            |  3121|
+|16    |LUT3            |   529|
+|17    |LUT4            |   596|
+|18    |LUT5            |    16|
+|19    |LUT6            |   288|
+|20    |FDCE            |     8|
+|21    |FDRE            |  4592|
+|22    |FDSE            |   240|
+|23    |IBUF            |  2885|
+|24    |OBUF            |   257|
++------+----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:01 ; elapsed = 00:01:03 . Memory (MB): peak = 2850.992 ; gain = 1439.598
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:47 ; elapsed = 00:00:56 . Memory (MB): peak = 2851.285 ; gain = 1332.074
+Synthesis Optimization Complete : Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 2851.285 ; gain = 1439.891
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.170 . Memory (MB): peak = 2851.285 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 3654 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 2 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2851.285 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 3030 instances were transformed.
+  BUFG => BUFGCE: 1 instance 
+  DSP48E2 => DSP48E2 (DSP_ALU, DSP_A_B_DATA, DSP_C_DATA, DSP_MULTIPLIER, DSP_M_DATA, DSP_OUTPUT, DSP_PREADD, DSP_PREADD_DATA): 144 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 2885 instances
+
+Synth Design complete | Checksum: 73f4e4dd
+INFO: [Common 17-83] Releasing license: Synthesis
+21 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:14 ; elapsed = 00:01:19 . Memory (MB): peak = 2851.285 ; gain = 2484.473
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.099 . Memory (MB): peak = 2851.285 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'D:/LAB/Test_KV260/Test_KV260.runs/synth_8/Depthwise_Core_Top.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file Depthwise_Core_Top_utilization_synth.rpt -pb Depthwise_Core_Top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Apr  2 18:48:07 2026...

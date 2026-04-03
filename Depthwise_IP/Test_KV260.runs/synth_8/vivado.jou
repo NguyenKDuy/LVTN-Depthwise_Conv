@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Thu Apr  2 18:46:42 2026
+# Process ID         : 20148
+# Current directory  : D:/LAB/Test_KV260/Test_KV260.runs/synth_8
+# Command line       : vivado.exe -log Depthwise_Core_Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Depthwise_Core_Top.tcl
+# Log file           : D:/LAB/Test_KV260/Test_KV260.runs/synth_8/Depthwise_Core_Top.vds
+# Journal file       : D:/LAB/Test_KV260/Test_KV260.runs/synth_8\vivado.jou
+# Running On         : DESKTOP-CP36ASO
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+# CPU Frequency      : 2419 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 12594 MB
+# Swap memory        : 10200 MB
+# Total Virtual      : 22794 MB
+# Available Virtual  : 5332 MB
+#-----------------------------------------------------------
+source Depthwise_Core_Top.tcl -notrace

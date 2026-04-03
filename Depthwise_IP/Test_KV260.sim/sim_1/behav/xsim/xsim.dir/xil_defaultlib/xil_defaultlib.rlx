@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:57
+D:/LAB/Depthwise_IP/Test_KV260.sim/sim_1/behav/xsim/glbl.v,1724786425,verilog,,,,glbl,,,,,,,,
+D:/LAB/Depthwise_IP/Test_KV260.srcs/sim_1/new/Test_head_layer.v,1775204695,verilog,,,,tb_Depthwise_Core_Top,,,,,,,,
+D:/LAB/Depthwise_IP/Test_KV260.srcs/sources_1/new/Depthwise_Top.v,1775200428,verilog,,D:/LAB/Depthwise_IP/Test_KV260.srcs/sources_1/new/MAC_9DSP.v,,Depthwise_Core_Top,,,,,,,,
+D:/LAB/Depthwise_IP/Test_KV260.srcs/sources_1/new/MAC_9DSP.v,1775199688,verilog,,D:/LAB/Depthwise_IP/Test_KV260.srcs/sources_1/new/Post_Processor.v,,MAC_9DSP,,,,,,,,
+D:/LAB/Depthwise_IP/Test_KV260.srcs/sources_1/new/Post_Processor.v,1775187952,verilog,,D:/LAB/Depthwise_IP/Test_KV260.srcs/sim_1/new/Test_head_layer.v,,Post_Processor,,,,,,,,

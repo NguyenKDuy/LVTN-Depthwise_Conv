@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Test_KV260.srcs/sources_1/new/Depthwise_Top.v" \
+"../../../../Test_KV260.srcs/sources_1/new/MAC_9DSP.v" \
+"../../../../Test_KV260.srcs/sources_1/new/Post_Processor.v" \
+"../../../../Test_KV260.srcs/sim_1/new/Test_head_layer.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
