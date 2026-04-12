@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='D:/LAB/Test_KV260/Test_KV260.runs/synth_8'
+HD_PWD='D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.runs/synth_8'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

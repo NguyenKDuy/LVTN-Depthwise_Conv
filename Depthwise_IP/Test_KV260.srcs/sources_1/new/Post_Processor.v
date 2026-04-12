@@ -27,7 +27,7 @@
 module Post_Processor (
     input clk,
     input ce_round, 
-    input ce_sat,                // Thêm cổng CE nhận từ v_pipe[3] ở Top
+    input ce_sat,               
     input [35:0] data_in,      
     output reg [15:0] data_out 
 );
@@ -37,14 +37,14 @@ module Post_Processor (
 
     reg [35:0] rounded_data;
     
-    // Tầng 1: Làm tròn (Rounding) - Nhịp thứ 5 của hệ thống
+    // --- PIPELINE STAGE 6: Rounding ---
     always @(posedge clk) begin
         if (ce_round) begin
             rounded_data <= data_in + (1 << 9);
         end
     end
 
-    // Tầng 2: Kiểm tra tràn (Saturation) - Nhịp thứ 6 của hệ thống
+    // --- PIPELINE STAGE 7: saturation 32bit -> 16bit ---
 
     always @(posedge clk) begin
         if (ce_sat) begin

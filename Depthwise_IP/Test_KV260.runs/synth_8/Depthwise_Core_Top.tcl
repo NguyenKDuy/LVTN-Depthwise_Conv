@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/LAB/Test_KV260/Test_KV260.runs/synth_8/Depthwise_Core_Top.tcl"
+  variable script "D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.runs/synth_8/Depthwise_Core_Top.tcl"
   variable category "vivado_synth"
 }
 
@@ -56,30 +56,26 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_8" START { ROLLUP_AUTO }
-set_param power.BramSDPPropagationFix 1
-set_param power.enableUnconnectedCarry8PinPower 1
-set_param power.enableCarry8RouteBelPower 1
-set_param power.enableLutRouteBelPower 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xck26-sfvc784-2LV-c
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_property webtalk.parent_dir D:/LAB/Test_KV260/Test_KV260.cache/wt [current_project]
-set_property parent.project_path D:/LAB/Test_KV260/Test_KV260.xpr [current_project]
+set_property webtalk.parent_dir D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.cache/wt [current_project]
+set_property parent.project_path D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:kv260_som:part0:1.4 [current_project]
 set_property board_connections {som240_1_connector xilinx.com:kv260_carrier:som240_1_connector:1.3} [current_project]
-set_property ip_output_repo d:/LAB/Test_KV260/Test_KV260.cache/ip [current_project]
+set_property ip_output_repo d:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/MAC_9DSP.v
-  D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/Post_Processor.v
-  D:/LAB/Test_KV260/Test_KV260.srcs/sources_1/new/Depthwise_Top.v
+  D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.srcs/sources_1/new/MAC_9DSP.v
+  D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.srcs/sources_1/new/Post_Processor.v
+  D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.srcs/sources_1/new/Depthwise_Top.v
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -90,14 +86,16 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/LAB/Test_KV260/Test_KV260.srcs/constrs_1/new/constraints_update.xdc
-set_property used_in_implementation false [get_files D:/LAB/Test_KV260/Test_KV260.srcs/constrs_1/new/constraints_update.xdc]
+read_xdc D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.srcs/constrs_1/new/constraints_update.xdc
+set_property used_in_implementation false [get_files D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.srcs/constrs_1/new/constraints_update.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
+
+read_checkpoint -auto_incremental -incremental D:/Depthwise_IP/LVTN-Depthwise_Conv/Depthwise_IP/Test_KV260.srcs/utils_1/imports/synth_8/Depthwise_Core_Top.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top Depthwise_Core_Top -part xck26-sfvc784-2LV-c
+synth_design -top Depthwise_Core_Top -part xck26-sfvc784-2LV-c -incremental_mode aggressive -no_iobuf -mode out_of_context
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"

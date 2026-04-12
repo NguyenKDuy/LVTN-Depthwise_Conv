@@ -43,7 +43,7 @@ module Depthwise_Core_Top (
     reg [1:0] weight_group_cnt;
     integer c, w;
 // --- KHỐI 1: Quản lý bộ đếm (Có Reset) ---
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             weight_group_cnt <= 2'b0;
         end else if (rst_n) begin
@@ -66,19 +66,32 @@ module Depthwise_Core_Top (
         end
     end
 
-    // 2. Pipeline Valid (Chỉ cho phép chạy khi i_data_valid lên)
-    reg [5:0] v_pipe; 
+//     2. Pipeline Valid (Chỉ cho phép chạy khi i_data_valid lên)
+    reg [7:0] v_pipe; 
 
     
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
-            v_pipe <= 6'b0;
-        end else if (rst_n) begin
-            v_pipe <= {v_pipe[4:0], i_data_valid};
+            v_pipe <= 8'b0;
+        end else begin
+            v_pipe <= {v_pipe[6:0], i_data_valid};
         end
     end
     
-    assign o_data_valid = v_pipe[5];
+    assign o_data_valid = v_pipe[7];
+
+//    reg [5:0] v_pipe; 
+
+    
+//    always @(posedge clk) begin
+//        if (!rst_n) begin
+//            v_pipe <= 6'b0;
+//        end else begin
+//            v_pipe <= {v_pipe[4:0], i_data_valid};
+//        end
+//    end
+    
+//    assign o_data_valid = v_pipe[5];
     // 3. Khởi tạo 16 bộ MAC (Giữ nguyên phần nối dây p0-p8 và w0-w8 như trước)
     genvar gi;
     generate
@@ -86,10 +99,12 @@ module Depthwise_Core_Top (
             wire [35:0] mac_out;
             MAC_9DSP mac_inst (
                 .clk(clk),
-                .ce_mac_p(i_data_valid),                
-                .ce_mac_s1(v_pipe[0]),                
-                .ce_mac_s2(v_pipe[1]),
-                .ce_mac_s(v_pipe[2]),
+                .ce_mac_pw(i_data_valid),
+                .ce_mac_p(v_pipe[0]),
+                .ce_mac_pr(v_pipe[1]),                
+                .ce_mac_s1(v_pipe[2]),                
+                .ce_mac_s2(v_pipe[3]),
+                .ce_mac_s(v_pipe[4]),
                 
 //                .push_weight(i_weight_valid),
                 .p0(i_all_windows[(gi*144 + 0*16) +: 16]), .p1(i_all_windows[(gi*144 + 1*16) +: 16]),
@@ -104,8 +119,8 @@ module Depthwise_Core_Top (
                 .out_sum(mac_out)
             );
             Post_Processor post_inst (.clk(clk),
-                                      .ce_round(v_pipe[3]),
-                                      .ce_sat(v_pipe[4]),
+                                      .ce_round(v_pipe[5]),
+                                      .ce_sat(v_pipe[6]),
                                       .data_in(mac_out),
                                       .data_out(o_data[(gi*16) +: 16]));
         end

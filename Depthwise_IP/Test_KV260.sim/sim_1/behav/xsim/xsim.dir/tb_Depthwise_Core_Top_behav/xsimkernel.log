@@ -1,4 +1,0 @@
-Running: xsim.dir/tb_Depthwise_Core_Top_behav/xsimk.exe -simmode gui -wdb tb_Depthwise_Core_Top_behav.wdb -simrunnum 0 -socket 57818
-Design successfully loaded
-Design Loading Memory Usage: 31044 KB (Peak: 31044 KB)
-Design Loading CPU Usage: 609 ms
