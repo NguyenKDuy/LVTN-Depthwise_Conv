@@ -1,0 +1,36 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/data_select.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module data_select0
+INFO: [VRFC 10-311] analyzing module data_select1
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/depth_inst.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module depth_inst
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/depth_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module depth_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/fsm_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rd_fsm_control
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/fsm_line_buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fsm_line_buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/input_selection.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wr_fsm_control
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/line_buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module line_buffer
+WARNING: [VRFC 10-9336] redeclaration of ANSI port 'rdPntr' is not allowed [E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/line_buffer.v:87]
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/mem_banks_inst.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_banks_inst
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/mem_img.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_img
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/mem_inst.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_inst
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/point_inst.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module point_inst
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/point_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module point_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/rd_select.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module rd_select
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/receptor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module receptor
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/weight_bias_control.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module weight_bias_control
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/A_Verilog_DA/Stega_Hybrid/Stega_Hybrid.srcs/sources_1/new/tb_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_top

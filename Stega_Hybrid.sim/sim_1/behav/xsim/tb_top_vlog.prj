@@ -1,0 +1,25 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Stega_Hybrid.srcs/sources_1/new/data_select.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/depth_inst.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/depth_mem.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/fsm_control.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/fsm_line_buffer.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/input_selection.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/line_buffer.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/mem_banks_inst.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/mem_img.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/mem_inst.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/point_inst.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/point_mem.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/rd_select.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/receptor.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/top.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/weight_bias_control.v" \
+"../../../../Stega_Hybrid.srcs/sources_1/new/tb_top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
