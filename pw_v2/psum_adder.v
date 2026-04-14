@@ -45,7 +45,7 @@ endfunction
 // First-Last: 0:0 :  cong psum, cho vao fifo
 // First-Last: 1:1 :  khong cong psum ma cong bias, cho ra o_data
 
-always @(posedge clk or negedge rst_n) begin
+always @(posedge clk) begin
     if (!rst_n) begin
         o_data <= 0;
     end else if (i_valid) begin

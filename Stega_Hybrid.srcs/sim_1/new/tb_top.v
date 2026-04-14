@@ -294,7 +294,7 @@ module tb_top;
         .s_axis_tready(s_axis_tready),
         .m_axis_tvalid(m_axis_tvalid),
         .m_axis_tdata(m_axis_tdata),
-        .m_axis_tready(m_axis_tready),
+        .m_axis_tready(m_axis_tready)
 //        .intr(intr),
 //        .top_lb_kernel_0(top_lb_kernel_0),
 //        .top_lb_kernel_1(top_lb_kernel_1),

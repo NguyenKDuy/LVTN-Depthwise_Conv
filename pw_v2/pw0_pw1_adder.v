@@ -38,7 +38,7 @@ end
 endfunction
 
 
-always @(posedge clk or negedge rst_n) begin
+always @(posedge clk) begin
     if (!rst_n) begin
         o_data_pw0 <= 0;
         o_data_pw1 <= 0;

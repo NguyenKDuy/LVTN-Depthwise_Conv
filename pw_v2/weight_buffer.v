@@ -23,7 +23,7 @@ module weight_buffer #(
     integer i;
 
     // ================= WRITE LOGIC =================
-    always @(posedge clk or negedge rst_n) begin
+    always @(posedge clk) begin
         if (!rst_n) begin
             cluster_flat <= 0;
             write_phase  <= 0;

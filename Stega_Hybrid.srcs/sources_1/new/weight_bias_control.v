@@ -56,40 +56,40 @@ module weight_bias_control #(
 );
 
 // DEPTHWISE WEIGHT:
-localparam HEAD_DW      = 4;
-localparam D1_DW        = 4;
-localparam D2_DW        = 8;
-localparam D3_DW        = 16;
-localparam B_DW         = 32;
-localparam U1_DW        = 64;
-localparam U2_DW        = 32;
-localparam U3_DW        = 16;
-localparam U4_DW        = 8;
-localparam T_DW         = 4;
+localparam HEAD_DW      = 4;        //mode 0
+localparam D1_DW        = 4;        //mode 0
+localparam D2_DW        = 8;        //mode 0
+localparam D3_DW        = 16;       //mode 0
+localparam B_DW         = 32;       //mode 0
+localparam U1_DW        = 64;       //mode 1
+localparam U2_DW        = 32;       //mode 1
+localparam U3_DW        = 16;       //mode 1
+localparam U4_DW        = 8;        //mode 1
+localparam T_DW         = 4;        //mode 0
 // DEPTHWISE BASE ADDRESS:
 
-localparam HEAD_DW_B      = 0  ;
-localparam D1_DW_B        = 4  ;
-localparam D2_DW_B        = 8  ;
-localparam D3_DW_B        = 16 ;
-localparam B_DW_B         = 32 ;
-localparam U1_DW_B        = 64 ;
-localparam U2_DW_B        = 128;
-localparam U3_DW_B        = 160;
-localparam U4_DW_B        = 176;
-localparam T_DW_B         = 184;
+localparam HEAD_DW_B      = 0  ;    //mode 0  
+localparam D1_DW_B        = 4  ;    //mode 0  
+localparam D2_DW_B        = 8  ;    //mode 0  
+localparam D3_DW_B        = 16 ;    //mode 0  
+localparam B_DW_B         = 32 ;    //mode 0  
+localparam U1_DW_B        = 64 ;    //mode 1  
+localparam U2_DW_B        = 128;    //mode 1  
+localparam U3_DW_B        = 160;    //mode 1  
+localparam U4_DW_B        = 176;    //mode 1  
+localparam T_DW_B         = 184;    //mode 0  
 
 // DEPTHWISE WEIGHT:
-localparam HEAD_PW      = 8;
-localparam D1_PW        = 8;
-localparam D2_PW        = 32;
-localparam D3_PW        = 128;
-localparam B_PW         = 256;
-localparam U1_PW        = 256;
-localparam U2_PW        = 64;
-localparam U3_PW        = 16;
-localparam U4_PW        = 8;
-localparam T_PW         = 4;
+localparam HEAD_PW      = 8;        //mode 0 
+localparam D1_PW        = 8;        //mode 0 
+localparam D2_PW        = 32;       //mode 0 
+localparam D3_PW        = 128;      //mode 0 
+localparam B_PW         = 256;      //mode 0 
+localparam U1_PW        = 256;      //mode 1 - bi xai chung
+localparam U2_PW        = 64;       //mode 1 - bi xai chung
+localparam U3_PW        = 16;       //mode 1 - bi xai chung
+localparam U4_PW        = 8;        //mode 1 - bi xai chung
+localparam T_PW         = 8;        //mode 0 - s?a t? 4 thành 8
 // DEPTHWISE BASE ADDRESS:
 
 localparam HEAD_PW_B      =0  ;   
@@ -112,7 +112,7 @@ localparam U1_B        =4 ; //23
 localparam U2_B        =2 ; //27  
 localparam U3_B        =1 ; //29
 localparam U4_B        =1 ; //30
-localparam T_B         =1 ; //3 
+localparam T_B         =2 ; //3       // them + 1 
 
 localparam HEAD_B_B    = 0 ;      // 16 bo 
 localparam D1_B_B      = 2 ;

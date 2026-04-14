@@ -630,10 +630,10 @@ data_select1 u_data_select1 (
     .o_rst_pw_cmp           (top_rst_pw_cmp),
     .o_first_loop           (top_first_loop)
 );
-(* KEEP = "true" *)    reg [3:0] tmp_top_stage;
-    always @(posedge i_clk) begin
-        tmp_top_stage <= top_stage;
-    end
+//(* KEEP = "true" *)    reg [3:0] tmp_top_stage;
+//    always @(posedge i_clk) begin
+//        tmp_top_stage <= top_stage;
+//    end
 weight_bias_control #(
     .ADDRESS_WEIGHT         (ADDR_IMG_R),
     .ADDRESS_BIAS           (ADDR_BIAS)
@@ -641,7 +641,7 @@ weight_bias_control #(
     .i_clk                  (i_clk),
     .i_rst_n                (i_rst_n),         // must reset follow i_rst_n || i_done
     .i_ld_wb_enable         (wb_ld_enable),  // Nh?n l?nh t? FSM
-    .i_stage                (tmp_top_stage),         // Nh?n thông tin stage t? FSM
+    .i_stage                (top_stage),         // Nh?n thông tin stage t? FSM
     .i_last_loop            (top_last_loop),     // Nh?n tr?ng thái loop t? FSM
     .i_mode                 (top_mode),          // Ch? ð? ho?t ð?ng (S1/S2 ho?c Depth/Point)
     
@@ -794,11 +794,12 @@ fsm_line_buffer #(
         
         // C?p phát Weight & Bias (Duy n?p t? ROM ho?c Controller)
         .i_weight_valid0    (top_vld_point && (top_point_sel == 0)), 
-        .i_weight_valid1    (top_vld_point && (top_point_sel == 1)),
+        .i_weight_valid1    ((top_vld_point && (top_point_sel == 1)) || (top_vld_point && (top_mode == 1))),
         .i_data_weight_pw   (top_data_point),
         .i_bias_valid0      (top_vld_bias && (top_bias_sel == 0)),
         .i_bias_valid1      (top_vld_bias && (top_bias_sel == 1)),
         .i_bias_pw          (top_data_bias),
+        .i_rst_stage        (top_rst_pw_cmp),
 
         // Data Feature & Control
         .i_valid            (top_mux_point_vld || top_depth_computed_vld0),          //mux
@@ -812,7 +813,8 @@ fsm_line_buffer #(
         .o_data_pw0         (top_point_computed0),
         .o_valid_pw0        (top_point_computed_vld0),
         .o_data_pw1         (top_point_computed1),
-        .o_valid_pw1        (top_point_computed_vld1)
+        .o_valid_pw1        (top_point_computed_vld1),
+        .o_stage_done       (top_stage_done)
     );
     
     wr_data_select #(

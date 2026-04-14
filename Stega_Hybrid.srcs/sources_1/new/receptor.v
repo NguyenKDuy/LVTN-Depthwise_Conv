@@ -63,10 +63,10 @@ module receptor #(
     localparam DEPTH_BANK_DONE  = 188;
     localparam DEPTH_LOOP_DONE  = 9;
     
-    localparam POINT_BANK_DONE   = 780;
+    localparam POINT_BANK_DONE   = 784;
     localparam POINT_LOOP_DONE   = 16;
     
-    localparam BIAS_BANK_DONE    = 33;    
+    localparam BIAS_BANK_DONE    = 34;    
     localparam BIAS_LOOP_DONE    = 16;  
     
     localparam IMAGE_BANK_DONE   = 4096;    
