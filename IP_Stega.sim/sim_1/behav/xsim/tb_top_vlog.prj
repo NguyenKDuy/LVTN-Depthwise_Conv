@@ -1,0 +1,40 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../IP_Stega.srcs/sources_1/new/adder_tree.v" \
+"../../../../IP_Stega.srcs/sources_1/new/bias_buffer.v" \
+"../../../../IP_Stega.srcs/sources_1/new/count_stage_done.v" \
+"../../../../IP_Stega.srcs/sources_1/new/data_select.v" \
+"../../../../IP_Stega.srcs/sources_1/new/depth_inst.v" \
+"../../../../IP_Stega.srcs/sources_1/new/depth_mem.v" \
+"../../../../IP_Stega.srcs/sources_1/new/depthwise_core_top.v" \
+"../../../../IP_Stega.srcs/sources_1/new/fsm_control.v" \
+"../../../../IP_Stega.srcs/sources_1/new/fsm_line_buffer.v" \
+"../../../../IP_Stega.srcs/sources_1/new/input_selection.v" \
+"../../../../IP_Stega.srcs/sources_1/new/line_buffer.v" \
+"../../../../IP_Stega.srcs/sources_1/new/mac_9dsp.v" \
+"../../../../IP_Stega.srcs/sources_1/new/mem_banks_inst.v" \
+"../../../../IP_Stega.srcs/sources_1/new/mem_img.v" \
+"../../../../IP_Stega.srcs/sources_1/new/mem_inst.v" \
+"../../../../IP_Stega.srcs/sources_1/new/mem_stega.v" \
+"../../../../IP_Stega.srcs/sources_1/new/point_inst.v" \
+"../../../../IP_Stega.srcs/sources_1/new/point_mem.v" \
+"../../../../IP_Stega.srcs/sources_1/new/post_processor.v" \
+"../../../../IP_Stega.srcs/sources_1/new/psum_adder.v" \
+"../../../../IP_Stega.srcs/sources_1/new/psum_fifo.v" \
+"../../../../IP_Stega.srcs/sources_1/new/pw0_pw1_adder.v" \
+"../../../../IP_Stega.srcs/sources_1/new/pw_mac.v" \
+"../../../../IP_Stega.srcs/sources_1/new/pw_top.v" \
+"../../../../IP_Stega.srcs/sources_1/new/rd_select.v" \
+"../../../../IP_Stega.srcs/sources_1/new/receptor.v" \
+"../../../../IP_Stega.srcs/sources_1/new/relu_output.v" \
+"../../../../IP_Stega.srcs/sources_1/new/top.v" \
+"../../../../IP_Stega.srcs/sources_1/new/weight_bias_control.v" \
+"../../../../IP_Stega.srcs/sources_1/new/weight_buffer.v" \
+"../../../../IP_Stega.srcs/sources_1/new/wr_data_select.v" \
+"../../../../IP_Stega.srcs/sim_1/new/tb_top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
