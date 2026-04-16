@@ -1,0 +1,463 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2022.2 (win64) Build 3671981 Fri Oct 14 05:00:03 MDT 2022
+| Date         : Thu Apr 16 01:44:39 2026
+| Host         : LAPTOP-92N761HV running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xck26
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   385 |
+|    Minimum number of control sets                        |   243 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |   142 |
+| Unused register locations in slices containing registers |   327 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   385 |
+| >= 0 to < 4        |    14 |
+| >= 4 to < 6        |    16 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     9 |
+| >= 10 to < 12      |     2 |
+| >= 12 to < 14      |     9 |
+| >= 14 to < 16      |    35 |
+| >= 16              |   297 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             931 |          285 |
+| No           | No                    | Yes                    |               3 |            2 |
+| No           | Yes                   | No                     |            8442 |         2502 |
+| Yes          | No                    | No                     |           11553 |         2131 |
+| Yes          | No                    | Yes                    |             348 |           73 |
+| Yes          | Yes                   | No                     |           24608 |         4625 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+------------------+----------------+--------------+
+|   Clock Signal   |                              Enable Signal                              |                         Set/Reset Signal                         | Slice Load Count | Bel Load Count | Bels / Slice |
++------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+------------------+----------------+--------------+
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]                                                   |                                                                  |                1 |              1 |         1.00 |
+|  i_clk_IBUF_BUFG | u_weight_bias_control/FSM_sequential_point_stage[1]_i_1_n_0             | i_rst_n_IBUF_inst/O                                              |                1 |              2 |         2.00 |
+|  i_clk_IBUF_BUFG | u_weight_bias_control/FSM_sequential_depth_stage[1]_i_1_n_0             | i_rst_n_IBUF_inst/O                                              |                2 |              2 |         1.00 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_6                                            |                                                                  |                1 |              2 |         2.00 |
+|  i_clk_IBUF_BUFG |                                                                         | u_pw_unit/u_count_stage_done0/o_rst_pw_cmp_reg                   |                2 |              2 |         1.00 |
+|  i_clk_IBUF_BUFG | u_weight_bias_control/FSM_sequential_bias_stage[1]_i_1_n_0              | i_rst_n_IBUF_inst/O                                              |                1 |              2 |         2.00 |
+|  i_clk_IBUF_BUFG | u_wr_ctrl/mem_rd_swapping[1]_i_2_n_0                                    | i_rst_n_IBUF_inst/O                                              |                1 |              2 |         2.00 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/o_mem_rd_swapping[1]_i_1_n_0                           | i_rst_n_IBUF_inst/O                                              |                1 |              2 |         2.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/E[0]                               | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |                1 |              3 |         3.00 |
+|  i_clk_IBUF_BUFG | u_receptor/s_axis_tready_reg_1[0]                                       | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |                2 |              3 |         1.50 |
+|  i_clk_IBUF_BUFG | u_receptor/s_axis_tready_reg_3[0]                                       | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |                2 |              3 |         1.50 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]                                                   |                                                                  |                2 |              3 |         1.50 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/E[0]                               | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |                1 |              3 |         3.00 |
+|  i_clk_IBUF_BUFG | u_wr_ctrl/tmp_wr_addr                                                   |                                                                  |                2 |              3 |         1.50 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/loc_counter[3]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |                1 |              4 |         4.00 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     | u_receptor/o_valid1[7]_i_1_n_0                                   |                1 |              4 |         4.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/s_axis_tready_reg[0]               | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |                1 |              4 |         4.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/s_axis_tready_reg[0]               | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |                2 |              4 |         2.00 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/o_lic_counter[3]_i_1_n_0                               | i_rst_n_IBUF_inst/O                                              |                1 |              4 |         4.00 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     | u_receptor/o_valid2[11]_i_1_n_0                                  |                2 |              4 |         2.00 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     | u_receptor/o_valid2[3]_i_1_n_0                                   |                2 |              4 |         2.00 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     | u_receptor/o_valid4[3]_i_1_n_0                                   |                1 |              4 |         4.00 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     | u_receptor/o_valid4[11]_i_1_n_0                                  |                1 |              4 |         4.00 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     | u_receptor/o_valid1[3]_i_1_n_0                                   |                1 |              4 |         4.00 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/o_stage[3]_i_1_n_0                                     | i_rst_n_IBUF_inst/O                                              |                3 |              4 |         1.33 |
+|  i_clk_IBUF_BUFG | u_receptor/point_lcnt                                                   | i_rst_n_IBUF_inst/O                                              |                2 |              5 |         2.50 |
+|  i_clk_IBUF_BUFG | u_receptor/depth_lcnt                                                   | i_rst_n_IBUF_inst/O                                              |                2 |              5 |         2.50 |
+|  i_clk_IBUF_BUFG | u_receptor/image_lcnt                                                   | i_rst_n_IBUF_inst/O                                              |                2 |              5 |         2.50 |
+|  i_clk_IBUF_BUFG | u_receptor/FSM_onehot_loading_stage[4]_i_1_n_0                          | i_rst_n_IBUF_inst/O                                              |                1 |              5 |         5.00 |
+|  i_clk_IBUF_BUFG | u_receptor/bias_lcnt                                                    | i_rst_n_IBUF_inst/O                                              |                2 |              5 |         2.50 |
+|  i_clk_IBUF_BUFG |                                                                         | depthwise_0/weight_group_cnt[1]_i_1_n_0                          |                3 |              6 |         2.00 |
+|  i_clk_IBUF_BUFG |                                                                         | depthwise_1/weight_group_cnt[1]_i_1_n_0                          |                4 |              6 |         1.50 |
+|  i_clk_IBUF_BUFG | u_receptor/o_addr4[5]_i_1_n_0                                           | i_rst_n_IBUF_inst/O                                              |                1 |              6 |         6.00 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/o_row_counter[7]_i_1_n_0                               | i_rst_n_IBUF_inst/O                                              |                3 |              8 |         2.67 |
+|  i_clk_IBUF_BUFG | u_receptor/wr_cnt                                                       | u_receptor/s_axis_tready_reg_0[0]                                |                3 |              8 |         2.67 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/o_valid_pw0                                    | u_pw_unit/u_count_stage_done0/count1[7]_i_1_n_0                  |                3 |              8 |         2.67 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/o_col_counter[7]_i_1_n_0                               | i_rst_n_IBUF_inst/O                                              |                2 |              8 |         4.00 |
+|  i_clk_IBUF_BUFG | u_receptor/o_addr1[7]_i_1_n_0                                           | i_rst_n_IBUF_inst/O                                              |                1 |              8 |         8.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_count_stage_done0/count1                                    | u_pw_unit/u_count_stage_done0/count2[7]_i_1_n_0                  |                3 |              8 |         2.67 |
+|  i_clk_IBUF_BUFG | u_receptor/wr_cnt_0                                                     | u_receptor/s_axis_tready_reg_2[0]                                |                2 |              8 |         4.00 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_4                                            |                                                                  |                5 |              9 |         1.80 |
+|  i_clk_IBUF_BUFG | u_weight_bias_control/bias_cnt[2]_i_1_n_0                               | i_rst_n_IBUF_inst/O                                              |                4 |              9 |         2.25 |
+|  i_clk_IBUF_BUFG | u_receptor/o_addr2[9]_i_1_n_0                                           | i_rst_n_IBUF_inst/O                                              |                2 |             10 |         5.00 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/FSM_onehot_addr_stage[9]_i_1_n_0                       | i_rst_n_IBUF_inst/O                                              |                6 |             10 |         1.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_addr3[11]_i_1_n_0                                          | i_rst_n_IBUF_inst/O                                              |                4 |             12 |         3.00 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/o_gen_wr_addr_n_0                                        | i_rst_n_IBUF_inst/O                                              |                8 |             12 |         1.50 |
+|  i_clk_IBUF_BUFG | u_wr_ctrl_i_1_n_0                                                       | i_rst_n_IBUF_inst/O                                              |                3 |             12 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_fifo0/mem_reg_bram_1_i_2_n_0                           | u_pw_unit/u_psum_fifo0/rd_ptr[11]_i_1_n_0                        |                2 |             12 |         6.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_fifo0/p_0_in_0[1]                                      | u_pw_unit/u_psum_fifo0/wr_ptr[11]_i_1_n_0                        |                3 |             12 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_fifo1/mem_reg_bram_1_i_2__0_n_0                        | u_pw_unit/u_psum_fifo1/rd_ptr[11]_i_1__0_n_0                     |                3 |             12 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_fifo1/p_0_in_0[1]                                      | u_pw_unit/u_psum_fifo1/wr_ptr[11]_i_1__0_n_0                     |                3 |             12 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_fifo0/count[12]_i_1_n_0                                | i_rst_n_IBUF_inst/O                                              |                3 |             13 |         4.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_fifo1/count[12]_i_1__0_n_0                             | i_rst_n_IBUF_inst/O                                              |                3 |             13 |         4.33 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     | u_wr_ctrl/o_wr_mem0_ena[15]_i_1_n_0                              |                7 |             14 |         2.00 |
+|  i_clk_IBUF_BUFG | u_rd_fsm_control/o_mem_rd_addr[13]_i_2_n_0                              | i_rst_n_IBUF_inst/O                                              |                2 |             14 |         7.00 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[7].post_inst/data_out[14]_i_1__4_n_0          |                6 |             15 |         2.50 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[8].post_inst/data_out[14]_i_1__12_n_0         |                4 |             15 |         3.75 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[12].post_inst/data_out[14]_i_1__10_n_0        |                8 |             15 |         1.88 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[14].post_inst/data_out[14]_i_1__8_n_0         |                4 |             15 |         3.75 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[11].post_inst/data_out[14]_i_1__6_n_0         |                4 |             15 |         3.75 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[10].post_inst/data_out[14]_i_1__11_n_0        |                6 |             15 |         2.50 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[15].post_inst/data_out[14]_i_1__9_n_0         |                3 |             15 |         5.00 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[0].post_inst/data_out[14]_i_1__14_n_0         |                7 |             15 |         2.14 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[13].post_inst/data_out[14]_i_1__7_n_0         |                4 |             15 |         3.75 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[13].post_inst/data_out[14]_i_1__7_n_0         |                8 |             15 |         1.88 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[3].post_inst/data_out[14]_i_1__1_n_0          |                9 |             15 |         1.67 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[9].post_inst/data_out[14]_i_1__5_n_0          |               14 |             15 |         1.07 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[8].post_inst/data_out[14]_i_1__12_n_0         |                7 |             15 |         2.14 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[7].post_inst/data_out[14]_i_1__4_n_0          |                9 |             15 |         1.67 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[6].post_inst/data_out[14]_i_1__3_n_0          |                7 |             15 |         2.14 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[5].post_inst/data_out[14]_i_1__2_n_0          |                7 |             15 |         2.14 |
+|  i_clk_IBUF_BUFG | u_weight_bias_control/dweight_cnt[2]_i_1_n_0                            | i_rst_n_IBUF_inst/O                                              |                7 |             15 |         2.14 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[4].post_inst/data_out[14]_i_1__13_n_0         |                8 |             15 |         1.88 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[9].post_inst/data_out[14]_i_1__5_n_0          |                8 |             15 |         1.88 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[3].post_inst/data_out[14]_i_1__1_n_0          |                6 |             15 |         2.50 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[0].post_inst/data_out[14]_i_1__14_n_0         |                9 |             15 |         1.67 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[11].post_inst/data_out[14]_i_1__6_n_0         |                8 |             15 |         1.88 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[1].post_inst/data_out[14]_i_1_n_0             |                7 |             15 |         2.14 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[15].post_inst/data_out[14]_i_1__9_n_0         |                8 |             15 |         1.88 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[14].post_inst/data_out[14]_i_1__8_n_0         |                5 |             15 |         3.00 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[10].post_inst/data_out[14]_i_1__11_n_0        |                7 |             15 |         2.14 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[1].post_inst/data_out[14]_i_1_n_0             |                6 |             15 |         2.50 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[12].post_inst/data_out[14]_i_1__10_n_0        |                6 |             15 |         2.50 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[2].post_inst/data_out[14]_i_1__0_n_0          |                5 |             15 |         3.00 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[4].post_inst/data_out[14]_i_1__13_n_0         |                6 |             15 |         2.50 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[5].post_inst/data_out[14]_i_1__2_n_0          |                4 |             15 |         3.75 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   | depthwise_0/GEN_CH[6].post_inst/data_out[14]_i_1__3_n_0          |                5 |             15 |         3.00 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   | depthwise_1/GEN_CH[2].post_inst/data_out[14]_i_1__0_n_0          |                6 |             15 |         2.50 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[6]                                                   |                                                                  |               15 |             16 |         1.07 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[14]                                   |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[6]                                   |                2 |             16 |         8.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[0]                                   |                5 |             16 |         3.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[4]                                   |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[5]                                   |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[2]                                   |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[3]                                   |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[7]                                   |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[2][15]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |               10 |             16 |         1.60 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[2][31]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |                9 |             16 |         1.78 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[1][47]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |               10 |             16 |         1.60 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[1][15]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |                7 |             16 |         2.29 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[1]                                   |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[1][31]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |               10 |             16 |         1.60 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[0][47]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |               10 |             16 |         1.60 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[0][15]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |               10 |             16 |         1.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/GEN_CH[10].mac_inst/CEB1                                    |                                                                  |                8 |             16 |         2.00 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[2][47]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |                9 |             16 |         1.78 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/wr_buffer[0][31]_i_1_n_0                                 | i_rst_n_IBUF_inst/O                                              |               11 |             16 |         1.45 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[6]                                                   |                                                                  |               15 |             16 |         1.07 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[11]                                  |                5 |             16 |         3.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[9]                                   |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | depthwise_1/GEN_CH[13].mac_inst/CEB1                                    |                                                                  |                7 |             16 |         2.29 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[15]                                  |                2 |             16 |         8.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[14]                                  |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | depthwise_0/GEN_CH[13].mac_inst/CEB1                                    |                                                                  |                9 |             16 |         1.78 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[13]                                  |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[8]                                   |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[10]                                  |                5 |             16 |         3.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[12]                                   |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[10]                                   |                2 |             16 |         8.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[11]                                   |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[1]                                    |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[6]                                    |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[5]                                    |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[8]                                    |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[2]                                    |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[3]                                    |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[13]                                   |                5 |             16 |         3.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[15]                                   |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output0/do_output                                      | u_pw_unit/u_bias_buffer0/SR[12]                                  |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[0]                                    |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[4]                                    |                4 |             16 |         4.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[7]                                    |                5 |             16 |         3.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_relu_output1/E[0]                                           | u_pw_unit/u_psum_adder1/SR[9]                                    |                3 |             16 |         5.33 |
+|  i_clk_IBUF_BUFG | u_weight_bias_control/pweight_cnt[2]_i_1_n_0                            | i_rst_n_IBUF_inst/O                                              |                7 |             17 |         2.43 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[8]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[6]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[4]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[0]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[10]                                       |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[9]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[14]                                       |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[12]                                       |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[15]                                       |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[7]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[5]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[2]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[1]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[13]                                       |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[11]                                       |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_receptor/o_valid4_reg[15]_0[3]                                        |                                                                  |                3 |             20 |         6.67 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[3].lb_inst/i_vld04_out                        | u_fsm_line_buffer1/LB_GEN[3].lb_inst/wrPntr[7]_i_1__5_n_0        |                9 |             26 |         2.89 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[1].lb_inst/i_vld00_out                        | u_fsm_line_buffer1/LB_GEN[1].lb_inst/wrPntr[7]_i_1__7_n_0        |               10 |             26 |         2.60 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[0].lb_inst/i_vld0                             | u_fsm_line_buffer0/LB_GEN[0].lb_inst/wrPntr[7]_i_1__3_n_0        |                9 |             26 |         2.89 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[0].lb_inst/i_vld0                             | u_fsm_line_buffer1/LB_GEN[0].lb_inst/wrPntr[7]_i_1__8_n_0        |                9 |             26 |         2.89 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[3].lb_inst/i_vld04_out                        | u_fsm_line_buffer0/LB_GEN[3].lb_inst/wrPntr[7]_i_1__0_n_0        |                8 |             27 |         3.38 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/i_vld06_out                        | u_fsm_line_buffer1/LB_GEN[4].lb_inst/wrPntr[7]_i_1__4_n_0        |               19 |             27 |         1.42 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[1].lb_inst/i_vld00_out                        | u_fsm_line_buffer0/LB_GEN[1].lb_inst/wrPntr[7]_i_1__2_n_0        |                8 |             27 |         3.38 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/i_vld06_out                        | u_fsm_line_buffer0/LB_GEN[4].lb_inst/wrPntr[7]_i_1_n_0           |                8 |             27 |         3.38 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[2].lb_inst/i_vld02_out                        | u_fsm_line_buffer0/LB_GEN[2].lb_inst/wrPntr[7]_i_1__1_n_0        |               13 |             27 |         2.08 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[2].lb_inst/i_vld02_out                        | u_fsm_line_buffer1/LB_GEN[2].lb_inst/wrPntr[7]_i_1__6_n_0        |                7 |             28 |         4.00 |
+|  i_clk_IBUF_BUFG | depthwise_1/GEN_CH[5].mac_inst/CEB1                                     |                                                                  |               12 |             32 |         2.67 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_19                                | i_rst_n_IBUF_inst/O                                              |                5 |             34 |         6.80 |
+|  i_clk_IBUF_BUFG | u_adder_stega/vld_s1                                                    | i_rst_n_IBUF_inst/O                                              |                9 |             48 |         5.33 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_3                                            |                                                                  |               29 |             48 |         1.66 |
+|  i_clk_IBUF_BUFG | mem_2/bank_gen[2].u_mem_bank/E[0]                                       | i_rst_n_IBUF_inst/O                                              |                9 |             51 |         5.67 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/LB_GEN[4].rd_en                    | u_fsm_line_buffer1/LB_GEN[4].lb_inst/rdPntr[7]_i_1__4_n_0        |               43 |             61 |         1.42 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[2].lb_inst/LB_GEN[2].rd_en                    | u_fsm_line_buffer0/LB_GEN[2].lb_inst/rdPntr[7]_i_1__5_n_0        |               42 |             62 |         1.48 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[0].lb_inst/LB_GEN[0].rd_en                    | u_fsm_line_buffer0/LB_GEN[0].lb_inst/rdPntr[7]_i_1_n_0           |               29 |             62 |         2.14 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[1].lb_inst/LB_GEN[1].rd_en                    | u_fsm_line_buffer0/LB_GEN[1].lb_inst/rdPntr[7]_i_1__0_n_0        |               40 |             62 |         1.55 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[1].lb_inst/LB_GEN[1].rd_en                    | u_fsm_line_buffer1/LB_GEN[1].lb_inst/rdPntr[7]_i_1__3_n_0        |               30 |             63 |         2.10 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[0].lb_inst/LB_GEN[0].rd_en                    | u_fsm_line_buffer1/LB_GEN[0].lb_inst/rdPntr[7]_i_1__2_n_0        |               46 |             64 |         1.39 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_6                                            |                                                                  |               13 |             64 |         4.92 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[3].lb_inst/LB_GEN[3].rd_en                    | u_fsm_line_buffer1/LB_GEN[3].lb_inst/rdPntr[7]_i_1__8_n_0        |               42 |             64 |         1.52 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[2].lb_inst/LB_GEN[2].rd_en                    | u_fsm_line_buffer1/LB_GEN[2].lb_inst/rdPntr[7]_i_1__7_n_0        |               44 |             64 |         1.45 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/p_4_out[191]                                             | i_rst_n_IBUF_inst/O                                              |               20 |             64 |         3.20 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/p_4_out[127]                                             | i_rst_n_IBUF_inst/O                                              |               18 |             64 |         3.56 |
+|  i_clk_IBUF_BUFG | u_stega_bridge/p_4_out[63]                                              | i_rst_n_IBUF_inst/O                                              |               22 |             64 |         2.91 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_3                                            |                                                                  |               15 |             65 |         4.33 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[3].lb_inst/LB_GEN[3].rd_en                    | u_fsm_line_buffer0/LB_GEN[3].lb_inst/rdPntr[7]_i_1__6_n_0        |               24 |             65 |         2.71 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_42                                | i_rst_n_IBUF_inst/O                                              |               10 |             66 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_17                                | i_rst_n_IBUF_inst/O                                              |               10 |             66 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_19                                | i_rst_n_IBUF_inst/O                                              |               10 |             66 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_24                                | i_rst_n_IBUF_inst/O                                              |               10 |             66 |         6.60 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/LB_GEN[4].rd_en                    | u_fsm_line_buffer0/LB_GEN[4].lb_inst/rdPntr[7]_i_1__1_n_0        |               44 |             67 |         1.52 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN                                              |                                                                  |               39 |             70 |         1.79 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_1                                            |                                                                  |               11 |             71 |         6.45 |
+|  i_clk_IBUF_BUFG | depthwise_1/GEN_CH[3].mac_inst/p_reg_reg[7]_i_1__3_n_0                  |                                                                  |               31 |             80 |         2.58 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_1                                            |                                                                  |               20 |             82 |         4.10 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_18                                           |                                                                  |               43 |             89 |         2.07 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_7                                            |                                                                  |               31 |             96 |         3.10 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_50                                | i_rst_n_IBUF_inst/O                                              |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_5                                            |                                                                  |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_16                                | i_rst_n_IBUF_inst/O                                              |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_34                                | i_rst_n_IBUF_inst/O                                              |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_37                                | i_rst_n_IBUF_inst/O                                              |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_14                                           |                                                                  |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_32                                | i_rst_n_IBUF_inst/O                                              |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_29                                | i_rst_n_IBUF_inst/O                                              |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_40                                | i_rst_n_IBUF_inst/O                                              |               15 |             99 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_4                                            |                                                                  |               16 |            100 |         6.25 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_4                                 | i_rst_n_IBUF_inst/O                                              |               15 |            102 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_2                                 | i_rst_n_IBUF_inst/O                                              |               15 |            102 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_3                                            |                                                                  |               18 |            103 |         5.72 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_4                                            |                                                                  |               16 |            103 |         6.44 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_1                                 | i_rst_n_IBUF_inst/O                                              |               15 |            108 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_2                                 | i_rst_n_IBUF_inst/O                                              |               15 |            108 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_11                                | i_rst_n_IBUF_inst/O                                              |               15 |            108 |         7.20 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_2                                            |                                                                  |               19 |            110 |         5.79 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_9                                            |                                                                  |               33 |            111 |         3.36 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_4                                            |                                                                  |               18 |            112 |         6.22 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_6                                            |                                                                  |               51 |            126 |         2.47 |
+|  i_clk_IBUF_BUFG | u_receptor/counter[63]_i_1_n_0                                          | i_rst_n_IBUF_inst/O                                              |               68 |            128 |         1.88 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_8                                            |                                                                  |               28 |            129 |         4.61 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_46                                | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_10                                           |                                                                  |               29 |            132 |         4.55 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_44                                | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_31                                | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_2                                 | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_27                                | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_5                                            |                                                                  |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN                                   | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_7                                 | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_11                                | i_rst_n_IBUF_inst/O                                              |               20 |            132 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_15                                | i_rst_n_IBUF_inst/O                                              |               20 |            136 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN                                              |                                                                  |               75 |            136 |         1.81 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_6                                 | i_rst_n_IBUF_inst/O                                              |               20 |            136 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_21                                | i_rst_n_IBUF_inst/O                                              |               20 |            136 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_10                                | i_rst_n_IBUF_inst/O                                              |               20 |            136 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_1                                 | i_rst_n_IBUF_inst/O                                              |               20 |            136 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_7                                            |                                                                  |               21 |            139 |         6.62 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_3                                            |                                                                  |               35 |            139 |         3.97 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]                                                   |                                                                  |               46 |            140 |         3.04 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN                                   | i_rst_n_IBUF_inst/O                                              |               20 |            144 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_6                                 | i_rst_n_IBUF_inst/O                                              |               20 |            144 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_8                                 | i_rst_n_IBUF_inst/O                                              |               20 |            144 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_7                                 | i_rst_n_IBUF_inst/O                                              |               20 |            144 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_12                                | i_rst_n_IBUF_inst/O                                              |               20 |            144 |         7.20 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_2                                            |                                                                  |               29 |            147 |         5.07 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_1                                            |                                                                  |               33 |            149 |         4.52 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_8                                            |                                                                  |               39 |            152 |         3.90 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_15                                           |                                                                  |               36 |            153 |         4.25 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_1                                            |                                                                  |               39 |            155 |         3.97 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN                                              |                                                                  |               64 |            157 |         2.45 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]                                                   |                                                                  |               35 |            163 |         4.66 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_15                                | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_43                                | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_4                                 | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_6                                 | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_9                                 | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_39                                | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_8                                 | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_45                                | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_33                                | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_41                                | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_1                                 | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_2                                            |                                                                  |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_23                                | i_rst_n_IBUF_inst/O                                              |               25 |            165 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_5                                            |                                                                  |               27 |            165 |         6.11 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_8                                            |                                                                  |               26 |            166 |         6.38 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_10                                           |                                                                  |               36 |            167 |         4.64 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_12                                           |                                                                  |               27 |            167 |         6.19 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_11                                | i_rst_n_IBUF_inst/O                                              |               25 |            170 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_22                                | i_rst_n_IBUF_inst/O                                              |               25 |            170 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_12                                | i_rst_n_IBUF_inst/O                                              |               25 |            170 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]                                        | i_rst_n_IBUF_inst/O                                              |               25 |            170 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_8                                 | i_rst_n_IBUF_inst/O                                              |               25 |            170 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_14                                | i_rst_n_IBUF_inst/O                                              |               25 |            170 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_13                                           |                                                                  |               27 |            170 |         6.30 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_8                                            |                                                                  |               42 |            174 |         4.14 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_5                                 | i_rst_n_IBUF_inst/O                                              |               25 |            180 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_3                                 | i_rst_n_IBUF_inst/O                                              |               25 |            180 |         7.20 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN                                              |                                                                  |               80 |            181 |         2.26 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_15                                           |                                                                  |               31 |            181 |         5.84 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_9                                            |                                                                  |               55 |            187 |         3.40 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_7                                            |                                                                  |               36 |            190 |         5.28 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_17                                           |                                                                  |               39 |            192 |         4.92 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_9                                            |                                                                  |               31 |            194 |         6.26 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_21                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_22                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_38                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_25                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_5                                 | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]                                        | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_49                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_28                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_3                                 | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_48                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_10                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_36                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_13                                           |                                                                  |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_35                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_30                                | i_rst_n_IBUF_inst/O                                              |               30 |            198 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_7                                            |                                                                  |               31 |            199 |         6.42 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_17                                | i_rst_n_IBUF_inst/O                                              |               30 |            204 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_16                                | i_rst_n_IBUF_inst/O                                              |               30 |            204 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_6                                            |                                                                  |               30 |            204 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_10                                | i_rst_n_IBUF_inst/O                                              |               30 |            216 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]                                        | i_rst_n_IBUF_inst/O                                              |               30 |            216 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_9                                 | i_rst_n_IBUF_inst/O                                              |               30 |            216 |         7.20 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_12                                           |                                                                  |               60 |            230 |         3.83 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_12                                | i_rst_n_IBUF_inst/O                                              |               35 |            231 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_14                                | i_rst_n_IBUF_inst/O                                              |               35 |            231 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_18                                | i_rst_n_IBUF_inst/O                                              |               35 |            231 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_26                                | i_rst_n_IBUF_inst/O                                              |               35 |            231 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_11                                           |                                                                  |               35 |            231 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_13                                | i_rst_n_IBUF_inst/O                                              |               35 |            231 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_2                                            |                                                                  |               80 |            232 |         2.90 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_5                                 | i_rst_n_IBUF_inst/O                                              |               35 |            238 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_13                                | i_rst_n_IBUF_inst/O                                              |               35 |            238 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_3                                 | i_rst_n_IBUF_inst/O                                              |               35 |            238 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_18                                | i_rst_n_IBUF_inst/O                                              |               35 |            238 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[3]_repN_9                                            |                                                                  |               72 |            238 |         3.31 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_7                                 | i_rst_n_IBUF_inst/O                                              |               35 |            238 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[2]_repN_16                                           |                                                                  |               49 |            250 |         5.10 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_11                                           |                                                                  |               59 |            251 |         4.25 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[4]_repN_4                                 | i_rst_n_IBUF_inst/O                                              |               35 |            252 |         7.20 |
+|  i_clk_IBUF_BUFG | u_pw_unit_i_4_n_0                                                       | i_rst_n_IBUF_inst/O                                              |               82 |            256 |         3.12 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_adder0/o_data[255]_i_1__1_n_0                          | i_rst_n_IBUF_inst/O                                              |               76 |            256 |         3.37 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_pw0_pw1_adder/o_data_pw0[255]_i_1_n_0                       | i_rst_n_IBUF_inst/O                                              |               73 |            256 |         3.51 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[7]                                        | u_pw_unit/u_pw0_pw1_adder/p_0_in_0[254]                          |               82 |            256 |         3.12 |
+|  i_clk_IBUF_BUFG | i_bias_valid10                                                          | i_rst_n_IBUF_inst/O                                              |               78 |            256 |         3.28 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_psum_adder1/o_data[255]_i_1__0_n_0                          | i_rst_n_IBUF_inst/O                                              |               80 |            256 |         3.20 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[2]_repN_14                                           |                                                                  |               60 |            259 |         4.32 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_20                                | i_rst_n_IBUF_inst/O                                              |               40 |            264 |         6.60 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[2]_repN_47                                | i_rst_n_IBUF_inst/O                                              |               40 |            264 |         6.60 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[3]_repN_5                                            |                                                                  |               68 |            271 |         3.99 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_9                                 | i_rst_n_IBUF_inst/O                                              |               40 |            272 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN_20                                | i_rst_n_IBUF_inst/O                                              |               40 |            272 |         6.80 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[3]_repN                                   | i_rst_n_IBUF_inst/O                                              |               40 |            272 |         6.80 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[5]                                                   |                                                                  |               64 |            416 |         6.50 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[5]                                                   |                                                                  |               64 |            416 |         6.50 |
+|  i_clk_IBUF_BUFG | depthwise_0/v_pipe[4]                                                   |                                                                  |               64 |            448 |         7.00 |
+|  i_clk_IBUF_BUFG | depthwise_1/v_pipe[4]                                                   |                                                                  |               64 |            448 |         7.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/u_pw_mac0/E[0]                                                |                                                                  |              157 |            512 |         3.26 |
+|  i_clk_IBUF_BUFG | u_receptor/E[0]                                                         | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg_bufg_place |              174 |            578 |         3.32 |
+|  i_clk_IBUF_BUFG | i_rst_n_IBUF_inst/O                                                     |                                                                  |              251 |            670 |         2.67 |
+|  i_clk_IBUF_BUFG |                                                                         | i_rst_n_IBUF_inst/O                                              |              336 |            725 |         2.16 |
+|  i_clk_IBUF_BUFG | u_receptor/i_enable                                                     | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg_bufg_place |              167 |            776 |         4.65 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[1].lb_inst/line_reg_r1_64_127_0_6_i_1__2_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[1].lb_inst/line_reg_r1_192_255_0_6_i_1__2_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[1].lb_inst/line_reg_r1_128_191_0_6_i_1__2_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[1].lb_inst/line_reg_r1_0_63_0_6_i_1__2_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[3].lb_inst/line_reg_r1_0_63_0_6_i_1__5_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[3].lb_inst/line_reg_r1_192_255_0_6_i_1__0_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[3].lb_inst/line_reg_r1_128_191_0_6_i_1__5_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[3].lb_inst/line_reg_r1_192_255_0_6_i_1__5_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[3].lb_inst/line_reg_r1_64_127_0_6_i_1__5_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/line_reg_r1_128_191_0_6_i_1__4_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[2].lb_inst/line_reg_r1_128_191_0_6_i_1__1_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/line_reg_r1_192_255_0_6_i_1__4_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/line_reg_r1_64_127_0_6_i_1__4_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[4].lb_inst/line_reg_r1_0_63_0_6_i_8__0_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[0].lb_inst/line_reg_r1_0_63_0_6_i_1__3_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/line_reg_r1_64_127_0_6_i_1_n_0     |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/line_reg_r1_192_255_0_6_i_1_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[0].lb_inst/line_reg_r1_0_63_0_6_i_1__8_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/line_reg_r1_128_191_0_6_i_1_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[0].lb_inst/line_reg_r1_192_255_0_6_i_1__3_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[4].lb_inst/line_reg_r1_0_63_0_6_i_8_n_0       |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[3].lb_inst/line_reg_r1_64_127_0_6_i_1__0_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[0].lb_inst/line_reg_r1_192_255_0_6_i_1__8_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[3].lb_inst/line_reg_r1_128_191_0_6_i_1__0_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[0].lb_inst/line_reg_r1_64_127_0_6_i_1__8_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[3].lb_inst/line_reg_r1_0_63_0_6_i_1__0_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[2].lb_inst/line_reg_r1_64_127_0_6_i_1__1_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[2].lb_inst/line_reg_r1_192_255_0_6_i_1__1_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[1].lb_inst/line_reg_r1_0_63_0_6_i_1__7_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[0].lb_inst/line_reg_r1_128_191_0_6_i_1__8_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[2].lb_inst/line_reg_r1_0_63_0_6_i_1__1_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[0].lb_inst/line_reg_r1_128_191_0_6_i_1__3_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[1].lb_inst/line_reg_r1_192_255_0_6_i_1__7_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[1].lb_inst/line_reg_r1_64_127_0_6_i_1__7_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[2].lb_inst/line_reg_r1_0_63_0_6_i_1__6_n_0    |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[2].lb_inst/line_reg_r1_128_191_0_6_i_1__6_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer0/LB_GEN[0].lb_inst/line_reg_r1_64_127_0_6_i_1__3_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[2].lb_inst/line_reg_r1_192_255_0_6_i_1__6_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[2].lb_inst/line_reg_r1_64_127_0_6_i_1__6_n_0  |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_fsm_line_buffer1/LB_GEN[1].lb_inst/line_reg_r1_128_191_0_6_i_1__7_n_0 |                                                                  |              111 |            888 |         8.00 |
+|  i_clk_IBUF_BUFG | u_pw_unit/valid_pipe_reg_n_0_[5]                                        | i_rst_n_IBUF_inst/O                                              |              128 |            896 |         7.00 |
+|  i_clk_IBUF_BUFG |                                                                         |                                                                  |              285 |            957 |         3.36 |
+|  i_clk_IBUF_BUFG | u_receptor/i_enable                                                     | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |              386 |           1530 |         3.96 |
+|  i_clk_IBUF_BUFG |                                                                         | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg_bufg_place |              448 |           1608 |         3.59 |
+|  i_clk_IBUF_BUFG | u_receptor/E[0]                                                         | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |              502 |           1728 |         3.44 |
+|  i_clk_IBUF_BUFG |                                                                         | u_fsm_line_buffer0/LB_GEN[4].lb_inst/o_stage_done_reg            |             1767 |           6098 |         3.45 |
++------------------+-------------------------------------------------------------------------+------------------------------------------------------------------+------------------+----------------+--------------+
+
+

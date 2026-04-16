@@ -278,8 +278,8 @@ localparam STABLE_STAGE = 'd1024;
 
 wire loc_done = (loc_counter == max_loc - 1) ? 1: 0;
 wire lic_done = (o_lic_counter == max_lic - 1) ? 1: 0;
-assign o_last_loop = loc_done && lic_done;
-assign o_first_loop = (o_lic_counter == 0) && (loc_counter == 0);
+assign o_last_loop = lic_done;      // ban dau la loc_done && lic_done
+assign o_first_loop = (o_lic_counter == 0); // ban dau la them ca loc_counter == 0
 
 integer f;
 reg padding_vld;

@@ -41,6 +41,7 @@ module top #(
     // AXI Stream out Interface
     output wire                m_axis_tvalid,
     output wire [DATA_W-1:0]   m_axis_tdata,
+    output wire                m_axis_tlast,
     input                      m_axis_tready
     // Interrupt for requesting new data 
 //    output reg                 intr,
@@ -450,7 +451,7 @@ mux_mem1 #(
     .i_wr_stega_addr    (top_stega_addr),
     .i_wr_stega_data    (top_stega_data),
    
-    .i_wr_mem_ena       (|top_wr_mem1_ena),          
+    .i_wr_mem_ena       (top_wr_mem1_ena),          
     .i_wr_mem_addr      (top_wr_mem1_addr),           
     .i_wr_mem_data      (top_wr_data_mem1),    
     
@@ -870,12 +871,15 @@ fsm_line_buffer #(
     );
     
     stream_out u_stream_out (
+    .i_clk (i_clk),
+    .i_rst_n (i_rst_n),
     .i_stage (top_stage),
     .i_vld(top_vld_mem_1[2:0]),
-    .i_ena(m_axis_tready),
+    .m_axis_tready(m_axis_tready),
     .i_data(top_data_mem_1[191:0]),
     .o_vld(m_axis_tvalid),
-    .o_data(m_axis_tdata)
+    .o_data(m_axis_tdata),
+    .m_axis_tlast  (m_axis_tlast)
 );
 
 endmodule

@@ -103,20 +103,22 @@ parameter ADDER_W  =16*3
 endmodule
 
 module stream_out (
+    input             i_clk,
+    input             i_rst_n,
     input [3:0]       i_stage,
-    input             i_ena,
+    input             m_axis_tready,
     input [2:0]       i_vld,
     input [191:0]     i_data,
     output reg        o_vld,
-    output reg [63:0] o_data
-    
+    output reg [63:0] o_data,
+    output            m_axis_tlast
 );
     localparam STREAM_OUT = 12;
-    
+    reg [13:0] counter;
     always @(*) begin
         o_vld  = 1'b0;
         o_data = 64'b0;
-        if (i_stage == STREAM_OUT && i_ena) begin
+        if (i_stage == STREAM_OUT) begin
             case (i_vld)
                 3'b001: begin 
                     o_data = i_data[63:0]; 
@@ -137,6 +139,21 @@ module stream_out (
             endcase
         end
     end
+    
+    always @(posedge i_clk) begin
+        if (!i_rst_n) begin
+            counter <= 0;
+        end
+        else if (m_axis_tready && o_vld) begin
+            if (counter == 16383) begin
+                counter <= 0;
+            end
+            else begin
+                counter <= counter + 1;
+            end
+        end
+    end
+assign m_axis_tlast = (counter == 16383 && o_vld) ? 1: 0;
 endmodule
 
 module mem2_to_adder (

@@ -60,7 +60,7 @@ module Depthwise_Core_Top (
         if (i_weight_valid) begin
             for (c = 0; c < 4; c = c + 1) begin
                 for (w = 0; w < 9; w = w + 1) begin
-                    weight_regs[{weight_group_cnt, c[1:0]}][w] <= i_weight_data[(c*144 + w*16) +: 16];
+                    weight_regs[{weight_group_cnt, c[1:0]}][w] <= i_weight_data[(c*16 + w*64) +: 16];
                 end
             end
         end

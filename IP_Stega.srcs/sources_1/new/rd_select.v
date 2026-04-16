@@ -24,7 +24,7 @@ module rd_select #(
     parameter ADDRESS_DATA = 12
 )(
     input [3:0]                i_stage,
-    input [2:0]                i_mem_rd_swapping,
+    input [1:0]                i_mem_rd_swapping,
     input [ADDRESS_DATA+1:0]   i_mem_rd_addr,
     input                      i_mem_rd_enb,
     input [3:0]                i_lic,
