@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Checkpoint Version="23" Minor="0">
+	<BUILD_NUMBER Name="5239630"/>
+	<FULL_BUILD Name="SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024"/>
+	<PRODUCT Name="Vivado v2024.2 (64-bit)"/>
+	<Part Name="xck26-sfvc784-2LV-c"/>
+	<FeatureSet Name="FeatureSet_Classic"/>
+	<NEXTGEN_VERSAL Name="0"/>
+	<BoardPart Name="xilinx.com:kv260_som:part0:1.4"/>
+	<BoardConnections Name="som240_1_connector xilinx.com:kv260_carrier:som240_1_connector:1.3"/>
+	<Top Name="Depthwise_Core_Top"/>
+	<DisableAutoIOBuffers Name="0"/>
+	<OutOfContext Name="0"/>
+	<MacroLevel Name="1"/>
+	<RunGenerated Name="1"/>
+	<HDPlatform Name="0"/>
+	<File Type="VERILOG_STUB" Name="Depthwise_Core_Top_stub.v" ModTime="1775130486"/>
+	<File Type="VHDL_STUB" Name="Depthwise_Core_Top_stub.vhdl" ModTime="1775130486"/>
+	<File Type="PARAMXML" Name="Depthwise_Core_Top_param.xml" ModTime="1775130486"/>
+	<File Type="PARAMXML" Name="Depthwise_Core_Top_param.xml" ModTime="1775130486"/>
+	<File Type="SHAPE" Name="Depthwise_Core_Top.shape" ModTime="1775130486"/>
+	<File Type="EDIF" Name="Depthwise_Core_Top.edf" ModTime="1775130486"/>
+	<File Type="XN" Name="Depthwise_Core_Top.xn" ModTime="1775130486"/>
+	<File Type="INCR" Name="Depthwise_Core_Top.incr" ModTime="1775130486"/>
+	<File Type="RDA" Name="Depthwise_Core_Top.rda" ModTime="1775130486"/>
+	<File Type="JSON_RDA" Name="Depthwise_Core_Top_rda.json" ModTime="1775130486"/>
+	<File Type="WDF" Name="Depthwise_Core_Top.wdf" ModTime="1775130486"/>
+	<File Type="SYNTH" Name="Depthwise_Core_Top.synth" ModTime="1775130486"/>
+</Checkpoint>
+
