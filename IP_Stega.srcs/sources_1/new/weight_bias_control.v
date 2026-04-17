@@ -22,7 +22,8 @@
 
 module weight_bias_control #(
     parameter ADDRESS_WEIGHT = 10,
-    parameter ADDRESS_BIAS   = 6
+    parameter ADDRESS_BIAS   = 6,
+    parameter LATENCY        = 2
 )(
     // System Signals
     input  wire                         i_clk,           // Clock h? th?ng
@@ -47,9 +48,9 @@ module weight_bias_control #(
     output reg                          o_bias_ena,
     
     // Mux Select / Control Signals
-    output reg                          o_depth_sel,     // Ch?n d? li?u t? kh?i Depthwise
-    output reg                          o_point_sel,     // Ch?n d? li?u t? kh?i Pointwise
-    output reg                          o_bias_sel,      // Kích ho?t c?ng bias
+    output           o_depth_select,     // Ch?n d? li?u t? kh?i Depthwise
+    output           o_point_select,     // Ch?n d? li?u t? kh?i Pointwise
+    output           o_bias_select,      // Kích ho?t c?ng bias
     
     // Status Output
     output                              o_load_done      // Báo hi?u ð? load xong d? li?u c?n thi?t
@@ -150,6 +151,10 @@ reg [9:0] point_base_addr;
 reg [5:0] bias_base_addr;
 reg [4:0] bias_loop;
 
+reg o_depth_sel, o_point_sel, o_bias_sel;
+reg [LATENCY-1:0] o_depth_sel_pipe  ;
+reg [LATENCY-1:0] o_point_sel_pipe  ;
+reg [LATENCY-1:0] o_bias_sel_pipe   ;
 
 always @(*) begin
     // Kh?i t?o giá tr? m?c ð?nh ð? tránh t?o ra Latches (r?t quan tr?ng trong always @*)
@@ -434,5 +439,22 @@ end
         endcase
     end
 end
+
+//HANDLE DELAY
+integer k;
+always @(posedge i_clk) begin
+    o_depth_sel_pipe[0] <= o_depth_sel;
+    o_point_sel_pipe[0] <= o_point_sel;
+    o_bias_sel_pipe[0]  <= o_bias_sel ;
+    for (k = 1; k < LATENCY; k = k + 1) begin
+        o_depth_sel_pipe[k] <=  o_depth_sel_pipe[k-1]  ;
+        o_point_sel_pipe[k] <=  o_point_sel_pipe[k-1]  ;
+        o_bias_sel_pipe [k] <=  o_bias_sel_pipe [k-1];
+    end
+end
+
+assign o_depth_select = o_depth_sel_pipe[LATENCY-1];
+assign o_point_select = o_point_sel_pipe[LATENCY-1];
+assign o_bias_select  = o_bias_sel_pipe [LATENCY-1];
 
 endmodule

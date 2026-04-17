@@ -11,12 +11,12 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="399,283.250 ns"></ZoomStartTime>
-      <ZoomEndTime time="399,953.751 ns"></ZoomEndTime>
-      <Cursor1Time time="399,395.000 ns"></Cursor1Time>
+      <ZoomStartTime time="395,180.917 ns"></ZoomStartTime>
+      <ZoomEndTime time="395,865.418 ns"></ZoomEndTime>
+      <Cursor1Time time="395,295.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="100"></NameColumnWidth>
+      <NameColumnWidth column_width="95"></NameColumnWidth>
       <ValueColumnWidth column_width="72"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="420" />
@@ -105,29 +105,29 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_receptor/o_addr1" type="array">
-      <obj_property name="ElementShortName">o_addr1[59:0]</obj_property>
-      <obj_property name="ObjectShortName">o_addr1[59:0]</obj_property>
+      <obj_property name="ElementShortName">o_addr1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">o_addr1[7:0]</obj_property>
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_receptor/o_addr2" type="array">
-      <obj_property name="ElementShortName">o_addr2[61:0]</obj_property>
-      <obj_property name="ObjectShortName">o_addr2[61:0]</obj_property>
+      <obj_property name="ElementShortName">o_addr2[9:0]</obj_property>
+      <obj_property name="ObjectShortName">o_addr2[9:0]</obj_property>
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_receptor/o_addr3" type="array">
-      <obj_property name="ElementShortName">o_addr3[63:0]</obj_property>
-      <obj_property name="ObjectShortName">o_addr3[63:0]</obj_property>
+      <obj_property name="ElementShortName">o_addr3[11:0]</obj_property>
+      <obj_property name="ObjectShortName">o_addr3[11:0]</obj_property>
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_receptor/o_addr4" type="array">
-      <obj_property name="ElementShortName">o_addr4[57:0]</obj_property>
-      <obj_property name="ObjectShortName">o_addr4[57:0]</obj_property>
+      <obj_property name="ElementShortName">o_addr4[5:0]</obj_property>
+      <obj_property name="ObjectShortName">o_addr4[5:0]</obj_property>
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
@@ -170,8 +170,8 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_receptor/counter" type="array">
-      <obj_property name="ElementShortName">counter[63:0]</obj_property>
-      <obj_property name="ObjectShortName">counter[63:0]</obj_property>
+      <obj_property name="ElementShortName">counter[11:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[11:0]</obj_property>
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
@@ -535,36 +535,42 @@
       <obj_property name="ObjectShortName">depth_loop[5:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/depth_base_addr" type="array">
       <obj_property name="ElementShortName">depth_base_addr[7:0]</obj_property>
       <obj_property name="ObjectShortName">depth_base_addr[7:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/point_loop" type="array">
       <obj_property name="ElementShortName">point_loop[7:0]</obj_property>
       <obj_property name="ObjectShortName">point_loop[7:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/point_base_addr" type="array">
       <obj_property name="ElementShortName">point_base_addr[9:0]</obj_property>
       <obj_property name="ObjectShortName">point_base_addr[9:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/bias_base_addr" type="array">
       <obj_property name="ElementShortName">bias_base_addr[5:0]</obj_property>
       <obj_property name="ObjectShortName">bias_base_addr[5:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/bias_loop" type="array">
       <obj_property name="ElementShortName">bias_loop[4:0]</obj_property>
       <obj_property name="ObjectShortName">bias_loop[4:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/dweight_one_iter" type="logic">
       <obj_property name="ElementShortName">dweight_one_iter</obj_property>
@@ -589,18 +595,21 @@
       <obj_property name="ObjectShortName">dweight_cnt[2:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/pweight_cnt" type="array">
       <obj_property name="ElementShortName">pweight_cnt[2:0]</obj_property>
       <obj_property name="ObjectShortName">pweight_cnt[2:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/bias_cnt" type="array">
       <obj_property name="ElementShortName">bias_cnt[2:0]</obj_property>
       <obj_property name="ObjectShortName">bias_cnt[2:0]</obj_property>
       <obj_property name="CustomSignalColor">#FFD700</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_weight_bias_control/dweight_done_s1" type="logic">
       <obj_property name="ElementShortName">dweight_done_s1</obj_property>
@@ -1362,49 +1371,6 @@
       <obj_property name="CustomSignalColor">#0000FF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[4]" type="array">
-         <obj_property name="ElementShortName">[4][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[4][767:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[3]" type="array">
-         <obj_property name="ElementShortName">[3][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[3][767:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[2]" type="array">
-         <obj_property name="ElementShortName">[2][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[2][767:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[1]" type="array">
-         <obj_property name="ElementShortName">[1][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[1][767:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[0]" type="array">
-         <obj_property name="ElementShortName">[0][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[0][767:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[4]" type="array">
-         <obj_property name="ElementShortName">[4][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[4][767:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[3]" type="array">
-         <obj_property name="ElementShortName">[3][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[3][767:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[2]" type="array">
-         <obj_property name="ElementShortName">[2][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[2][767:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[1]" type="array">
-         <obj_property name="ElementShortName">[1][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[1][767:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_raw[0]" type="array">
-         <obj_property name="ElementShortName">[0][767:0]</obj_property>
-         <obj_property name="ObjectShortName">[0][767:0]</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_fsm_line_buffer0/lb_done" type="array">
       <obj_property name="ElementShortName">lb_done[4:0]</obj_property>
@@ -1582,6 +1548,70 @@
          <obj_property name="ElementShortName">[7][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[7][0:8][15:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[8]" type="array">
+         <obj_property name="ElementShortName">[8][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[9]" type="array">
+         <obj_property name="ElementShortName">[9][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[10]" type="array">
+         <obj_property name="ElementShortName">[10][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[11]" type="array">
+         <obj_property name="ElementShortName">[11][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[12]" type="array">
+         <obj_property name="ElementShortName">[12][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[13]" type="array">
+         <obj_property name="ElementShortName">[13][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[14]" type="array">
+         <obj_property name="ElementShortName">[14][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[14][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[15]" type="array">
+         <obj_property name="ElementShortName">[15][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[15][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0]" type="array">
+         <obj_property name="ElementShortName">[0][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[1]" type="array">
+         <obj_property name="ElementShortName">[1][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[2]" type="array">
+         <obj_property name="ElementShortName">[2][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[3]" type="array">
+         <obj_property name="ElementShortName">[3][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[4]" type="array">
+         <obj_property name="ElementShortName">[4][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[5]" type="array">
+         <obj_property name="ElementShortName">[5][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[6]" type="array">
+         <obj_property name="ElementShortName">[6][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][0:8][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[7]" type="array">
+         <obj_property name="ElementShortName">[7][0:8][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][0:8][15:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[8]" type="array">
          <obj_property name="ElementShortName">[8][0:8][15:0]</obj_property>

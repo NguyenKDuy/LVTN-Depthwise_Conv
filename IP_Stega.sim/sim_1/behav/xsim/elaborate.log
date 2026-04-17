@@ -4,20 +4,58 @@ Running: E:/Xilinx/Vivado/2022.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 60 for port 'o_addr1' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:277]
-WARNING: [VRFC 10-3091] actual bit length 10 differs from formal bit length 62 for port 'o_addr2' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:278]
-WARNING: [VRFC 10-3091] actual bit length 12 differs from formal bit length 64 for port 'o_addr3' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:279]
-WARNING: [VRFC 10-3091] actual bit length 6 differs from formal bit length 58 for port 'o_addr4' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:280]
-WARNING: [VRFC 10-3091] actual bit length 10 differs from formal bit length 6 for port 'i_wr_addr' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:335]
-WARNING: [VRFC 10-3091] actual bit length 6 differs from formal bit length 1 for port 'o_data_vld_all' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:341]
-WARNING: [VRFC 10-3091] actual bit length 3 differs from formal bit length 8 for port 'i_wr_stega_ena' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:449]
-WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_1_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:581]
-WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_2_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:582]
-WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_3_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:583]
-WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_4_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:584]
-WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_5_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:585]
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 12 for port 'o_dweight_rd_addr' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:652]
-WARNING: [VRFC 10-3091] actual bit length 10 differs from formal bit length 14 for port 'o_pweight_rd_addr' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:654]
-WARNING: [VRFC 10-3091] actual bit length 48 differs from formal bit length 49 for port 'o_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:856]
+WARNING: [VRFC 10-3091] actual bit length 3 differs from formal bit length 8 for port 'i_wr_stega_ena' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:430]
+WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_1_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:564]
+WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_2_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:565]
+WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_3_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:566]
+WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_4_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:567]
+WARNING: [VRFC 10-3091] actual bit length 512 differs from formal bit length 513 for port 'i_mem_5_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:568]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 12 for port 'o_dweight_rd_addr' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:636]
+WARNING: [VRFC 10-3091] actual bit length 10 differs from formal bit length 14 for port 'o_pweight_rd_addr' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:638]
+WARNING: [VRFC 10-3091] actual bit length 48 differs from formal bit length 49 for port 'o_data' [E:/A_IP_Stega/IP_Stega/IP_Stega.srcs/sources_1/new/top.v:835]
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.receptor
+Compiling module xil_defaultlib.depth_inst(LATENCY=2)
+Compiling module xil_defaultlib.depth_mem_default
+Compiling module xil_defaultlib.point_inst(LATENCY=2)
+Compiling module xil_defaultlib.point_mem_default
+Compiling module xil_defaultlib.point_inst(ADDR_W=6,DATA_W=16,LA...
+Compiling module xil_defaultlib.point_mem(ADDR_W=6,DATA_W=16,RAM...
+Compiling module xil_defaultlib.rd_select
+Compiling module xil_defaultlib.mem_img_default
+Compiling module xil_defaultlib.mem_inst
+Compiling module xil_defaultlib.mem_banks_inst_default
+Compiling module xil_defaultlib.stega_mem_interface
+Compiling module xil_defaultlib.mux_mem1
+Compiling module xil_defaultlib.mem_banks_inst(NUM_BANKS=8)
+Compiling module xil_defaultlib.data_select0
+Compiling module xil_defaultlib.data_select1
+Compiling module xil_defaultlib.rd_fsm_control_default
+Compiling module xil_defaultlib.weight_bias_control(ADDRESS_WEIG...
+Compiling module xil_defaultlib.line_buffer
+Compiling module xil_defaultlib.fsm_line_buffer_default
+Compiling module xil_defaultlib.wr_fsm_control
+Compiling module xil_defaultlib.MAC_9DSP
+Compiling module xil_defaultlib.Post_Processor
+Compiling module xil_defaultlib.Depthwise_Core_Top_default
+Compiling module xil_defaultlib.mux_mode
+Compiling module xil_defaultlib.weight_buffer
+Compiling module xil_defaultlib.pw_mac_default
+Compiling module xil_defaultlib.pw0_pw1_adder
+Compiling module xil_defaultlib.psum_fifo(MAX_PTR=4096)
+Compiling module xil_defaultlib.psum_adder_pw
+Compiling module xil_defaultlib.bias_buffer
+Compiling module xil_defaultlib.relu_output_default
+Compiling module xil_defaultlib.count_stage_done
+Compiling module xil_defaultlib.pw_top_default
+Compiling module xil_defaultlib.wr_data_select
+Compiling module xil_defaultlib.mem2_to_adder
+Compiling module xil_defaultlib.adder_tree
+Compiling module xil_defaultlib.stream_out
+Compiling module xil_defaultlib.top
+Compiling module xil_defaultlib.tb_top
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_top_behav

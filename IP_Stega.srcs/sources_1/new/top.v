@@ -23,13 +23,10 @@
 `timescale 1ns / 1ps
 
 module top #(
-    parameter DATA_W      = 64,
-    parameter ADDR_BIAS   = 6,
-    parameter ADDR_DEPTH  = 8,
-    parameter ADDR_POINT  = 10,
-    parameter ADDR_IMG    = 12,
-    parameter ADDR_IMG_R  = 14,
-    parameter SUB_W       = 16
+    parameter DATA_W                = 64,
+    parameter WEIGHT_MEM_LATENCY    = 2,
+    parameter MEM_LATENCY           = 3
+
 )(
     input           i_clk,
     input           i_rst_n,
@@ -43,29 +40,14 @@ module top #(
     output wire [DATA_W-1:0]   m_axis_tdata,
     output wire                m_axis_tlast,
     input                      m_axis_tready
-    // Interrupt for requesting new data 
-//    output reg                 intr,
-
-    // --- Control Signal from Compute Unit ---
-//    input           top_done 
-
-    // --- Interface dành cho b? Compute Ð?c ---
-//    input  [ADDR_DEPTH-1:0]   i_rd_addr_depth,
-//    input             f        i_rd_enb_depth,
-//    output [9*DATA_W-1:0]     o_data_depth,
-//    output                    o_vld_depth,
-
-//    input  [ADDR_POINT-1:0]   i_rd_addr_point,
-//    input                     i_rd_enb_point,
-//    output [16*DATA_W-1:0]    o_data_point,
-//    output                    o_vld_point,
-
-//    input  [ADDR_IMG_R-1:0]   i_rd_addr_img,
-//    input  [5:0]              i_rd_enb_img,
-//    output [6*SUB_W-1:0]      o_data_img,
-//    output [5:0]              o_vld_img
 );
-
+///////////////////////////////////////////////////////////////////
+    localparam ADDR_BIAS   = 6;
+    localparam ADDR_DEPTH  = 8;
+    localparam ADDR_POINT  = 10;
+    localparam ADDR_IMG    = 12;
+    localparam ADDR_IMG_R  = 14;
+    localparam SUB_W       = 16;
 ///////////////////////////////////////////////////////////////////
 // --- MODULE RECEPTOR
     wire [DATA_W-1:0]     w_shared_data;
@@ -102,7 +84,7 @@ module top #(
     wire [ADDR_BIAS-1:0]    top_rd_addr_bias; 
     wire                    top_rd_enb_bias ; 
     wire [16*16-1:0]        top_data_bias   ; 
-    wire [5:0]              top_vld_bias    ;     
+    wire                    top_vld_bias    ;     
  
 ///////////////////////////////////////////////////////////////////    
 // --- MODULE MEM_0
@@ -162,9 +144,9 @@ module top #(
     (* KEEP = "true" *) wire        depth_sel;
     (* KEEP = "true" *) wire        point_sel;
     (* KEEP = "true" *) wire        bias_sel;  
-    reg top_depth_sel; 
-    reg top_point_sel; 
-    reg top_bias_sel;  
+    wire top_depth_sel; 
+    wire top_point_sel; 
+    wire top_bias_sel;  
 /////////////////////////////////////////////////////////////////////////////////
 //RD_ADDRESS_SELECTION
     wire [ADDR_IMG+1:0] top_rd_mem_img_addr;
@@ -266,7 +248,7 @@ localparam HEAD = 4'd1, DOWNS1 = 4'd2, DOWNS2 = 4'd3, DOWNS3 = 4'd4,
 // VALID: DONE
     receptor #(
         .DATA_W(DATA_W),
-        .ADDR_W(64) 
+        .ADDR_W(12) 
     ) u_receptor (
         .i_clk          (i_clk),
         .i_rst_n        (i_rst_n),
@@ -289,12 +271,12 @@ localparam HEAD = 4'd1, DOWNS1 = 4'd2, DOWNS2 = 4'd3, DOWNS3 = 4'd4,
 
 // --- 2. DEPTH_MEM (9 Banks - Config/Weights) ---
 //  Be consious: latency = 1, it can be possible to be async
-(* DONT_TOUCH = "yes" *)
     depth_mem #(
         .ADDR_W(ADDR_DEPTH),
         .DATA_W(DATA_W),
         .NUM_BANKS(9),
-        .LATENCY(1)                 //caution
+        .LATENCY(WEIGHT_MEM_LATENCY)                
+        
     ) u_depth_mem (
         .i_clk          (i_clk),
         .i_wr_addr      (w_addr_depth_raw[ADDR_DEPTH-1:0]),
@@ -307,13 +289,12 @@ localparam HEAD = 4'd1, DOWNS1 = 4'd2, DOWNS2 = 4'd3, DOWNS3 = 4'd4,
     );
 
 // --- 3. POINT_MEM (16 Banks - Coordinates/Points) ---
-//VALID: DONE
-(* DONT_TOUCH = "yes" *)
     point_mem #(
         .ADDR_W(ADDR_POINT),
         .DATA_W(DATA_W),
         .NUM_BANKS(16),
-        .LATENCY(1)
+        .LATENCY(WEIGHT_MEM_LATENCY)
+        
     ) u_point_mem (
         .i_clk          (i_clk),
         .i_wr_addr      (w_addr_point_raw[ADDR_POINT-1:0]),
@@ -323,30 +304,29 @@ localparam HEAD = 4'd1, DOWNS1 = 4'd2, DOWNS2 = 4'd3, DOWNS3 = 4'd4,
         .i_rd_enb       (top_rd_enb_point),           //already declare here 
         .o_data_all     (top_data_point),             //already declare here 
         .o_data_vld_all (top_vld_point)               //already declare here 
-    );    
-    (* DONT_TOUCH = "yes" *)
+    );   
+    
+     
     point_mem #(
         .ADDR_W(ADDR_BIAS),
         .DATA_W(16),
         .NUM_BANKS(16),
-        .LATENCY(1),
+        .LATENCY(WEIGHT_MEM_LATENCY),
         .RAM_STYLE("distributed")
+        
     ) u_bias_mem (
         .i_clk          (i_clk),
-        .i_wr_addr      (w_addr_bias_raw[ADDR_POINT-1:0]),
+        .i_wr_addr      (w_addr_bias_raw[ADDR_BIAS-1:0]),
         .i_wr_data      (w_shared_data[15:0]),
         .i_wr_ena_mask  (w_valid_bias),
-        .i_rd_addr      (top_rd_addr_bias),          //already declare here 
-        .i_rd_enb       (top_rd_enb_bias),           //already declare here 
-        .o_data_all     (top_data_bias),             //already declare here 
-        .o_data_vld_all (top_vld_bias)               //already declare here 
+        .i_rd_addr      (top_rd_addr_bias),          
+        .i_rd_enb       (top_rd_enb_bias),           
+        .o_data_all     (top_data_bias),             
+        .o_data_vld_all (top_vld_bias)               
     );
 
-
-
-    
-
 // --- Instance rd_select ---
+//
 rd_select #(
     .ADDRESS_DATA (12)
 ) u_rd_select (
@@ -391,7 +371,7 @@ rd_select #(
         .DATA_W(DATA_W),
         .NUM_BANKS(6),
         .SUB_W(SUB_W),
-        .LATENCY(3) 
+        .LATENCY(MEM_LATENCY) 
     ) u_img_mem (
         .i_clk          (i_clk),
         .i_wr_addr      (w_addr_img_raw[ADDR_IMG-1:0]),
@@ -411,7 +391,7 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (16),
-    .LATENCY   (3)
+    .LATENCY   (MEM_LATENCY)
 ) mem_0 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem0_addr),                          //connect to MUX
@@ -465,7 +445,7 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (3)
+    .LATENCY   (MEM_LATENCY)
 ) mem_1 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_mem1_mux_addr),          //connect to MUX
@@ -483,7 +463,7 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (3)
+    .LATENCY   (MEM_LATENCY)
 ) mem_2 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem2_addr),          //connect to MUX
@@ -501,7 +481,7 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (3)
+    .LATENCY   (MEM_LATENCY)
 ) mem_3 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem3_addr),          //connect to MUX
@@ -519,7 +499,7 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (3)
+    .LATENCY   (MEM_LATENCY)
 ) mem_4 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem4_addr),         //connect to MUX
@@ -538,7 +518,7 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (3)
+    .LATENCY   (MEM_LATENCY)
 ) mem_5 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem5_addr),          //connect to MUX
@@ -554,21 +534,24 @@ mem_banks_inst #(
 //DATA_SEL0: 
 data_select0 u_data_select0 (
     .i_mem_img_data    (top_data_img),
-    .i_mem_img_vld     (|top_vld_img),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
     .i_mem_2_data      (top_data_mem_2),
     .i_mem_3_data      (top_data_mem_3),
     .i_mem_4_data      (top_data_mem_4),
     .i_mem_5_data      (top_data_mem_5),
+    
+    .i_mem_img_vld     (|top_vld_img),
     .i_mem_0_vld       (|top_vld_mem_0),
     .i_mem_1_vld       (|top_vld_mem_1),
     .i_mem_2_vld       (|top_vld_mem_2),
     .i_mem_3_vld       (|top_vld_mem_3),
     .i_mem_4_vld       (|top_vld_mem_4),
     .i_mem_5_vld       (|top_vld_mem_5),
+    
     .i_mem_swapping    (top_mem_rd_swapping),
     .i_stage           (top_stage),
+    
     .o_pixel           (top_ds0_pixel),
     .o_valid           (top_ds0_valid)
 );
@@ -577,34 +560,35 @@ data_select0 u_data_select0 (
 //DATA_SEL1: 
 data_select1 u_data_select1 (
     .i_mem_img_data    (top_data_img),
-    .i_mem_img_vld     (|top_vld_img),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
     .i_mem_2_data      (top_data_mem_2),
     .i_mem_3_data      (top_data_mem_3),
     .i_mem_4_data      (top_data_mem_4),
     .i_mem_5_data      (top_data_mem_5),
+    
+    .i_mem_img_vld     (|top_vld_img),
     .i_mem_0_vld       (|top_vld_mem_0),
     .i_mem_1_vld       (|top_vld_mem_1),
     .i_mem_2_vld       (|top_vld_mem_2),
     .i_mem_3_vld       (|top_vld_mem_3),
     .i_mem_4_vld       (|top_vld_mem_4),
     .i_mem_5_vld       (|top_vld_mem_5),
+    
     .i_mem_swapping    (top_mem_rd_swapping),
     .i_stage           (top_stage),
+    
     .o_pixel           (top_ds1_pixel),
     .o_valid           (top_ds1_valid)
 );
     
-    
-
-
-    
     // --- Mux Selects (Dùng cho kh?i Datapath/PE) ---
-
-    
-    (* DONT_TOUCH = "yes" *)
-    rd_fsm_control u_rd_fsm_control (
+    rd_fsm_control  
+    # (.LATENCY (MEM_LATENCY),
+       .ADDRESS_DATA (ADDR_IMG_R)
+    )
+    u_rd_fsm_control
+    (
     .i_clk                  (i_clk),
     .i_enable               (!s_axis_tready),
     .i_rst                  (i_rst_n),           // Lýu ?: ki?m tra i_rst là 1 hay 0 (thý?ng rd_fsm dùng tích c?c cao)
@@ -634,20 +618,19 @@ data_select1 u_data_select1 (
     .o_first_loop           (top_first_loop),
     .o_done                 (top_done)
 );
-//(* KEEP = "true" *)    reg [3:0] tmp_top_stage;
-//    always @(posedge i_clk) begin
-//        tmp_top_stage <= top_stage;
-//    end
+
+
 weight_bias_control #(
     .ADDRESS_WEIGHT         (ADDR_IMG_R),
-    .ADDRESS_BIAS           (ADDR_BIAS)
+    .ADDRESS_BIAS           (ADDR_BIAS),
+    .LATENCY                (WEIGHT_MEM_LATENCY)
 ) u_weight_bias_control (
     .i_clk                  (i_clk),
-    .i_rst_n                (i_rst_n),         // must reset follow i_rst_n || i_done
-    .i_ld_wb_enable         (wb_ld_enable),  // Nh?n l?nh t? FSM
-    .i_stage                (top_stage),         // Nh?n thông tin stage t? FSM
-    .i_last_loop            (top_last_loop),     // Nh?n tr?ng thái loop t? FSM
-    .i_mode                 (top_mode),          // Ch? ð? ho?t ð?ng (S1/S2 ho?c Depth/Point)
+    .i_rst_n                (i_rst_n),       
+    .i_ld_wb_enable         (wb_ld_enable),  
+    .i_stage                (top_stage),         
+    .i_last_loop            (top_last_loop),     
+    .i_mode                 (top_mode),          
     
     // Memory Interface (K?t n?i t?i BRAM ch?a Weight/Bias)
     .o_dweight_rd_addr      (top_rd_addr_depth),
@@ -658,20 +641,15 @@ weight_bias_control #(
     .o_bias_ena             (top_rd_enb_bias),
 
     // Mux Select (K?t n?i t?i kh?i tính toán / Datapath)
-    .o_depth_sel            (depth_sel),
-    .o_point_sel            (point_sel),
-    .o_bias_sel             (bias_sel),
+    .o_depth_select            (top_depth_sel),
+    .o_point_select            (top_point_sel),
+    .o_bias_select             (top_bias_sel),
     
     // Status Output
     .o_load_done            (wb_ld_done)      // Báo v? FSM khi n?p xong
 );
 
-always @(posedge i_clk) begin
-    top_depth_sel <= depth_sel;
-    top_point_sel <= point_sel;
-    top_bias_sel  <= bias_sel ;
-    
-end
+
 
 wire internal_rst_n;
 assign internal_rst_n = i_rst_n && (!top_stage_done);
