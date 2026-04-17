@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="395,180.917 ns"></ZoomStartTime>
-      <ZoomEndTime time="395,865.418 ns"></ZoomEndTime>
+      <ZoomStartTime time="395,208.917 ns"></ZoomStartTime>
+      <ZoomEndTime time="395,845.418 ns"></ZoomEndTime>
       <Cursor1Time time="395,295.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="95"></NameColumnWidth>
-      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+      <NameColumnWidth column_width="178"></NameColumnWidth>
+      <ValueColumnWidth column_width="85"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="420" />
    <wvobject fp_name="/tb_top/i_clk" type="logic">
@@ -1508,11 +1508,56 @@
    <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs" type="array">
       <obj_property name="ElementShortName">weight_regs[0:15][0:8][15:0]</obj_property>
       <obj_property name="ObjectShortName">weight_regs[0:15][0:8][15:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0]" type="array">
          <obj_property name="ElementShortName">[0][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[0][0:8][15:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][0]" type="array">
+            <obj_property name="ElementShortName">[0][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][1]" type="array">
+            <obj_property name="ElementShortName">[1][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][2]" type="array">
+            <obj_property name="ElementShortName">[2][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][3]" type="array">
+            <obj_property name="ElementShortName">[3][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[3][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][4]" type="array">
+            <obj_property name="ElementShortName">[4][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[4][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][5]" type="array">
+            <obj_property name="ElementShortName">[5][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[5][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][6]" type="array">
+            <obj_property name="ElementShortName">[6][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[6][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][7]" type="array">
+            <obj_property name="ElementShortName">[7][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[7][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
+         <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0][8]" type="array">
+            <obj_property name="ElementShortName">[8][15:0]</obj_property>
+            <obj_property name="ObjectShortName">[8][15:0]</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[1]" type="array">
          <obj_property name="ElementShortName">[1][0:8][15:0]</obj_property>
@@ -1552,34 +1597,42 @@
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[8]" type="array">
          <obj_property name="ElementShortName">[8][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[8][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[9]" type="array">
          <obj_property name="ElementShortName">[9][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[9][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[10]" type="array">
          <obj_property name="ElementShortName">[10][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[10][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[11]" type="array">
          <obj_property name="ElementShortName">[11][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[11][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[12]" type="array">
          <obj_property name="ElementShortName">[12][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[12][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[13]" type="array">
          <obj_property name="ElementShortName">[13][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[13][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[14]" type="array">
          <obj_property name="ElementShortName">[14][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[14][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[15]" type="array">
          <obj_property name="ElementShortName">[15][0:8][15:0]</obj_property>
          <obj_property name="ObjectShortName">[15][0:8][15:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/tb_top/top_inst/depthwise_0/weight_regs[0]" type="array">
          <obj_property name="ElementShortName">[0][0:8][15:0]</obj_property>
@@ -1785,21 +1838,13 @@
       <obj_property name="ElementShortName">rst_n</obj_property>
       <obj_property name="ObjectShortName">rst_n</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_weight_valid0" type="logic">
-      <obj_property name="ElementShortName">i_weight_valid0</obj_property>
-      <obj_property name="ObjectShortName">i_weight_valid0</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_weight_valid1" type="logic">
-      <obj_property name="ElementShortName">i_weight_valid1</obj_property>
-      <obj_property name="ObjectShortName">i_weight_valid1</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_valid" type="logic">
-      <obj_property name="ElementShortName">i_valid</obj_property>
-      <obj_property name="ObjectShortName">i_valid</obj_property>
-   </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_mode" type="logic">
       <obj_property name="ElementShortName">i_mode</obj_property>
       <obj_property name="ObjectShortName">i_mode</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_fifo_mode" type="array">
+      <obj_property name="ElementShortName">i_fifo_mode[7:0]</obj_property>
+      <obj_property name="ObjectShortName">i_fifo_mode[7:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_is_first" type="logic">
       <obj_property name="ElementShortName">i_is_first</obj_property>
@@ -1813,13 +1858,21 @@
       <obj_property name="ElementShortName">i_rst_stage</obj_property>
       <obj_property name="ObjectShortName">i_rst_stage</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_fifo_mode" type="array">
-      <obj_property name="ElementShortName">i_fifo_mode[7:0]</obj_property>
-      <obj_property name="ObjectShortName">i_fifo_mode[7:0]</obj_property>
+   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_valid" type="logic">
+      <obj_property name="ElementShortName">i_valid</obj_property>
+      <obj_property name="ObjectShortName">i_valid</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_data_feature" type="array">
       <obj_property name="ElementShortName">i_data_feature[511:0]</obj_property>
       <obj_property name="ObjectShortName">i_data_feature[511:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_weight_valid0" type="logic">
+      <obj_property name="ElementShortName">i_weight_valid0</obj_property>
+      <obj_property name="ObjectShortName">i_weight_valid0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_weight_valid1" type="logic">
+      <obj_property name="ElementShortName">i_weight_valid1</obj_property>
+      <obj_property name="ObjectShortName">i_weight_valid1</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/top_inst/u_pw_unit/i_data_weight_pw" type="array">
       <obj_property name="ElementShortName">i_data_weight_pw[1023:0]</obj_property>

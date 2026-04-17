@@ -120,30 +120,27 @@ module top #(
 ///////////////////////////////////////////////////////////////////    
 // --- MODULE RD_FSM_CONTROL
 
-    (* KEEP = "true" *)    wire [4:0]  top_config_dep_para      ;
-    (* KEEP = "true" *)    wire [4:0]  top_config_point_para    ;
-    (* KEEP = "true" *)    wire [1:0]  top_config_stride        ;
-    (* KEEP = "true" *)    wire [7:0]  top_config_max_line_in   ;
-    (* KEEP = "true" *)    wire [7:0]  top_config_max_line_out  ;
-    (* KEEP = "true" *)    wire [3:0]  top_stage                ;
-    (* KEEP = "true" *)    wire        top_mode                 ; 
+    wire [4:0]  top_config_dep_para      ;
+    wire [4:0]  top_config_point_para    ;
+    wire [1:0]  top_config_stride        ;
+    wire [7:0]  top_config_max_line_in   ;
+    wire [7:0]  top_config_max_line_out  ;
+    wire [3:0]  top_stage                ;
+    wire        top_mode                 ; 
     
     // --- Memory & Counters ---
-    (* KEEP = "true" *)    wire [ADDR_IMG_R - 1:0] top_mem_rd_addr  ;        // Ð?a ch? ð?c d? li?u input/feature map
-    (* KEEP = "true" *)    wire        top_mem_rd_enb               ;
-    (* KEEP = "true" *)    wire [1:0]  top_mem_rd_swapping          ;
-    (* KEEP = "true" *)    wire        top_padding_vld              ;
-    (* KEEP = "true" *)    wire        top_rst_pw_cmp               ;
-    (* KEEP = "true" *)    wire        top_first_loop               ;
-    (* KEEP = "true" *)    wire [3:0]  top_lic_counter              ;
-    (* KEEP = "true" *)    wire [7:0]  top_row_counter              ;
-    (* KEEP = "true" *)    wire [7:0]  top_col_counter              ;
+    wire [ADDR_IMG_R - 1:0] top_mem_rd_addr  ;        // Ð?a ch? ð?c d? li?u input/feature map
+    wire        top_mem_rd_enb               ;
+    wire [1:0]  top_mem_rd_swapping          ;
+    wire        top_padding_vld              ;
+    wire        top_rst_pw_cmp               ;
+    wire        top_first_loop               ;
+    wire [3:0]  top_lic_counter              ;
+    wire [7:0]  top_row_counter              ;
+    wire [7:0]  top_col_counter              ;
 
 //////////////////////////////////////////////////////////////////////
 //MODULE WEIGHT_BIAS_CONTROL
-    (* KEEP = "true" *) wire        depth_sel;
-    (* KEEP = "true" *) wire        point_sel;
-    (* KEEP = "true" *) wire        bias_sel;  
     wire top_depth_sel; 
     wire top_point_sel; 
     wire top_bias_sel;  
@@ -175,69 +172,74 @@ module top #(
     wire         top_ds1_valid;
 
 ////////////////////////////////////////////////////////////////////////////////////
-//DATA_SEL: 
-wire [15:0]  top_wr_mem0_ena ;
-wire [7:0]   top_wr_mem1_ena ;
-wire [7:0]   top_wr_mem2_ena ;
-wire [7:0]   top_wr_mem3_ena ;
-wire [7:0]   top_wr_mem4_ena ;
-wire [7:0]   top_wr_mem5_ena ;
-wire [2:0]   top_wr_stega_ena ;
-
-wire [ADDR_IMG-1:0]     top_wr_mem0_addr ;
-wire [ADDR_IMG-1:0]     top_wr_mem1_addr ;
-wire [ADDR_IMG-1:0]     top_wr_mem2_addr ;
-wire [ADDR_IMG-1:0]     top_wr_mem3_addr ;
-wire [ADDR_IMG-1:0]     top_wr_mem4_addr ;
-wire [ADDR_IMG-1:0]     top_wr_mem5_addr ;
-wire [ADDR_IMG_R-1:0]    top_wr_stega_addr ;
-wire [16 * 16 * 2 - 1:0] top_wr_computed_data;
+    //DATA_SEL: 
+    wire [15:0]  top_wr_mem0_ena ;
+    wire [7:0]   top_wr_mem1_ena ;
+    wire [7:0]   top_wr_mem2_ena ;
+    wire [7:0]   top_wr_mem3_ena ;
+    wire [7:0]   top_wr_mem4_ena ;
+    wire [7:0]   top_wr_mem5_ena ;
+    wire [2:0]   top_wr_stega_ena ;
+    
+    wire [ADDR_IMG-1:0]     top_wr_mem0_addr ;
+    wire [ADDR_IMG-1:0]     top_wr_mem1_addr ;
+    wire [ADDR_IMG-1:0]     top_wr_mem2_addr ;
+    wire [ADDR_IMG-1:0]     top_wr_mem3_addr ;
+    wire [ADDR_IMG-1:0]     top_wr_mem4_addr ;
+    wire [ADDR_IMG-1:0]     top_wr_mem5_addr ;
+    wire [ADDR_IMG_R-1:0]    top_wr_stega_addr ;
+    wire [16 * 16 * 2 - 1:0] top_wr_computed_data;
  
 ////////////////////////////////////////////////////////////////////////////////////
 //WR_DATA_SELECT: 
-wire [1023:0]           top_wr_data_mem0;
-
-// Mem 1-5: 8 banks x 64 bits = 512 bits m?i c?m
-wire [511:0]            top_wr_data_mem1;
-wire [511:0]            top_wr_data_mem2;
-wire [511:0]            top_wr_data_mem3;
-wire [511:0]            top_wr_data_mem4;
-wire [511:0]            top_wr_data_mem5;
-
-// Stega Mem: 16 bits * 3 = 48 bits
-wire [47:0]             top_wr_data_mem_stega;
-
+    wire [1023:0]           top_wr_data_mem0;
+    
+    // Mem 1-5: 8 banks x 64 bits = 512 bits m?i c?m
+    wire [511:0]            top_wr_data_mem1;
+    wire [511:0]            top_wr_data_mem2;
+    wire [511:0]            top_wr_data_mem3;
+    wire [511:0]            top_wr_data_mem4;
+    wire [511:0]            top_wr_data_mem5;
+    
+    // Stega Mem: 16 bits * 3 = 48 bits
+    wire [47:0]             top_wr_data_mem_stega;
+    
 //////////////////////////////////////////////////////////
 //DEPTH_WISE & POINTWISE:
-wire [255:0] top_depth_computed0;
-wire [255:0] top_depth_computed1;
-wire [255:0] top_mux_point_data;
-wire top_depth_computed_vld0;    
-wire top_depth_computed_vld1;  
-wire top_mux_point_vld;  
-
-wire [255:0] top_point_computed0, top_point_computed1;  
-wire top_point_computed_vld0, top_point_computed_vld1; 
+    wire [255:0] top_depth_computed0;
+    wire [255:0] top_depth_computed1;
+    wire [255:0] top_mux_point_data;
+    wire top_depth_computed_vld0;    
+    wire top_depth_computed_vld1;  
+    wire top_mux_point_vld;  
+    
+    wire [255:0] top_point_computed0, top_point_computed1;  
+    wire top_point_computed_vld0, top_point_computed_vld1; 
 
 //////////////////////////////////////////////////////////////////
 //MODULE: STEGA_INTERFACE  (support write 16bit-2-64bit)
-wire [11:0]             top_stega_addr; // Ð?a ch? d?ng (64-bit row)
-wire [191:0]            top_stega_data; // D? li?u 3 banks x 64-bit = 192 bits
-wire [2:0]              top_stega_ena;  // L?nh ghi cho t?ng bank
+    wire [11:0]             top_stega_addr; // Ð?a ch? d?ng (64-bit row)
+    wire [191:0]            top_stega_data; // D? li?u 3 banks x 64-bit = 192 bits
+    wire [2:0]              top_stega_ena;  // L?nh ghi cho t?ng bank
+    
+    wire [511:0]            top_mem1_mux_data; // 16-bit * 8 banks = 128 bits
+    wire [11:0]             top_mem1_mux_addr;
+    wire [7:0]              top_mem1_mux_ena;
+    
+    wire top_stage_done;   
+    wire wb_ld_done, wb_ld_enable, top_last_loop;
+    wire [47:0] top_wr_computed_adder, top_computed_adder, top_adder_residual;
+    wire top_vld_adder;
+//////////////////////////////////////////////////////////////////
+//MODULE: LINE_BUFFER
+    wire [2303: 0] top_lb_kernel_0, top_lb_kernel_1;
+    wire top_lb_kernel_vld_0, top_lb_kernel_vld_1;
+    wire internal_rst_n;
+    assign internal_rst_n = i_rst_n && (!top_stage_done);
 
-wire [511:0]            top_mem1_mux_data; // 16-bit * 8 banks = 128 bits
-wire [11:0]             top_mem1_mux_addr;
-wire [7:0]              top_mem1_mux_ena;
-
-wire top_stage_done;   
-wire wb_ld_done, wb_ld_enable, top_last_loop;
-wire [47:0] top_wr_computed_adder, top_computed_adder, top_adder_residual;
-wire top_vld_adder;
-
-wire [2303: 0] top_lb_kernel_0, top_lb_kernel_1;
-wire top_lb_kernel_vld_0, top_lb_kernel_vld_1;
-
-localparam HEAD = 4'd1, DOWNS1 = 4'd2, DOWNS2 = 4'd3, DOWNS3 = 4'd4, 
+    
+    
+    localparam HEAD = 4'd1, DOWNS1 = 4'd2, DOWNS2 = 4'd3, DOWNS3 = 4'd4, 
                BOTT = 4'd5, UPS1 = 4'd6, UPS2 = 4'd7, UPS3 = 4'd8, 
                UPS4 = 4'd9, TAIL = 4'd10, DONE = 4'd11;
 
@@ -246,90 +248,87 @@ localparam HEAD = 4'd1, DOWNS1 = 4'd2, DOWNS2 = 4'd3, DOWNS3 = 4'd4,
 
 // --- 1. Module RECEPTOR ---
 // VALID: DONE
-    receptor #(
-        .DATA_W(DATA_W),
-        .ADDR_W(12) 
-    ) u_receptor (
-        .i_clk          (i_clk),
-        .i_rst_n        (i_rst_n),
-        .s_axis_tvalid  (s_axis_tvalid),
-        .s_axis_tdata   (s_axis_tdata),
-        .s_axis_tready  (s_axis_tready),
-        .i_done         (top_done),           //Use when finish one image
-        .o_data         (w_shared_data),
-        .o_addr1        (w_addr_depth_raw [ADDR_IMG-5:0]),
-        .o_addr2        (w_addr_point_raw [ADDR_IMG-3:0]),
-        .o_addr3        (w_addr_img_raw   [ADDR_IMG-1:0]),
-        .o_addr4        (w_addr_bias_raw  [ADDR_IMG-7:0]),
-        .o_valid1       (w_valid_depth),
-        .o_valid2       (w_valid_point),
-        .o_valid3       (w_valid_img),
-        .o_valid4       (w_valid_bias)
+receptor #(
+    .DATA_W(DATA_W),
+    .ADDR_W(12)) 
+u_receptor (
+    .i_clk          (i_clk),
+    .i_rst_n        (i_rst_n),
+    .s_axis_tvalid  (s_axis_tvalid),
+    .s_axis_tdata   (s_axis_tdata),
+    .s_axis_tready  (s_axis_tready),
+    .i_done         (top_done),           //Use when finish one image
+    .o_data         (w_shared_data),
+    .o_addr1        (w_addr_depth_raw [ADDR_IMG-5:0]),
+    .o_addr2        (w_addr_point_raw [ADDR_IMG-3:0]),
+    .o_addr3        (w_addr_img_raw   [ADDR_IMG-1:0]),
+    .o_addr4        (w_addr_bias_raw  [ADDR_IMG-7:0]),
+    .o_valid1       (w_valid_depth),
+    .o_valid2       (w_valid_point),
+    .o_valid3       (w_valid_img),
+    .o_valid4       (w_valid_bias)
     );
     
     
 
 // --- 2. DEPTH_MEM (9 Banks - Config/Weights) ---
 //  Be consious: latency = 1, it can be possible to be async
-    depth_mem #(
-        .ADDR_W(ADDR_DEPTH),
-        .DATA_W(DATA_W),
-        .NUM_BANKS(9),
-        .LATENCY(WEIGHT_MEM_LATENCY)                
-        
-    ) u_depth_mem (
-        .i_clk          (i_clk),
-        .i_wr_addr      (w_addr_depth_raw[ADDR_DEPTH-1:0]),
-        .i_wr_data      (w_shared_data),
-        .i_wr_ena_mask  (w_valid_depth),
-        .i_rd_addr      (top_rd_addr_depth),          //already declare here
-        .i_rd_enb       (top_rd_enb_depth),           //already declare here
-        .o_data_all     (top_data_depth),             //already declare here  
-        .o_data_vld_all (top_vld_depth)               //already declare here
+depth_mem #(
+    .ADDR_W(ADDR_DEPTH),
+    .DATA_W(DATA_W),
+    .NUM_BANKS(9),
+    .LATENCY(WEIGHT_MEM_LATENCY)) 
+u_depth_mem (
+    .i_clk          (i_clk),
+    .i_wr_addr      (w_addr_depth_raw[ADDR_DEPTH-1:0]),
+    .i_wr_data      (w_shared_data),
+    .i_wr_ena_mask  (w_valid_depth),
+    .i_rd_addr      (top_rd_addr_depth),          //already declare here
+    .i_rd_enb       (top_rd_enb_depth),           //already declare here
+    .o_data_all     (top_data_depth),             //already declare here  
+    .o_data_vld_all (top_vld_depth)               //already declare here
     );
 
 // --- 3. POINT_MEM (16 Banks - Coordinates/Points) ---
-    point_mem #(
-        .ADDR_W(ADDR_POINT),
-        .DATA_W(DATA_W),
-        .NUM_BANKS(16),
-        .LATENCY(WEIGHT_MEM_LATENCY)
-        
-    ) u_point_mem (
-        .i_clk          (i_clk),
-        .i_wr_addr      (w_addr_point_raw[ADDR_POINT-1:0]),
-        .i_wr_data      (w_shared_data),
-        .i_wr_ena_mask  (w_valid_point),
-        .i_rd_addr      (top_rd_addr_point),          //already declare here 
-        .i_rd_enb       (top_rd_enb_point),           //already declare here 
-        .o_data_all     (top_data_point),             //already declare here 
-        .o_data_vld_all (top_vld_point)               //already declare here 
+point_mem #(
+    .ADDR_W(ADDR_POINT),
+    .DATA_W(DATA_W),
+    .NUM_BANKS(16),
+    .LATENCY(WEIGHT_MEM_LATENCY)) 
+u_point_mem (
+    .i_clk          (i_clk),
+    .i_wr_addr      (w_addr_point_raw[ADDR_POINT-1:0]),
+    .i_wr_data      (w_shared_data),
+    .i_wr_ena_mask  (w_valid_point),
+    .i_rd_addr      (top_rd_addr_point),          //already declare here 
+    .i_rd_enb       (top_rd_enb_point),           //already declare here 
+    .o_data_all     (top_data_point),             //already declare here 
+    .o_data_vld_all (top_vld_point)               //already declare here 
     );   
     
      
-    point_mem #(
-        .ADDR_W(ADDR_BIAS),
-        .DATA_W(16),
-        .NUM_BANKS(16),
-        .LATENCY(WEIGHT_MEM_LATENCY),
-        .RAM_STYLE("distributed")
-        
-    ) u_bias_mem (
-        .i_clk          (i_clk),
-        .i_wr_addr      (w_addr_bias_raw[ADDR_BIAS-1:0]),
-        .i_wr_data      (w_shared_data[15:0]),
-        .i_wr_ena_mask  (w_valid_bias),
-        .i_rd_addr      (top_rd_addr_bias),          
-        .i_rd_enb       (top_rd_enb_bias),           
-        .o_data_all     (top_data_bias),             
-        .o_data_vld_all (top_vld_bias)               
+point_mem #(
+    .ADDR_W(ADDR_BIAS),
+    .DATA_W(16),
+    .NUM_BANKS(16),
+    .LATENCY(WEIGHT_MEM_LATENCY),
+    .RAM_STYLE("distributed")) 
+u_bias_mem (
+    .i_clk          (i_clk),
+    .i_wr_addr      (w_addr_bias_raw[ADDR_BIAS-1:0]),
+    .i_wr_data      (w_shared_data[15:0]),
+    .i_wr_ena_mask  (w_valid_bias),
+    .i_rd_addr      (top_rd_addr_bias),          
+    .i_rd_enb       (top_rd_enb_bias),           
+    .o_data_all     (top_data_bias),             
+    .o_data_vld_all (top_vld_bias)               
     );
 
 // --- Instance rd_select ---
 //
 rd_select #(
-    .ADDRESS_DATA (12)
-) u_rd_select (
+    .ADDRESS_DATA (12)) 
+u_rd_select (
     .i_stage           (top_stage),
     .i_mem_rd_swapping (top_mem_rd_swapping), // Ép ki?u 2-bit sang 3-bit n?u c?n
     .i_mem_rd_addr     (top_mem_rd_addr),
@@ -355,7 +354,7 @@ rd_select #(
     .o_mem4_enb        (top_rd_mem4_enb),
     .o_mem5_enb        (top_rd_mem5_enb)
 //    .o_mem_stega_enb   (top_rd_mem_stega_enb)
-);
+    );
 
 // --- K?t n?i ngý?c l?i module mem_0 (Ví d?) ---
 // Sau khi g?i rd_select, Duy nh? c?p nh?t l?i các c?ng ð?c c?a module nh?:
@@ -365,22 +364,22 @@ rd_select #(
 
 /////////////////////////////////////////////////////////////////////////////////
 //MEM_IMG: 6 banks: SAVE HEAD FROM AXI
-    mem_img #(
-        .ADDR_W(ADDR_IMG),
-        .ADDR_R(ADDR_IMG_R),
-        .DATA_W(DATA_W),
-        .NUM_BANKS(6),
-        .SUB_W(SUB_W),
-        .LATENCY(MEM_LATENCY) 
-    ) u_img_mem (
-        .i_clk          (i_clk),
-        .i_wr_addr      (w_addr_img_raw[ADDR_IMG-1:0]),
-        .i_wr_data_all  ({6{w_shared_data}}),       // Should have Mux here soon!
-        .i_wr_en_mask   (w_valid_img),
-        .i_rd_addr      (top_rd_mem_img_addr),            //already declare here 
-        .i_rd_enb       (top_rd_mem_img_enb),             //already declare here 
-        .o_data_all     (top_data_img),               //already declare here 
-        .o_data_vld     (top_vld_img)                 //already declare here 
+mem_img #(
+    .ADDR_W(ADDR_IMG),
+    .ADDR_R(ADDR_IMG_R),
+    .DATA_W(DATA_W),
+    .NUM_BANKS(6),
+    .SUB_W(SUB_W),
+    .LATENCY(MEM_LATENCY)) 
+u_img_mem (
+    .i_clk          (i_clk),
+    .i_wr_addr      (w_addr_img_raw[ADDR_IMG-1:0]),
+    .i_wr_data_all  ({6{w_shared_data}}),       // Should have Mux here soon!
+    .i_wr_en_mask   (w_valid_img),
+    .i_rd_addr      (top_rd_mem_img_addr),            //already declare here 
+    .i_rd_enb       (top_rd_mem_img_enb),             //already declare here 
+    .o_data_all     (top_data_img),               //already declare here 
+    .o_data_vld     (top_vld_img)                 //already declare here 
     );
 
 
@@ -391,8 +390,8 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (16),
-    .LATENCY   (MEM_LATENCY)
-) mem_0 (
+    .LATENCY   (MEM_LATENCY)) 
+mem_0 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem0_addr),                          //connect to MUX
     .i_wr_data_all     (top_wr_data_mem0),                          //connect to MUX
@@ -401,30 +400,30 @@ mem_banks_inst #(
     .i_rd_enb_mask     (top_rd_mem0_enb),                          //connect to MUX
     .o_data_all        (top_data_mem_0),                          //connect to MUX
     .o_data_vld_all    (top_vld_mem_0)                           //connect to MUX           
-);
+    );
 
 /////////////////////////////////////////////////////////////////////////////////
 //STEGA_MEM_INTERFACE: This module is take the output of add operation between
 //cover and residual => Save in 16*3 bit in MEM1
 stega_mem_interface #(
-        .ADDR_W(12),
-        .DATA_W(64),
-        .NUM_BANKS(3)
-    ) u_stega_bridge (
-        .i_clk              (i_clk),
-        .i_rst_n            (i_rst_n),
-        .i_stega_wr_addr    (top_wr_stega_addr), 
-        .i_stega_wr_data    (top_wr_data_mem_stega), // top_wr_data_mem_stega Duy ð?nh ngh?a trý?c ðó
-        .i_stega_wr_en      (top_wr_stega_ena),
-        
-        .o_gen_wr_addr      (top_stega_addr),
-        .o_gen_wr_data      (top_stega_data),
-        .o_gen_wr_en        (top_stega_ena)
+    .ADDR_W(12),
+    .DATA_W(64),
+    .NUM_BANKS(3)) 
+u_stega_bridge (
+    .i_clk              (i_clk),
+    .i_rst_n            (i_rst_n),
+    .i_stega_wr_addr    (top_wr_stega_addr), 
+    .i_stega_wr_data    (top_wr_data_mem_stega), // top_wr_data_mem_stega Duy ð?nh ngh?a trý?c ðó
+    .i_stega_wr_en      (top_wr_stega_ena),
+    
+    .o_gen_wr_addr      (top_stega_addr),
+    .o_gen_wr_data      (top_stega_data),
+    .o_gen_wr_en        (top_stega_ena)
     );
-
+///////////////////////////////////////////////////////////////
 mux_mem1 #(
-    .ADDR(12)
-) u_mux_mem1 (
+    .ADDR(12)) 
+u_mux_mem1 (
     .i_stage            (top_stage),             
    
     .i_wr_stega_ena     (top_stega_ena),    
@@ -438,15 +437,15 @@ mux_mem1 #(
     .o_wr_mem_mux_data  (top_mem1_mux_data),
     .o_wr_mem_mux_addr  (top_mem1_mux_addr),
     .o_wr_mem_mux_ena   (top_mem1_mux_ena)
-);
+    );
 
 //MEM1: 8 banks
 mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (MEM_LATENCY)
-) mem_1 (
+    .LATENCY   (MEM_LATENCY)) 
+mem_1 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_mem1_mux_addr),          //connect to MUX
     .i_wr_data_all     (top_mem1_mux_data),                         //connect to MUX
@@ -455,7 +454,7 @@ mem_banks_inst #(
     .i_rd_enb_mask     (top_rd_mem1_enb),                          //connect to MUX
     .o_data_all        (top_data_mem_1),                          //connect to MUX
     .o_data_vld_all    (top_vld_mem_1)                           //connect to MUX           
-);
+    );
 
 /////////////////////////////////////////////////////////////////////////////////
 //MEM2: 8 banks
@@ -463,8 +462,8 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (MEM_LATENCY)
-) mem_2 (
+    .LATENCY   (MEM_LATENCY))
+mem_2 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem2_addr),          //connect to MUX
     .i_wr_data_all     (top_wr_data_mem2),                          //connect to MUX
@@ -473,7 +472,7 @@ mem_banks_inst #(
     .i_rd_enb_mask     (top_rd_mem2_enb),                          //connect to MUX
     .o_data_all        (top_data_mem_2),                          //connect to MUX
     .o_data_vld_all    (top_vld_mem_2)                           //connect to MUX           
-);
+    );
 
 /////////////////////////////////////////////////////////////////////////////////
 //MEM3: 8 banks
@@ -481,8 +480,8 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (MEM_LATENCY)
-) mem_3 (
+    .LATENCY   (MEM_LATENCY)) 
+mem_3 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem3_addr),          //connect to MUX
     .i_wr_data_all     (top_wr_data_mem3),                          //connect to MUX
@@ -491,7 +490,7 @@ mem_banks_inst #(
     .i_rd_enb_mask     (top_rd_mem3_enb),                          //connect to MUX
     .o_data_all        (top_data_mem_3),                          //connect to MUX
     .o_data_vld_all    (top_vld_mem_3)                           //connect to MUX           
-);
+    );
 
 /////////////////////////////////////////////////////////////////////////////////
 //MEM4: 8 banks
@@ -499,8 +498,8 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (MEM_LATENCY)
-) mem_4 (
+    .LATENCY   (MEM_LATENCY)) 
+mem_4 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem4_addr),         //connect to MUX
     .i_wr_data_all     (top_wr_data_mem4),                         //connect to MUX
@@ -509,7 +508,7 @@ mem_banks_inst #(
     .i_rd_enb_mask     (top_rd_mem4_enb),                          //connect to MUX
     .o_data_all        (top_data_mem_4),                          //connect to MUX
     .o_data_vld_all    (top_vld_mem_4)                           //connect to MUX           
-);
+    );
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -518,8 +517,8 @@ mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_W),
     .NUM_BANKS (8),
-    .LATENCY   (MEM_LATENCY)
-) mem_5 (
+    .LATENCY   (MEM_LATENCY)) 
+mem_5 (
     .i_clk             (i_clk),
     .i_wr_addr         (top_wr_mem5_addr),          //connect to MUX
     .i_wr_data_all     (top_wr_data_mem5),                          //connect to MUX
@@ -528,11 +527,12 @@ mem_banks_inst #(
     .i_rd_enb_mask     (top_rd_mem5_enb),                          //connect to MUX
     .o_data_all        (top_data_mem_5),                          //connect to MUX
     .o_data_vld_all    (top_vld_mem_5)                           //connect to MUX           
-);
+    );
 
 /////////////////////////////////////////////////////////////////////////////////
 //DATA_SEL0: 
-data_select0 u_data_select0 (
+data_select0 
+u_data_select0 (
     .i_mem_img_data    (top_data_img),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
@@ -558,7 +558,8 @@ data_select0 u_data_select0 (
 
 /////////////////////////////////////////////////////////////////////////////////
 //DATA_SEL1: 
-data_select1 u_data_select1 (
+data_select1 
+u_data_select1 (
     .i_mem_img_data    (top_data_img),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
@@ -580,14 +581,14 @@ data_select1 u_data_select1 (
     
     .o_pixel           (top_ds1_pixel),
     .o_valid           (top_ds1_valid)
-);
+    );
     
     // --- Mux Selects (Dùng cho kh?i Datapath/PE) ---
-    rd_fsm_control  
+rd_fsm_control  
     # (.LATENCY (MEM_LATENCY),
        .ADDRESS_DATA (ADDR_IMG_R)
     )
-    u_rd_fsm_control
+u_rd_fsm_control
     (
     .i_clk                  (i_clk),
     .i_enable               (!s_axis_tready),
@@ -617,7 +618,7 @@ data_select1 u_data_select1 (
     .o_rst_pw_cmp           (top_rst_pw_cmp),
     .o_first_loop           (top_first_loop),
     .o_done                 (top_done)
-);
+    );
 
 
 weight_bias_control #(
@@ -651,8 +652,6 @@ weight_bias_control #(
 
 
 
-wire internal_rst_n;
-assign internal_rst_n = i_rst_n && (!top_stage_done);
 
 fsm_line_buffer #(
     .DATA_IN_W (256),

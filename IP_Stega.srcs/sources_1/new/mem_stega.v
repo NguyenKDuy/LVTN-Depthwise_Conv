@@ -87,6 +87,7 @@ parameter ADDR = 12
     input [7:0]         i_wr_stega_ena,
     input [ADDR - 1:0]  i_wr_stega_addr,
     input [64*3 - 1:0]  i_wr_stega_data,
+    
     input [7:0]         i_wr_mem_ena,
     input [ADDR - 1:0]  i_wr_mem_addr,
     input [64*8 - 1:0]  i_wr_mem_data,

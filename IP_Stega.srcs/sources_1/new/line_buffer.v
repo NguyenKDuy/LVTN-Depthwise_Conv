@@ -84,7 +84,6 @@ module line_buffer (
     // -------------------------------------------------------------------------
     (* ram_style = "distributed" *) reg [255:0] line [256:0]; //only use 130
     reg [7:0]   wrPntr;
-//    reg [7:0]   rdPntr;
     integer     k;
  
     // i_config_max_line_in  = width g?c (vd: 128), wrap wrPntr t?i 128+1=129
@@ -101,7 +100,7 @@ module line_buffer (
             max_line_out_p1 <= i_config_max_line_in - i_config_stride;  // 129 (wrap rdPntr)
         end
     end
- 
+
     // -------------------------------------------------------------------------
     // Write Logic
     // -------------------------------------------------------------------------
@@ -118,45 +117,6 @@ module line_buffer (
         end
     end
     
-//    reg [1:0]  col_cnt;      // ð?m pixel trong window: 0,1,2
-//    reg [7:0]  window_base;  // base c?a window hi?n t?i (dùng cho almost_done)
-//    reg [7:0]  max_out_reg;  // registered 
-    
-//    always @(posedge i_clk) begin
-//        if (!i_rst_n) begin
-//            rdPntr      <= 8'd0;
-//            col_cnt     <= 2'd0;
-//            window_base <= 8'd0;
-//        end else if (i_rd_data) begin
-//            if (i_config_stride == 2'd1) begin
-//                // Stride=1: ð?c liên t?c, col_cnt ch? ð? track latency ban ð?u
-//                rdPntr  <= (rdPntr >= max_out_reg) ? 8'd0 : rdPntr + 8'd1;
-//                col_cnt <= (col_cnt == 2'd2) ? 2'd2 : col_cnt + 2'd1;
-//                // window_base: advance 1 m?i cycle sau khi ð? 3 pixel ð?u
-//                if (col_cnt == 2'd2)
-//                    window_base <= (window_base >= max_out_reg) ? 8'd0
-//                                                                : window_base + 8'd1;
-//            end else begin
-//                // Stride=2: ð?c 3 pixel, sau ðó lùi 1 (rdPntr gi? t?i col+2)
-//                if (col_cnt == 2'd2) begin
-//                    // K?t thúc window: pixel hi?n t?i (rdPntr) tr? thành base m?i
-//                    // Gi? nguyên rdPntr, reset col_cnt v? 0
-//                    // rdPntr s? ðý?c ð?c l?i ? cycle ti?p (col_cnt=0 c?a window m?i)
-//                    col_cnt     <= 2'd0;
-//                    window_base <= rdPntr; // base m?i = pixel cu?i window c?
-//                    // rdPntr không advance (s? ð?c l?i pixel này)
-//                end else begin
-//                    col_cnt <= col_cnt + 2'd1;
-//                    rdPntr  <= rdPntr + 8'd1;
-//                end
-//            end
-//        end else if (!i_rd_data) begin
-//            // Khi không ð?c, reset col_cnt ð? tránh valid gi?
-//            // KHÔNG reset rdPntr (gi? v? trí)
-//            col_cnt <= 2'd0;
-//        end
-//    end
- 
     // -------------------------------------------------------------------------
     // Read Pointer Logic
     // -------------------------------------------------------------------------
