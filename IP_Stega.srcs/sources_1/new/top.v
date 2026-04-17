@@ -33,11 +33,11 @@ module top #(
 
     // --- AXI4-Stream Slave (DMA) ---
     input           s_axis_tvalid,
-    input  [DATA_W-1:0] s_axis_tdata,
+    input           [DATA_W-1:0] s_axis_tdata,
     output          s_axis_tready,
-    // AXI Stream out Interface
+    // --- AXI Stream out Interface ---
     output wire                m_axis_tvalid,
-    output wire [DATA_W-1:0]   m_axis_tdata,
+    output wire     [DATA_W-1:0]   m_axis_tdata,
     output wire                m_axis_tlast,
     input                      m_axis_tready
 );
@@ -624,8 +624,8 @@ u_rd_fsm_control
 weight_bias_control #(
     .ADDRESS_WEIGHT         (ADDR_IMG_R),
     .ADDRESS_BIAS           (ADDR_BIAS),
-    .LATENCY                (WEIGHT_MEM_LATENCY)
-) u_weight_bias_control (
+    .LATENCY                (WEIGHT_MEM_LATENCY)) 
+u_weight_bias_control (
     .i_clk                  (i_clk),
     .i_rst_n                (i_rst_n),       
     .i_ld_wb_enable         (wb_ld_enable),  
@@ -648,15 +648,15 @@ weight_bias_control #(
     
     // Status Output
     .o_load_done            (wb_ld_done)      // Báo v? FSM khi n?p xong
-);
+    );
 
 
 
 
 fsm_line_buffer #(
     .DATA_IN_W (256),
-    .KERNEL_W  (2304)
-) u_fsm_line_buffer0 (
+    .KERNEL_W  (2304)) 
+u_fsm_line_buffer0 (
     .i_clk                 (i_clk),
     .i_rst_n               (internal_rst_n),
     .i_enable              (!s_axis_tready),
@@ -668,12 +668,12 @@ fsm_line_buffer #(
     .i_data_in             (top_ds0_pixel),
     .o_kernel_data         (top_lb_kernel_0),
     .o_kernel_vld          (top_lb_kernel_vld_0)
-);
+    );
 
 fsm_line_buffer #(
     .DATA_IN_W (256),
-    .KERNEL_W  (2304)
-) u_fsm_line_buffer1 (
+    .KERNEL_W  (2304)) 
+u_fsm_line_buffer1 (
     .i_clk                 (i_clk),
     .i_rst_n               (internal_rst_n),
     .i_enable              (!s_axis_tready && (top_mode == 1)),
@@ -685,56 +685,54 @@ fsm_line_buffer #(
     .i_data_in             (top_ds1_pixel),
     .o_kernel_data         (top_lb_kernel_1),
     .o_kernel_vld          (top_lb_kernel_vld_1)
-);
+    );
 
 /////////////////////////////////////////////////////////////////////////////////
 //WR_FSM_CONTROL: This use to write to memories according to STAGE, and save valid data.
 //This module can work from output from Pointwise and from Adder Tree at Done stage.
-    (* DONT_TOUCH = "yes" *)
-    wr_fsm_control #(
-        .DATA_COMPUTED_W (512),
-        .ADDR_URAM_W     (12),
-        .ADDR_STEGA_W    (14)
-    ) u_wr_ctrl (
-        .i_clk               (i_clk),
-        .i_rst_n             (i_rst_n),
-        
-        // Inputs t? Core
-        .i_computed_data     ({top_point_computed1,top_point_computed0}),
-        .i_vld               (top_point_computed_vld0 | top_point_computed_vld1),
-        .i_adder_vld         (top_vld_adder),
-        .i_computed_adder    (top_computed_adder),
-        .i_stage             (top_stage),
+wr_fsm_control #(
+    .DATA_COMPUTED_W (512),
+    .ADDR_URAM_W     (12),
+    .ADDR_STEGA_W    (14)) 
+u_wr_ctrl (
+    .i_clk               (i_clk),
+    .i_rst_n             (i_rst_n),
     
-        // Outputs Enable
-        .o_wr_mem0_ena       (top_wr_mem0_ena),
-        .o_wr_mem1_ena       (top_wr_mem1_ena),
-        .o_wr_mem2_ena       (top_wr_mem2_ena),
-        .o_wr_mem3_ena       (top_wr_mem3_ena),
-        .o_wr_mem4_ena       (top_wr_mem4_ena),
-        .o_wr_mem5_ena       (top_wr_mem5_ena),
-        .o_wr_mem_stega_ena  (top_wr_stega_ena),
+    // Inputs t? Core
+    .i_computed_data     ({top_point_computed1,top_point_computed0}),
+    .i_vld               (top_point_computed_vld0 | top_point_computed_vld1),
+    .i_adder_vld         (top_vld_adder),
+    .i_computed_adder    (top_computed_adder),
+    .i_stage             (top_stage),
+
+    // Outputs Enable
+    .o_wr_mem0_ena       (top_wr_mem0_ena),
+    .o_wr_mem1_ena       (top_wr_mem1_ena),
+    .o_wr_mem2_ena       (top_wr_mem2_ena),
+    .o_wr_mem3_ena       (top_wr_mem3_ena),
+    .o_wr_mem4_ena       (top_wr_mem4_ena),
+    .o_wr_mem5_ena       (top_wr_mem5_ena),
+    .o_wr_mem_stega_ena  (top_wr_stega_ena),
+
+    // Outputs Addresses
+    .o_wr_mem0_addr      (top_wr_mem0_addr),
+    .o_wr_mem1_addr      (top_wr_mem1_addr),
+    .o_wr_mem2_addr      (top_wr_mem2_addr),
+    .o_wr_mem3_addr      (top_wr_mem3_addr),
+    .o_wr_mem4_addr      (top_wr_mem4_addr),
+    .o_wr_mem5_addr      (top_wr_mem5_addr),
+    .o_wr_mem_stega_addr (top_wr_stega_addr),       //top_adder_vld
     
-        // Outputs Addresses
-        .o_wr_mem0_addr      (top_wr_mem0_addr),
-        .o_wr_mem1_addr      (top_wr_mem1_addr),
-        .o_wr_mem2_addr      (top_wr_mem2_addr),
-        .o_wr_mem3_addr      (top_wr_mem3_addr),
-        .o_wr_mem4_addr      (top_wr_mem4_addr),
-        .o_wr_mem5_addr      (top_wr_mem5_addr),
-        .o_wr_mem_stega_addr (top_wr_stega_addr),       //top_adder_vld
-        
-        .o_computed_data     (top_wr_computed_data), // Data ð? delay kh?p v?i Addr/Ena
-        .o_computed_adder     (top_wr_computed_adder) // Data ð? delay kh?p v?i Addr/Ena
+    .o_computed_data     (top_wr_computed_data), // Data ð? delay kh?p v?i Addr/Ena
+    .o_computed_adder     (top_wr_computed_adder) // Data ð? delay kh?p v?i Addr/Ena
     );
     
     
 
  
 
-    (* DONT_TOUCH = "yes" *)
-    Depthwise_Core_Top 
-    depthwise_0
+Depthwise_Core_Top 
+depthwise_0
     (
     .clk (i_clk), 
     .rst_n (i_rst_n),
@@ -744,12 +742,11 @@ fsm_line_buffer #(
     .i_all_windows (top_lb_kernel_0), // 16 CH * 9 P * 16 bits
     .o_data (top_depth_computed0),
     .o_data_valid(top_depth_computed_vld0)
-);
+    );
 
 
-    (* DONT_TOUCH = "yes" *)
-    Depthwise_Core_Top 
-    depthwise_1
+Depthwise_Core_Top 
+depthwise_1
     (
     .clk (i_clk), 
     .rst_n (i_rst_n),
@@ -759,10 +756,10 @@ fsm_line_buffer #(
     .i_all_windows (top_lb_kernel_1), // 16 CH * 9 P * 16 bits
     .o_data (top_depth_computed1),
     .o_data_valid(top_depth_computed_vld1)
-);
+    );
 
-    (* DONT_TOUCH = "yes" *)
-    mux_mode u_mux_mode(
+mux_mode 
+u_mux_mode(
     .i_mode (top_mode),
     .i_depth_vld_0 (top_depth_computed_vld0),
     .i_depth_vld_1 (top_depth_computed_vld1),
@@ -770,84 +767,85 @@ fsm_line_buffer #(
     .i_depth_data_1 (top_depth_computed1),
     .mux_out_data (top_mux_point_data),
     .mux_out_vld (top_mux_point_vld)
-);
-
-    (* DONT_TOUCH = "yes" *)
-    pw_top #(
-        .DATA_WIDTH(16),
-        .IN_CHANNELS(16),
-        .OUT_CHANNELS(16)
-    ) u_pw_unit (
-        .clk                (i_clk),
-        .rst_n              (i_rst_n),
-        
-        // C?p phát Weight & Bias (Duy n?p t? ROM ho?c Controller)
-        .i_weight_valid0    (top_vld_point && (top_point_sel == 0)), 
-        .i_weight_valid1    ((top_vld_point && (top_point_sel == 1)) || (top_vld_point && (top_mode == 1))),
-        .i_data_weight_pw   (top_data_point),
-        .i_bias_valid0      (top_vld_bias && (top_bias_sel == 0)),
-        .i_bias_valid1      ((top_vld_bias && (top_bias_sel == 1)) || (top_vld_bias && (top_mode == 1))),
-        .i_bias_pw          (top_data_bias),
-        .i_rst_stage        (top_rst_pw_cmp),
-
-        // Data Feature & Control
-        .i_valid            (top_mux_point_vld || top_depth_computed_vld0),          //mux
-        .i_mode             (top_mode),          
-        .i_is_first         (top_first_loop),
-        .i_is_last          (top_last_loop),
-        .i_fifo_mode        (top_config_max_line_out),         //rd_fsm_control must add
-        .i_data_feature     ({top_mux_point_data,top_depth_computed0}),
-
-        // Outputs (K?t n?i th?ng xu?ng kh?i ghi ho?c kh?i ti?p theo)
-        .o_data_pw0         (top_point_computed0),
-        .o_valid_pw0        (top_point_computed_vld0),
-        .o_data_pw1         (top_point_computed1),
-        .o_valid_pw1        (top_point_computed_vld1),
-        .o_stage_done       (top_stage_done)
     );
+
+pw_top #(
+    .DATA_WIDTH(16),
+    .IN_CHANNELS(16),
+    .OUT_CHANNELS(16)) 
+u_pw_unit (
+    .clk                (i_clk),
+    .rst_n              (i_rst_n),
     
-    wr_data_select #(
-        .BANK4_W(256),   // 64 * 4
-        .BANK8_W(512),   // 64 * 8
-        .BANK16_W(1024), // 64 * 16
-        .ADDER_W(48)     // 16 * 3
-    ) u_data_sel (
-        .i_rst_n            (i_rst_n),
-        .i_stage            (top_stage),        
-        .i_computed_data    (top_wr_computed_data),       // Data 512-bit t? wr_fsm_control (ð? delay)
-        .i_adder_data       (top_wr_computed_adder),                 //addertree
-        
-        // K?t n?i ð?n các bus d? li?u t?ng c?a t?ng c?m Mem
-        .o_wr_data_mem0     (top_wr_data_mem0),
-        .o_wr_data_mem1     (top_wr_data_mem1),
-        .o_wr_data_mem2     (top_wr_data_mem2),
-        .o_wr_data_mem3     (top_wr_data_mem3),
-        .o_wr_data_mem4     (top_wr_data_mem4),
-        .o_wr_data_mem5     (top_wr_data_mem5),
-        .o_wr_data_mem_stega(top_wr_data_mem_stega)
+    // C?p phát Weight & Bias (Duy n?p t? ROM ho?c Controller)
+    .i_weight_valid0    (top_vld_point && (top_point_sel == 0)), 
+    .i_weight_valid1    ((top_vld_point && (top_point_sel == 1)) || (top_vld_point && (top_mode == 1))),
+    .i_data_weight_pw   (top_data_point),
+    .i_bias_valid0      (top_vld_bias && (top_bias_sel == 0)),
+    .i_bias_valid1      ((top_vld_bias && (top_bias_sel == 1)) || (top_vld_bias && (top_mode == 1))),
+    .i_bias_pw          (top_data_bias),
+    .i_rst_stage        (top_rst_pw_cmp),
+
+    // Data Feature & Control
+    .i_feature_valid    (top_mux_point_vld || top_depth_computed_vld0),          //mux
+    .i_mode             (top_mode),          
+    .i_is_first         (top_first_loop),
+    .i_is_last          (top_last_loop),
+    .i_fifo_mode        (top_config_max_line_out),         //rd_fsm_control must add
+    .i_data_feature     ({top_mux_point_data,top_depth_computed0}),
+
+    // Outputs (K?t n?i th?ng xu?ng kh?i ghi ho?c kh?i ti?p theo)
+    .o_data_pw0         (top_point_computed0),
+    .o_valid_pw0        (top_point_computed_vld0),
+    .o_data_pw1         (top_point_computed1),
+    .o_valid_pw1        (top_point_computed_vld1),
+    .o_stage_done       (top_stage_done)
+);
+    
+wr_data_select #(
+    .BANK4_W(256),   
+    .BANK8_W(512),   
+    .BANK16_W(1024), 
+    .ADDER_W(48)) 
+u_data_sel (
+    .i_rst_n            (i_rst_n),
+    .i_stage            (top_stage),        
+    .i_computed_data    (top_wr_computed_data),       // Data 512-bit t? wr_fsm_control (ð? delay)
+    .i_adder_data       (top_wr_computed_adder),                 //addertree
+    
+    // K?t n?i ð?n các bus d? li?u t?ng c?a t?ng c?m Mem
+    .o_wr_data_mem0     (top_wr_data_mem0),
+    .o_wr_data_mem1     (top_wr_data_mem1),
+    .o_wr_data_mem2     (top_wr_data_mem2),
+    .o_wr_data_mem3     (top_wr_data_mem3),
+    .o_wr_data_mem4     (top_wr_data_mem4),
+    .o_wr_data_mem5     (top_wr_data_mem5),
+    .o_wr_data_mem_stega(top_wr_data_mem_stega)
     );  
     
-    mem2_to_adder 
-    u_mem2_to_adder (
+mem2_to_adder 
+u_mem2_to_adder (
     .i_vld (top_vld_mem_2[3:0]),
     .i_data (top_data_mem_2[255:0]),
     .o_data (top_adder_residual)
     );
     
-    adder_tree #(
-        .WIDTH(16),
-        .NUM_CH(3)
-    ) u_adder_stega (
-        .i_clk      (i_clk),
-        .i_rst_n    (i_rst_n),
-        .i_vld      ((|top_vld_mem_2) && (|top_vld_img) && (top_stage == DONE)), // L?y valid t? Pointwise ra
-        .i_data_a   (top_data_img[47:0]), 
-        .i_data_b   (top_adder_residual),    
-        .o_sum      (top_computed_adder), // N?i vào i_adder_data c?a wr_data_select
-        .o_vld      (top_vld_adder)
+adder_tree #(
+    .WIDTH(16),
+    .NUM_CH(3)) 
+u_adder_stega (
+    .i_clk      (i_clk),
+    .i_rst_n    (i_rst_n),
+    .i_vld      ((|top_vld_mem_2) && (|top_vld_img) && (top_stage == DONE)), // L?y valid t? Pointwise ra
+    .i_data_a   (top_data_img[47:0]), 
+    .i_data_b   (top_adder_residual),    
+    .o_sum      (top_computed_adder), // N?i vào i_adder_data c?a wr_data_select
+    .o_vld      (top_vld_adder)
     );
     
-    stream_out u_stream_out (
+    //Already pipeline
+stream_out 
+u_stream_out (
     .i_clk (i_clk),
     .i_rst_n (i_rst_n),
     .i_stage (top_stage),
@@ -857,7 +855,7 @@ fsm_line_buffer #(
     .o_vld(m_axis_tvalid),
     .o_data(m_axis_tdata),
     .m_axis_tlast  (m_axis_tlast)
-);
+    );
 
 endmodule
 

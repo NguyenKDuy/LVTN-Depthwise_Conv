@@ -115,26 +115,28 @@ module stream_out (
 );
     localparam STREAM_OUT = 12;
     reg [13:0] counter;
-    always @(*) begin
-        o_vld  = 1'b0;
-        o_data = 64'b0;
+    always @(posedge i_clk) begin
+        if (!i_rst_n) begin
+            o_vld  <= 1'b0;
+            o_data <= 64'b0;
+        end
         if (i_stage == STREAM_OUT) begin
             case (i_vld)
                 3'b001: begin 
-                    o_data = i_data[63:0]; 
-                    o_vld  = 1'b1; 
+                    o_data <= i_data[63:0]; 
+                    o_vld  <= 1'b1; 
                 end
                 3'b011: begin 
-                    o_data = i_data[127:64]; 
-                    o_vld  = 1'b1; 
+                    o_data <= i_data[127:64]; 
+                    o_vld  <= 1'b1; 
                 end
                 3'b111: begin
-                    o_data = i_data[191:128]; 
-                    o_vld  = 1'b1; 
+                    o_data <= i_data[191:128]; 
+                    o_vld  <= 1'b1; 
                 end
                 default: begin
-                    o_vld  = 1'b0;
-                    o_data = 64'b0;
+                    o_vld  <= 1'b0;
+                    o_data <= 64'b0;
                 end
             endcase
         end

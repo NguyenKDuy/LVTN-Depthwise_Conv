@@ -8,7 +8,7 @@
 module count_stage_done (
     input  wire       clk,
     input  wire       rst_n,
-    input  wire       relu_valid,
+    input  wire       i_valid,
     input  wire       rst_stage_done,
     input  wire [7:0] i_mode,  
     output reg        o_stage_done
@@ -34,7 +34,7 @@ module count_stage_done (
             o_stage_done <= 1'b0;
         end
         else begin
-            if (relu_valid) begin
+            if (i_valid) begin
                 if (count1_done) begin
                     count1 <= 8'd0;
 

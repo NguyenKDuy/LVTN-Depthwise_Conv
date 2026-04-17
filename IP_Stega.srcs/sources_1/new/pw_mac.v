@@ -155,16 +155,16 @@ module pw_mac #(
     parameter IN_CHANNELS  = 16,
     parameter OUT_CHANNELS = 16,
     parameter PSUM_WIDTH   = (DATA_WIDTH * 2) + $clog2(IN_CHANNELS),
-    parameter NUM_LEVELS   = 7,
+    // parameter NUM_LEVELS   = 7,
     parameter SHIFT_BITS   = 10
 )(
     input  wire                                            clk,
     input  wire                                            rst_n,
-    input  wire                                            i_valid,
-    input  wire [NUM_LEVELS-1:0]                           i_valid_pipe,
-    input  wire [IN_CHANNELS*DATA_WIDTH-1:0]               i_data_feature,
-    input  wire [OUT_CHANNELS*IN_CHANNELS*DATA_WIDTH-1:0]  i_data_weight,
-    output reg  [OUT_CHANNELS*DATA_WIDTH-1:0]              o_data
+     input  wire                                            i_valid,
+    input  wire [6:0]                                      i_valid_pipe,
+    input  wire [256-1:0]                                  i_data_feature,
+    input  wire [4096-1:0]                                 i_data_weight,
+    output reg  [256-1:0]                                   o_data
 );
 
 localparam MULT_WIDTH = DATA_WIDTH * 2;
@@ -196,7 +196,7 @@ end
 endfunction
 
 
-// 1. Thanh ghi TRƯỚC phép nhân (Tương ứng A, B register trong DSP)
+// 1. Thanh ghi TRƯ�?C phép nhân (Tương ứng A, B register trong DSP)
 reg signed [DATA_WIDTH-1:0] feature_reg [0:IN_CHANNELS-1];
 reg signed [DATA_WIDTH-1:0] weight_reg  [0:OUT_CHANNELS-1][0:IN_CHANNELS-1];
 
@@ -209,7 +209,7 @@ reg signed [MULT_WIDTH-1:0] mult_reg_pipe [0:OUT_CHANNELS-1][0:IN_CHANNELS-1];
 
 
 // =====================================================================
-// KHAI BÁO CÂY CỘNG (ADDER TREE) - Giữ nguyên không chèn thêm
+// KHAI B�?O CÂY CỘNG (ADDER TREE) - Giữ nguyên không chèn thêm
 // =====================================================================
 reg signed [PSUM_WIDTH-1:0] tree_lvl1 [0:OUT_CHANNELS-1][0:L1-1];
 reg signed [PSUM_WIDTH-1:0] tree_lvl2 [0:OUT_CHANNELS-1][0:L2-1];
@@ -306,6 +306,8 @@ always @(posedge clk ) begin
         end
     end
 end
+
+
 
 always @(posedge clk ) begin
     if (!rst_n) begin
