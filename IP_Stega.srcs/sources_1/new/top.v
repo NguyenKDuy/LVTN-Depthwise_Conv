@@ -210,11 +210,15 @@ module top #(
 //////////////////////////////////////////////////////////
 //DEPTH_WISE & POINTWISE:
     wire [255:0] top_depth_computed0;
-    wire [255:0] top_depth_computed1;
-    wire [255:0] top_mux_point_data;
-    wire top_depth_computed_vld0;    
-    wire top_depth_computed_vld1;  
-    wire top_mux_point_vld;  
+    wire [255:0] top_depth_computed1; 
+    wire [255:0] top_depth_computed0_dl;
+    wire [255:0] top_depth_computed1_dl;
+//    wire [255:0] top_mux_point_data;
+    wire top_depth_computed_vld0;  
+    wire top_depth_computed_vld1;   
+    wire top_depth_computed_vld0_dl;  
+    wire top_depth_computed_vld1_dl;  
+//    wire top_mux_point_vld;  
     
     wire [255:0] top_point_computed0, top_point_computed1;  
     wire top_point_computed_vld0, top_point_computed_vld1; 
@@ -768,13 +772,17 @@ depthwise_1
 
 mux_mode 
 u_mux_mode(
+    .i_clk (i_clk),
+    .i_rst_n (i_rst_n),
     .i_mode (top_mode),
     .i_depth_vld_0 (top_depth_computed_vld0),
     .i_depth_vld_1 (top_depth_computed_vld1),
     .i_depth_data_0 (top_depth_computed0),
     .i_depth_data_1 (top_depth_computed1),
-    .mux_out_data (top_mux_point_data),
-    .mux_out_vld (top_mux_point_vld)
+    .o_pw0_data (top_depth_computed0_dl),
+    .o_pw0_vld (top_depth_computed_vld0_dl) ,        
+    .o_pw1_data (top_depth_computed1_dl),
+    .o_pw1_vld (top_depth_computed_vld1_dl)    
     );
 
 pw_top #(
@@ -795,12 +803,12 @@ u_pw_unit (
     .i_rst_stage        (top_rst_pw_cmp),
 
     // Data Feature & Control
-    .i_feature_valid    (top_mux_point_vld || top_depth_computed_vld0),          //mux
+    .i_feature_valid    (top_depth_computed_vld0_dl || top_depth_computed_vld1_dl),          //mux
     .i_mode             (top_mode),          
     .i_is_first         (top_first_loop),
     .i_is_last          (top_last_loop),
     .i_fifo_mode        (top_config_max_line_out),         //rd_fsm_control must add
-    .i_data_feature     ({top_mux_point_data,top_depth_computed0}),
+    .i_data_feature     ({top_depth_computed1_dl,top_depth_computed0_dl}),
     .i_no_relu          (top_no_relu),
     // Outputs (K?t n?i th?ng xu?ng kh?i ghi ho?c kh?i ti?p theo)
     .o_data_pw0         (top_point_computed0),
@@ -872,22 +880,31 @@ u_stream_out (
 endmodule
 
 module mux_mode (
+    input i_clk,
+    input i_rst_n,
     input i_mode,
     input i_depth_vld_0,
     input i_depth_vld_1,
     input [255:0] i_depth_data_0,
     input [255:0] i_depth_data_1,
-    output reg [255:0] mux_out_data,
-    output reg  mux_out_vld
+    output reg [255:0] o_pw0_data,
+    output reg  o_pw0_vld,
+    output reg [255:0] o_pw1_data,
+    output reg  o_pw1_vld
 );
-    always @(*) begin
+    always @(posedge i_clk) begin
         if (!i_mode) begin
-            mux_out_data = i_depth_data_0;
-            mux_out_vld =i_depth_vld_0;
+            o_pw1_data <= i_depth_data_0;
+            o_pw1_vld <=i_depth_vld_0;
         end
         else begin
-            mux_out_data = i_depth_data_1;
-            mux_out_vld =i_depth_vld_1;
+            o_pw1_data <= i_depth_data_1;
+            o_pw1_vld  <= i_depth_vld_1;
         end
+    end
+    
+    always @(posedge i_clk) begin
+        o_pw0_data <= i_depth_data_0;
+        o_pw0_vld  <= i_depth_vld_0;
     end
 endmodule
