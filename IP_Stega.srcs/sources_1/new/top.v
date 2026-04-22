@@ -127,7 +127,10 @@ module top #(
     wire [7:0]  top_config_max_line_out  ;
     wire [3:0]  top_stage                ;
     wire        top_mode                 ; 
-    
+    wire        top_stream_d;
+    wire        top_last4stage;
+    wire        top_disable_t;
+    wire        top_no_relu;
     // --- Memory & Counters ---
     wire [ADDR_IMG_R - 1:0] top_mem_rd_addr  ;        // Ð?a ch? ð?c d? li?u input/feature map
     wire        top_mem_rd_enb               ;
@@ -312,7 +315,7 @@ point_mem #(
     .DATA_W(16),
     .NUM_BANKS(16),
     .LATENCY(WEIGHT_MEM_LATENCY),
-    .RAM_STYLE("distributed")) 
+    .RAM_STYLE("block")) 
 u_bias_mem (
     .i_clk          (i_clk),
     .i_wr_addr      (w_addr_bias_raw[ADDR_BIAS-1:0]),
@@ -533,6 +536,8 @@ mem_5 (
 //DATA_SEL0: 
 data_select0 
 u_data_select0 (
+    .i_clk             (i_clk),
+    .i_rst_n           (i_rst_n),
     .i_mem_img_data    (top_data_img),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
@@ -560,6 +565,8 @@ u_data_select0 (
 //DATA_SEL1: 
 data_select1 
 u_data_select1 (
+    .i_clk             (i_clk),
+    .i_rst_n           (i_rst_n),
     .i_mem_img_data    (top_data_img),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
@@ -585,7 +592,7 @@ u_data_select1 (
     
     // --- Mux Selects (Dùng cho kh?i Datapath/PE) ---
 rd_fsm_control  
-    # (.LATENCY (MEM_LATENCY),
+    # (.LATENCY (MEM_LATENCY + 1),
        .ADDRESS_DATA (ADDR_IMG_R)
     )
 u_rd_fsm_control
@@ -602,7 +609,6 @@ u_rd_fsm_control
     .o_ld_wb_enable         (wb_ld_enable),  // Kích ho?t n?p Weight/Bias
     .o_stage                (top_stage),         // T?ng hi?n t?i
     .o_last4stage           (top_last4stage),
-    // Các c?ng config khác k?t n?i ra ngoài ho?c vào module khác
     .o_config_dep_para      (top_config_dep_para),
     .o_config_point_para    (top_config_point_para),
     .o_config_stride        (top_config_stride),
@@ -636,9 +642,9 @@ u_weight_bias_control (
     .i_mode                 (top_mode),          
     
     // Memory Interface (K?t n?i t?i BRAM ch?a Weight/Bias)
-    .o_dweight_rd_addr      (top_rd_addr_depth),
+    .o_dweight_rd_addr      (top_rd_addr_depth[7:0]),
     .o_dweight_ena          (top_rd_enb_depth),
-    .o_pweight_rd_addr      (top_rd_addr_point),
+    .o_pweight_rd_addr      (top_rd_addr_point[9:0]),
     .o_pweight_ena          (top_rd_enb_point),
     .o_bias_rd_addr         (top_rd_addr_bias),
     .o_bias_ena             (top_rd_enb_bias),

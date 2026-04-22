@@ -395,7 +395,7 @@ always @(posedge i_clk) begin
                     // for work HEAD                 
                     // for work D1_3       
                     // work for D2_1_1_1    
-                    if (o_mem_rd_swapping == mem_sel - 1 && lic_done && loc_done) begin
+                    if (o_mem_rd_swapping == mem_sel - 1 && lic_done && loc_done  && !o_padding_vld) begin
                         addr_stage <= IN_LAYER;
                     end
                     
@@ -502,203 +502,212 @@ always @(posedge i_clk) begin
  
 
  
-always @(*) begin
-    // --- Default Values (Tránh t?o Latches) ---
-    o_config_stride       = 1;
-    o_config_dep_para     = 0;
-    o_config_point_para   = 0;
-    o_mode                = 0;
-    o_config_max_line_in  = 0;
-    o_config_max_line_out = 0;
-//    mem_rd_swapping       = 0;
-    max_lic               = 0;
-    max_loc               = 0;
-    // Các bi?n c?u h?nh b? nh? n?i b?
-    mem_sel               = 1;
-    max_address_p         = 0;
-    o_disable_t           = 0;
-    o_no_relu             = 0;
-    case (o_stage)
-        HEAD: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = HEAD_DEP_SS;
-            o_config_point_para   = HEAD_POINT_SS;
-            o_mode                = HEAD_MODE;
-            o_config_max_line_in  = HEAD_MAX_LI;
-            o_config_max_line_out = HEAD_MAX_LO;
-//            mem_rd_swapping       = 1;
-            max_lic               = HEAD_CIL;
-            max_loc               = HEAD_COL;
-            // Memory Config
-            mem_sel               = HEAD_MEM_SEL;
-            max_address_p         = HEAD_MAX_ADDRESS_P;
-        end
+always @(posedge i_clk) begin
+    if (!i_rst) begin
+        // --- Reset Values (Tr?ng thái an toàn khi kh?i ð?ng) ---
+        o_config_stride       <= 1;
+        o_config_dep_para      <= 0;
+        o_config_point_para    <= 0;
+        o_mode                 <= 0;
+        o_config_max_line_in   <= 0;
+        o_config_max_line_out  <= 0;
+        max_lic                <= 0;
+        max_loc                <= 0;
+        mem_sel                <= 1;
+        max_address_p          <= 0;
+        o_disable_t            <= 0;
+        o_no_relu              <= 0;
+    end else begin
+        // --- M?c ð?nh cho m?i chu k? clock ---
+        // (N?u không rõi vào case nào, gi? giá tr? m?c ð?nh ð? tránh gi? d? li?u c?)
+        o_config_stride       <= 1;
+        o_config_dep_para      <= 0;
+        o_config_point_para    <= 0;
+        o_mode                 <= 0;
+        o_config_max_line_in   <= 0;
+        o_config_max_line_out  <= 0;
+        max_lic                <= 0;
+        max_loc                <= 0;
+        mem_sel                <= 1;
+        max_address_p          <= 0;
+        o_disable_t            <= 0;
+        o_no_relu              <= 0;
 
-        DOWNS1: begin
-            o_config_stride       = 2;
-            o_config_dep_para     = D1_DEP_SS;
-            o_config_point_para   = D1_POINT_SS;
-            o_mode                = D1_MODE;
-            o_config_max_line_in  = D1_MAX_LI;
-            o_config_max_line_out = D1_MAX_LO;
-//            mem_rd_swapping       = 0;
-            max_lic               = D1_CIL;
-            max_loc               = D1_COL;
-            mem_sel               = D1_MEM_SEL;
-            max_address_p         = D1_MAX_ADDRESS_P;
-        end
+        case (o_stage)
+            HEAD: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= HEAD_DEP_SS;
+                o_config_point_para    <= HEAD_POINT_SS;
+                o_mode                 <= HEAD_MODE;
+                o_config_max_line_in   <= HEAD_MAX_LI;
+                o_config_max_line_out  <= HEAD_MAX_LO;
+                max_lic                <= HEAD_CIL;
+                max_loc                <= HEAD_COL;
+                mem_sel                <= HEAD_MEM_SEL;
+                max_address_p          <= HEAD_MAX_ADDRESS_P;
+            end
 
-        DOWNS2: begin
-            o_config_stride       = 2;
-            o_config_dep_para     = D2_DEP_SS;
-            o_config_point_para   = D2_POINT_SS;
-            o_mode                = D2_MODE;
-            o_config_max_line_in  = D2_MAX_LI;
-            o_config_max_line_out = D2_MAX_LO;
-//            mem_rd_swapping       = 1;
-            max_lic               = D2_CIL;
-            max_loc               = D2_COL;
-            mem_sel               = D2_MEM_SEL;
-            max_address_p         = D2_MAX_ADDRESS_P;
-        end
+            DOWNS1: begin
+                o_config_stride       <= 2;
+                o_config_dep_para      <= D1_DEP_SS;
+                o_config_point_para    <= D1_POINT_SS;
+                o_mode                 <= D1_MODE;
+                o_config_max_line_in   <= D1_MAX_LI;
+                o_config_max_line_out  <= D1_MAX_LO;
+                max_lic                <= D1_CIL;
+                max_loc                <= D1_COL;
+                mem_sel                <= D1_MEM_SEL;
+                max_address_p          <= D1_MAX_ADDRESS_P;
+            end
 
-        DOWNS3: begin
-            o_config_stride       = 2;
-            o_config_dep_para     = D3_DEP_SS;
-            o_config_point_para   = D3_POINT_SS;
-            o_mode                = D3_MODE;
-            o_config_max_line_in  = D3_MAX_LI;
-            o_config_max_line_out = D3_MAX_LO;
-//            mem_rd_swapping       = 1;
-            max_lic               = D3_CIL;
-            max_loc               = D3_COL;
-            mem_sel               = D3_MEM_SEL;
-            max_address_p         = D3_MAX_ADDRESS_P;
-        end
+            DOWNS2: begin
+                o_config_stride       <= 2;
+                o_config_dep_para      <= D2_DEP_SS;
+                o_config_point_para    <= D2_POINT_SS;
+                o_mode                 <= D2_MODE;
+                o_config_max_line_in   <= D2_MAX_LI;
+                o_config_max_line_out  <= D2_MAX_LO;
+                max_lic                <= D2_CIL;
+                max_loc                <= D2_COL;
+                mem_sel                <= D2_MEM_SEL;
+                max_address_p          <= D2_MAX_ADDRESS_P;
+            end
 
-        BOTT: begin
-            o_config_stride       = 2;
-            o_config_dep_para     = B_DEP_SS;
-            o_config_point_para   = B_POINT_SS;
-            o_mode                = B_MODE;
-            o_config_max_line_in  = B_MAX_LI;
-            o_config_max_line_out = B_MAX_LO;
-//            mem_rd_swapping       = 1;
-            max_lic               = B_CIL;
-            max_loc               = B_COL;
-            mem_sel               = B_MEM_SEL;
-            max_address_p         = B_MAX_ADDRESS_P;
-        end
+            DOWNS3: begin
+                o_config_stride       <= 2;
+                o_config_dep_para      <= D3_DEP_SS;
+                o_config_point_para    <= D3_POINT_SS;
+                o_mode                 <= D3_MODE;
+                o_config_max_line_in   <= D3_MAX_LI;
+                o_config_max_line_out  <= D3_MAX_LO;
+                max_lic                <= D3_CIL;
+                max_loc                <= D3_COL;
+                mem_sel                <= D3_MEM_SEL;
+                max_address_p          <= D3_MAX_ADDRESS_P;
+            end
 
-        UPS1: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = U1_DEP_SS;
-            o_config_point_para   = U1_POINT_SS;
-            o_mode                = U1_MODE;
-            o_config_max_line_in  = U1_MAX_LI;
-            o_config_max_line_out = U1_MAX_LO;
-            max_lic               = U1_CIL;
-            max_loc               = U1_COL;
-            mem_sel               = U1_MEM_SEL;
-            max_address_p         = U1_MAX_ADDRESS_P;
-        end
+            BOTT: begin
+                o_config_stride       <= 2;
+                o_config_dep_para      <= B_DEP_SS;
+                o_config_point_para    <= B_POINT_SS;
+                o_mode                 <= B_MODE;
+                o_config_max_line_in   <= B_MAX_LI;
+                o_config_max_line_out  <= B_MAX_LO;
+                max_lic                <= B_CIL;
+                max_loc                <= B_COL;
+                mem_sel                <= B_MEM_SEL;
+                max_address_p          <= B_MAX_ADDRESS_P;
+            end
 
-        UPS2: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = U2_DEP_SS;
-            o_config_point_para   = U2_POINT_SS;
-            o_mode                = U2_MODE;
-            o_config_max_line_in  = U2_MAX_LI;
-            o_config_max_line_out = U2_MAX_LO;
-            max_lic               = U2_CIL;
-            max_loc               = U2_COL;
-            mem_sel               = U2_MEM_SEL;
-            max_address_p         = U2_MAX_ADDRESS_P;
-        end
+            UPS1: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= U1_DEP_SS;
+                o_config_point_para    <= U1_POINT_SS;
+                o_mode                 <= U1_MODE;
+                o_config_max_line_in   <= U1_MAX_LI;
+                o_config_max_line_out  <= U1_MAX_LO;
+                max_lic                <= U1_CIL;
+                max_loc                <= U1_COL;
+                mem_sel                <= U1_MEM_SEL;
+                max_address_p          <= U1_MAX_ADDRESS_P;
+            end
 
-        UPS3: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = U3_DEP_SS;
-            o_config_point_para   = U3_POINT_SS;
-            o_mode                = U3_MODE;
-            o_config_max_line_in  = U3_MAX_LI;
-            o_config_max_line_out = U3_MAX_LO;
-            max_lic               = U3_CIL;
-            max_loc               = U3_COL;
-            mem_sel               = U3_MEM_SEL;
-            max_address_p         = U3_MAX_ADDRESS_P;
-        end
+            UPS2: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= U2_DEP_SS;
+                o_config_point_para    <= U2_POINT_SS;
+                o_mode                 <= U2_MODE;
+                o_config_max_line_in   <= U2_MAX_LI;
+                o_config_max_line_out  <= U2_MAX_LO;
+                max_lic                <= U2_CIL;
+                max_loc                <= U2_COL;
+                mem_sel                <= U2_MEM_SEL;
+                max_address_p          <= U2_MAX_ADDRESS_P;
+            end
 
-        UPS4: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = U4_DEP_SS;
-            o_config_point_para   = U4_POINT_SS;
-            o_mode                = U4_MODE;
-            o_config_max_line_in  = U4_MAX_LI;
-            o_config_max_line_out = U4_MAX_LO;
-            max_lic               = U4_CIL;
-            max_loc               = U4_COL;
-            mem_sel               = U4_MEM_SEL;
-            max_address_p         = U4_MAX_ADDRESS_P;
-        end
+            UPS3: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= U3_DEP_SS;
+                o_config_point_para    <= U3_POINT_SS;
+                o_mode                 <= U3_MODE;
+                o_config_max_line_in   <= U3_MAX_LI;
+                o_config_max_line_out  <= U3_MAX_LO;
+                max_lic                <= U3_CIL;
+                max_loc                <= U3_COL;
+                mem_sel                <= U3_MEM_SEL;
+                max_address_p          <= U3_MAX_ADDRESS_P;
+            end
 
-        TAIL: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = T_DEP_SS;
-            o_config_point_para   = T_POINT_SS;
-            o_mode                = T_MODE;
-            o_config_max_line_in  = T_MAX_LI;
-            o_config_max_line_out = T_MAX_LO;
-            max_lic               = T_CIL;
-            max_loc               = T_COL;
-            mem_sel               = T_MEM_SEL;
-            max_address_p         = T_MAX_ADDRESS_P;
-            o_no_relu             = 1;
-        end
-        
-        DONE: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = D_DEP_SS;
-            o_config_point_para   = D_POINT_SS;
-            o_mode                = D_MODE;
-            o_config_max_line_in  = D_MAX_LI;
-            o_config_max_line_out = D_MAX_LO;
-            max_lic               = D_CIL;
-            max_loc               = D_COL;
-            mem_sel               = D_MEM_SEL;
-            max_address_p         = D_MAX_ADDRESS_P;
-            o_disable_t           = 1;
-        end
-        
-        STREAM_OUT: begin
-            o_config_stride       = 1;
-            o_config_dep_para     = SO_DEP_SS;
-            o_config_point_para   = SO_POINT_SS;
-            o_mode                = SO_MODE;
-            o_config_max_line_in  = SO_MAX_LI;
-            o_config_max_line_out = SO_MAX_LO;
-            max_lic               = SO_CIL;
-            max_loc               = SO_COL;
-            mem_sel               = SO_MEM_SEL;
-            max_address_p         = SO_MAX_ADDRESS_P;
-            o_disable_t           = 1;
-        end
-        default: begin
-            o_config_stride       = 0;
-            o_config_dep_para     = 0;
-            o_config_point_para   = 0;
-            o_mode                = 0;
-            o_config_max_line_in  = 0;
-            o_config_max_line_out = 0;
-        //    mem_rd_swapping       = 0;
-            max_lic               = 0;
-            max_loc               = 0;
-            // Các bi?n c?u h?nh b? nh? n?i b?
-            mem_sel               = 1;
-            max_address_p         = 0;
-            o_disable_t           = 0;
+            UPS4: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= U4_DEP_SS;
+                o_config_point_para    <= U4_POINT_SS;
+                o_mode                 <= U4_MODE;
+                o_config_max_line_in   <= U4_MAX_LI;
+                o_config_max_line_out  <= U4_MAX_LO;
+                max_lic                <= U4_CIL;
+                max_loc                <= U4_COL;
+                mem_sel                <= U4_MEM_SEL;
+                max_address_p          <= U4_MAX_ADDRESS_P;
+            end
 
-        end
-    endcase
+            TAIL: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= T_DEP_SS;
+                o_config_point_para    <= T_POINT_SS;
+                o_mode                 <= T_MODE;
+                o_config_max_line_in   <= T_MAX_LI;
+                o_config_max_line_out  <= T_MAX_LO;
+                max_lic                <= T_CIL;
+                max_loc                <= T_COL;
+                mem_sel                <= T_MEM_SEL;
+                max_address_p          <= T_MAX_ADDRESS_P;
+                o_no_relu              <= 1;
+            end
+            
+            DONE: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= D_DEP_SS;
+                o_config_point_para    <= D_POINT_SS;
+                o_mode                 <= D_MODE;
+                o_config_max_line_in   <= D_MAX_LI;
+                o_config_max_line_out  <= D_MAX_LO;
+                max_lic                <= D_CIL;
+                max_loc                <= D_COL;
+                mem_sel                <= D_MEM_SEL;
+                max_address_p          <= D_MAX_ADDRESS_P;
+                o_disable_t            <= 1;
+            end
+            
+            STREAM_OUT: begin
+                o_config_stride       <= 1;
+                o_config_dep_para      <= SO_DEP_SS;
+                o_config_point_para    <= SO_POINT_SS;
+                o_mode                 <= SO_MODE;
+                o_config_max_line_in   <= SO_MAX_LI;
+                o_config_max_line_out  <= SO_MAX_LO;
+                max_lic                <= SO_CIL;
+                max_loc                <= SO_COL;
+                mem_sel                <= SO_MEM_SEL;
+                max_address_p          <= SO_MAX_ADDRESS_P;
+                o_disable_t            <= 1;
+            end
+
+            default: begin
+                o_config_stride       <= 0;
+                o_config_dep_para      <= 0;
+                o_config_point_para    <= 0;
+                o_mode                 <= 0;
+                o_config_max_line_in   <= 0;
+                o_config_max_line_out  <= 0;
+                max_lic                <= 0;
+                max_loc                <= 0;
+                mem_sel                <= 1;
+                max_address_p          <= 0;
+                o_disable_t            <= 0;
+            end
+        endcase
+    end
 end
+
 endmodule

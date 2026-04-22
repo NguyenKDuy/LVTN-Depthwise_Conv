@@ -41,8 +41,8 @@ module fsm_line_buffer #(
     reg  [2:0]  wr_sel;
     reg  [2:0]  rd_sel;
     reg  [7:0]  wr_cnt;
-    reg  [4:0]  lb_filled;       // Ready flag m?i buffer
-    reg  [3:0]  lines_available; // Credit counter
+    reg  [4:0]   lb_filled;       // Ready flag m?i buffer
+    reg  [3:0]   lines_available; // Credit counter
     wire [767:0] lb_raw [4:0];
     wire [4:0]   lb_done;
     wire [7:0]   rdPntr[0:4];

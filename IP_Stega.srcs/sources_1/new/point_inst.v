@@ -42,7 +42,7 @@ module point_inst#(
 
 (* ram_style = RAM_STYLE *)reg [DATA_W-1:0] ram [0:(2**ADDR_W)-1];
 reg [DATA_W-1:0] raw_dout_pipe [0:LATENCY-1];
-reg  ena_pipes [0: LATENCY-1];
+reg  [0: LATENCY-1] ena_pipes ;
     
     always @(posedge i_clk) begin
         if (i_wr_ena) begin

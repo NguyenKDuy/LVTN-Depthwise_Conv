@@ -43,13 +43,12 @@ module depth_mem #(
     output [(DATA_W * NUM_BANKS)-1:0]       o_data_all,
     output                                  o_data_vld_all
 );
-
+    wire [NUM_BANKS-1:0] w_bank_vld;
     genvar i;
     generate
         for (i = 0; i < NUM_BANKS; i = i + 1) begin : gen_depth_banks
             
             wire [DATA_W-1:0] w_bank_rd_data;
-            wire              w_bank_vld;
 
             // Kh?i t?o instance point_inst
             depth_inst #(
@@ -71,13 +70,13 @@ module depth_mem #(
                 
                 // Ð?u ra
                 .o_data     (w_bank_rd_data),
-                .o_data_vld (o_data_vld_all)
+                .o_data_vld (w_bank_vld[i])
             );
 
             // Gom d? li?u ra thành bus l?n ð? b? Compute ð?c 1 lúc 16 bank
             assign o_data_all[i*DATA_W +: DATA_W] = w_bank_rd_data;
-
         end
     endgenerate
+    assign o_data_vld_all = w_bank_vld[0];
 
 endmodule
