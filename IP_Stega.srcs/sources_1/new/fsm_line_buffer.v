@@ -45,6 +45,7 @@ module fsm_line_buffer #(
     reg  [3:0]   lines_available; // Credit counter
     wire [767:0] lb_raw [4:0];
     wire [4:0]   lb_done;
+    wire [4:0]   lb_vld;
     wire [7:0]   rdPntr[0:4];
  
     // -------------------------------------------------------------------------
@@ -61,7 +62,7 @@ module fsm_line_buffer #(
  
     // rd_done_trig dùng internal valid (trý?c delay) ð? ði?u khi?n FSM
     wire rd_done_trig_internal = o_kernel_vld_raw && lb_done[rd_sel];
-    
+    wire vld_raw = lb_vld[rd_sel] & lb_vld[rd_p1] & lb_vld[rd_p2];
 
     always @(posedge i_clk) begin
         if (!i_rst_n)
@@ -101,7 +102,7 @@ module fsm_line_buffer #(
             o_kernel_vld_raw <= 1'b0;
         end else if (i_enable) begin
             if (can_read && lb_filled[rd_sel]) begin
-                o_kernel_vld_raw <= 1'b1;               //allow to read
+                o_kernel_vld_raw <= vld_raw;               //allow to read
                 if (rd_done_trig_internal) begin
                     if (i_config_stride == 2'd1) begin
                         // Stride 1: Loop 4 d?ng (0-1-2-3)
@@ -155,11 +156,12 @@ module fsm_line_buffer #(
                 .i_config_max_line_out(i_config_max_line_out),
                 .o_linedata           (lb_raw[i]),
                 .o_almost_done        (lb_done[i]),
-                .rdPntr               (rdPntr[i])
+                .rdPntr               (rdPntr[i]),
+                .o_line_vld           (lb_vld[i])
             );
         end
     endgenerate
- 
+    
     // -------------------------------------------------------------------------
     // 5. Window Assembly
     //    lb_raw[rd_sel]   = {row0_col2, row0_col1, row0_col0} (768-bit)
@@ -175,15 +177,11 @@ module fsm_line_buffer #(
     // -------------------------------------------------------------------------
  
     // Valid delay: 1 cycle cho BRAM registered output
-    reg vld_d1;
     always @(posedge i_clk) begin
-        if (!i_rst_n)      vld_d1 <= 1'b0;
-        else if (i_enable) vld_d1 <= o_kernel_vld_raw;
+        if (!i_rst_n)      o_kernel_vld <= 1'b0;
+        else if (i_enable) o_kernel_vld <= o_kernel_vld_raw;
     end
 
-always @(*) begin
-    o_kernel_vld = vld_d1;
-end
 integer ch;
 
     always @(posedge i_clk) begin

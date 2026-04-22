@@ -76,7 +76,13 @@ module line_buffer (
     input  [7:0]        i_config_max_line_out,
     output [767:0]      o_linedata,
     output              o_almost_done,
-    output              reg [7:0]   rdPntr       
+    output              reg [7:0]   rdPntr,     
+    output              reg [7:0]   wrPntr,     
+    output              o_line_vld,
+    output              wr_enable, 
+    output              pre_kernel,
+    output              rd_enable 
+    
 );
  
     // -------------------------------------------------------------------------
@@ -86,9 +92,11 @@ module line_buffer (
     (* ram_style = "distributed" *) reg [255:0] line [130:0]; //only use 130
     reg [7:0]   wrPntr;
     integer     k;
- 
-    // i_config_max_line_in  = width g?c (vd: 128), wrap wrPntr t?i 128+1=129
-    // i_config_max_line_out = width g?c (vd: 128), wrap rdPntr t?i 128+1=129
+    // Control Signal
+    wire        wr_enable = i_vld && i_enable;
+    wire        pre_kernel = wr_enable && (rdPntr < 3);
+    wire        rd_enable  = pre_kernel || i_rd_data;
+    
     reg [7:0]   max_line_in_p1;   // max_line_in + 1
     reg [7:0]   max_line_out_p1;  // max_line_out - 1 (dùng cho rdPntr stride)
  
@@ -98,9 +106,11 @@ module line_buffer (
             max_line_out_p1 <= 8'd0;
         end else begin
             max_line_in_p1  <= i_config_max_line_in  + 8'd1;  // 129
-            max_line_out_p1 <= i_config_max_line_in - i_config_stride;  // 129 (wrap rdPntr)
+            max_line_out_p1 <= i_config_max_line_in - i_config_stride + 1;  // 129 (wrap rdPntr)
         end
     end
+    
+    assign o_line_vld = (i_rd_data) ? ((i_config_stride == 2) ? rdPntr[0] : 1'b1) : 1'b0;
 
     // -------------------------------------------------------------------------
     // Write Logic
@@ -109,7 +119,7 @@ module line_buffer (
         if (!i_rst_n) begin
             wrPntr <= 8'd0;
             
-        end else if (i_vld && i_enable) begin
+        end else if (wr_enable) begin
             line[wrPntr] <= i_linedata;
             if (wrPntr >= max_line_in_p1)
                 wrPntr <= 8'd0;
@@ -117,18 +127,18 @@ module line_buffer (
                 wrPntr <= wrPntr + 8'd1;
         end
     end
-    
-    // -------------------------------------------------------------------------
+
+     // -------------------------------------------------------------------------
     // Read Pointer Logic
     // -------------------------------------------------------------------------
     always @(posedge i_clk) begin
         if (!i_rst_n) begin
             rdPntr <= 8'd0;
-        end else if (i_rd_data) begin
+        end else if (rd_enable) begin
             if (rdPntr >= max_line_out_p1)
                 rdPntr <= 8'd0;
             else
-                rdPntr <= rdPntr + {6'd0, i_config_stride};
+                rdPntr <= rdPntr + 1;
         end
     end
  
@@ -143,10 +153,10 @@ module line_buffer (
             line_rd0 <= 256'd0;
             line_rd1 <= 256'd0;
             line_rd2 <= 256'd0;
-        end else begin
+        end else if (rd_enable) begin
             line_rd0 <= line[rdPntr];
-            line_rd1 <= line[rdPntr + 8'd1];
-            line_rd2 <= line[rdPntr + 8'd2];
+            line_rd1 <= line_rd0;
+            line_rd2 <= line_rd1;
         end
     end
  
@@ -155,9 +165,9 @@ module line_buffer (
         for (i = 0; i < 16; i = i + 1) begin : pack_channels
             // M?i channel i s? g?p 3 pixel (rd2, rd1, rd0) l?i v?i nhau
             assign o_linedata[i*48 +: 48] = {
-                line_rd2[i*16 +: 16], 
+                line_rd0[i*16 +: 16], 
                 line_rd1[i*16 +: 16], 
-                line_rd0[i*16 +: 16]
+                line_rd2[i*16 +: 16]
             };
         end
     endgenerate
