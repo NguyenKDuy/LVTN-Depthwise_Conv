@@ -40,7 +40,7 @@ module Post_Processor (
     // --- PIPELINE STAGE 6: Rounding ---
     always @(posedge clk) begin
         if (ce_round) begin
-            rounded_data <= data_in + (1 << 9);
+            rounded_data <= data_in ;
         end
     end
 
