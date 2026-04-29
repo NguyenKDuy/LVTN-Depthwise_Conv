@@ -1,0 +1,40 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/adder_tree.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/bias_buffer.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/count_stage_done.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/data_select.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/depth_inst.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/depth_mem.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/depthwise_core_top.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/fsm_control.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/fsm_line_buffer.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/input_selection.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/line_buffer.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/mac_9dsp.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/mem_banks_inst.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/mem_img.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/mem_inst.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/mem_stega.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/point_inst.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/point_mem.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/post_processor.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/psum_adder.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/psum_fifo.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/pw0_pw1_adder.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/pw_mac.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/pw_top.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/rd_select.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/receptor.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/relu_output.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/top.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/weight_bias_control.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/weight_buffer.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sources_1/new/wr_data_select.v" \
+"../../../../../LVTN-Depthwise_Conv/IP_Stega_v1.srcs/sim_1/new/tb_top.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
