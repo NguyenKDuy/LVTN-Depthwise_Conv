@@ -38,7 +38,8 @@ module top #(
     input           s_axis_tvalid1,
     input           [DATA_64-1:0]   s_axis_tdata0,
     input           [DATA_128-1:0]  s_axis_tdata1,
-    output          s_axis_tready,
+    output          s_axis_tready0,
+    output          s_axis_tready1,
     // --- AXI Stream out Interface ---
     output wire                m_axis_tvalid,
     output wire     [DATA_32-1:0]   m_axis_tdata,
@@ -279,7 +280,8 @@ u_receptor (
     .s_axis_tvalid1  (top_pre_vld),
     .s_axis_tdata0   (s_axis_tdata0),
     .s_axis_tdata1   (top_pre_data),
-    .s_axis_tready   (s_axis_tready),
+    .s_axis_tready0   (s_axis_tready0),
+    .s_axis_tready1   (s_axis_tready1),
     .i_done          (top_done),           //Use when finish one image
     .o_data0         (w_shared_data0),
     .o_data1         (w_shared_data1),
@@ -619,9 +621,9 @@ rd_fsm_control
 u_rd_fsm_control
     (
     .i_clk                  (i_clk),
-    .i_enable               (!s_axis_tready),
+    .i_enable               ((!s_axis_tready0 && !s_axis_tready1)),
     .i_rst                  (i_rst_n),           // Lýu ?: ki?m tra i_rst là 1 hay 0 (thý?ng rd_fsm dùng tích c?c cao)
-    .i_stage_done           (top_stage_done || top_adder_done || top_stream_done), //(top_stage_done && !(top_point_computed_vld0 | top_point_computed_vld1))
+    .i_stage_done           (top_stage_done || top_adder_done), //(top_stage_done && !(top_point_computed_vld0 | top_point_computed_vld1))
     .i_n_mem_valid          (top_ds1_valid || top_ds0_valid),
     .i_ld_wb_done           (wb_ld_done),     // K?t n?i ngý?c t? Weight Control v? FSM
     
@@ -688,7 +690,7 @@ fsm_line_buffer #(
 u_fsm_line_buffer0 (
     .i_clk                 (i_clk),
     .i_rst_n               (internal_rst_n),
-    .i_enable              (!s_axis_tready && !top_disable_t),
+    .i_enable              (((!s_axis_tready0 && !s_axis_tready1)) && !top_disable_t),
     .i_data_vld            (top_ds0_valid),        // Dùng data ð? select làm input
     .i_padding_vld         (top_padding_vld),
     .i_config_stride       (top_config_stride),
@@ -705,7 +707,7 @@ fsm_line_buffer #(
 u_fsm_line_buffer1 (
     .i_clk                 (i_clk),
     .i_rst_n               (internal_rst_n),
-    .i_enable              (!s_axis_tready && !top_disable_t && (top_mode == 1)),
+    .i_enable              ((!s_axis_tready0 && !s_axis_tready1) && !top_disable_t && (top_mode == 1)),
     .i_data_vld            (top_ds1_valid),        // Dùng data ð? select làm input
     .i_padding_vld         (top_padding_vld),
     .i_config_stride       (top_config_stride),
