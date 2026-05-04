@@ -106,7 +106,7 @@ localparam UPS3 = 'd8;
 localparam UPS4 = 'd9;
 localparam TAIL = 'd10;
 localparam DONE = 'd11;
-localparam STREAM_OUT = 'd12;
+//localparam STREAM_OUT = 'd12;
 
 // Magic number for each layers
 localparam HEAD_DEP_SS = 6;
@@ -481,7 +481,7 @@ always @(posedge i_clk) begin
                     o_ld_wb_enable <= 1;
                     o_mem_rd_addr <= 0;
                     o_mem_rd_enb <= 0;
-                    if (o_stage == STREAM_OUT) begin
+                    if (o_stage == DONE) begin
                         addr_stage <= INIT;
                         o_stage <= IDLE;
                         o_done <= 1;
@@ -679,22 +679,22 @@ always @(posedge i_clk) begin
                 o_disable_t            <= 1;
             end
             
-            STREAM_OUT: begin
-                o_config_stride       <= 1;
-                o_config_dep_para      <= SO_DEP_SS;
-                o_config_point_para    <= SO_POINT_SS;
-                o_mode                 <= SO_MODE;
-                o_config_max_line_in   <= SO_MAX_LI;
-                o_config_max_line_out  <= SO_MAX_LO;
-                max_lic                <= SO_CIL;
-                max_loc                <= SO_COL;
-                mem_sel                <= SO_MEM_SEL;
-                max_address_p          <= SO_MAX_ADDRESS_P;
-                o_disable_t            <= 1;
-            end
+//            STREAM_OUT: begin
+//                o_config_stride       <= 1;
+//                o_config_dep_para      <= SO_DEP_SS;
+//                o_config_point_para    <= SO_POINT_SS;
+//                o_mode                 <= SO_MODE;
+//                o_config_max_line_in   <= SO_MAX_LI;
+//                o_config_max_line_out  <= SO_MAX_LO;
+//                max_lic                <= SO_CIL;
+//                max_loc                <= SO_COL;
+//                mem_sel                <= SO_MEM_SEL;
+//                max_address_p          <= SO_MAX_ADDRESS_P;
+//                o_disable_t            <= 1;
+//            end
 
             default: begin
-                o_config_stride       <= 0;
+                o_config_stride        <= 0;
                 o_config_dep_para      <= 0;
                 o_config_point_para    <= 0;
                 o_mode                 <= 0;

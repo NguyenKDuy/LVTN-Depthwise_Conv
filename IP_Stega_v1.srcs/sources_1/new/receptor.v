@@ -23,7 +23,8 @@
 `timescale 1ns / 1ps
 
 module receptor #(
-    parameter DATA_W = 64,    // Ð? r?ng d? li?u ng? vào/ra
+    parameter DATA_64  = 64,    // Ð? r?ng d? li?u ng? vào/ra
+    parameter DATA_192 = 192,
     parameter ADDR_W = 12     // Ð? r?ng ð?a ch? ng? ra
 )(
     // --- Clock & Reset ---
@@ -31,9 +32,11 @@ module receptor #(
     input                   i_rst_n,   // Nên có chân Reset ð? kh?i t?o h? th?ng
 
     // --- Input Interface ---
-    input                   s_axis_tvalid,
-    input  [DATA_W-1:0]     s_axis_tdata,
-    input                   i_done,
+    input                       s_axis_tvalid0,
+    input                       s_axis_tvalid1,
+    input  [DATA_64 - 1:0]        s_axis_tdata0,       //weight
+    input  [DATA_192 - 1:0]       s_axis_tdata1,       //data
+    input                       i_done,
 
 
     // --- Output Interface (Data & Addresses) ---
@@ -41,7 +44,8 @@ module receptor #(
     output reg [ADDR_W-3:0]     o_addr2,
     output reg [ADDR_W-1:0]     o_addr3,
     output reg [ADDR_W-5:0]     o_addr4,
-    output reg [DATA_W-1:0]     o_data,
+    output reg [DATA_64-1:0]    o_data0,
+    output reg [DATA_192-1:0]   o_data1,
 
     // --- Output Control (Valids) ---
     output reg [8:0]           o_valid1,
@@ -70,7 +74,7 @@ module receptor #(
     localparam BIAS_LOOP_DONE    = 16;  
     
     localparam IMAGE_BANK_DONE   = 4096;    
-    localparam IMAGE_LOOP_DONE   = 6;    
+    localparam IMAGE_LOOP_DONE   = 2;    
     
     
     reg [ADDR_W - 1: 0] counter;
@@ -83,7 +87,8 @@ module receptor #(
             o_addr2 <= 0;
             o_addr3 <= 0;
             o_addr4 <= 0;
-            o_data <= 0;
+            o_data0 <= 0;
+            o_data1 <= 0;
             depth_lcnt <= 0;
             point_lcnt <= 0;
             image_lcnt <= 0;
@@ -99,13 +104,12 @@ module receptor #(
             
             case (loading_stage) 
                 LOAD_DEPTH: begin
-                    if (s_axis_tvalid && s_axis_tready) begin
+                    if (s_axis_tvalid0 && s_axis_tready) begin
                         o_valid1[depth_lcnt] <= 1;
                         counter <= counter + 1;
                         o_addr1 <= counter;
-                        o_data <= s_axis_tdata;
+                        o_data0 <= s_axis_tdata0;
                         if (counter == DEPTH_BANK_DONE - 1) begin
-//                            o_addr1 <= 0;
                             counter <= 0;
                             depth_lcnt <= depth_lcnt + 1;
                             if (depth_lcnt == DEPTH_LOOP_DONE - 1) begin
@@ -115,13 +119,12 @@ module receptor #(
                     end
                 end
                 LOAD_POINT: begin
-                    if (s_axis_tvalid && s_axis_tready) begin
+                    if (s_axis_tvalid0 && s_axis_tready) begin
                         o_valid2[point_lcnt] <= 1;
                         counter <= counter + 1;
                         o_addr2 <= counter;
-                        o_data <= s_axis_tdata;
+                        o_data0 <= s_axis_tdata0;
                         if (counter == POINT_BANK_DONE - 1) begin
-//                            o_addr2 <= 0;
                             counter <= 0;
                             point_lcnt <= point_lcnt + 1;
                             if (point_lcnt == POINT_LOOP_DONE - 1) begin
@@ -132,13 +135,12 @@ module receptor #(
                 end
                 
                 LOAD_BIAS: begin
-                    if (s_axis_tvalid && s_axis_tready) begin
+                    if (s_axis_tvalid0 && s_axis_tready) begin
                         o_valid4[bias_lcnt] <= 1;
                         o_addr4 <= counter;
                         counter <= counter + 1;
-                        o_data <= s_axis_tdata;
+                        o_data0 <= s_axis_tdata0;
                         if (counter == BIAS_BANK_DONE - 1) begin
-//                            o_addr4 <= 0;
                             counter <= 0;
                             bias_lcnt <= bias_lcnt + 1;
                             if (bias_lcnt == BIAS_LOOP_DONE - 1) begin
@@ -149,13 +151,12 @@ module receptor #(
                 end
                 
                 LOAD_IMAGE: begin
-                    if (s_axis_tvalid && s_axis_tready) begin
-                        o_valid3[image_lcnt] <= 1;
+                    if (s_axis_tvalid1 && s_axis_tready) begin
+                        o_valid3 <= (6'b111 << (image_lcnt * 3));
                         o_addr3 <= counter;
                         counter <= counter + 1;
-                        o_data <= s_axis_tdata;
+                        o_data1 <= s_axis_tdata1;
                         if (counter == IMAGE_BANK_DONE - 1) begin
-//                            o_addr3 <= 0;
                             counter <= 0;
                             image_lcnt <= image_lcnt + 1;
                             if (image_lcnt == IMAGE_LOOP_DONE - 1) begin

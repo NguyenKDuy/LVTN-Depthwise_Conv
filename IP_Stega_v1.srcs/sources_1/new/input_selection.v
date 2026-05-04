@@ -738,19 +738,21 @@ always @(posedge i_clk) begin
                             end
                         endcase
                  end
-                 DONE: begin
-                    o_wr_mem_stega_ena <= {{3{i_adder_vld}}};
-                    o_wr_mem_stega_addr <= wr_addr;
-                    wr_addr <= wr_addr + 1;
-                    if (wr_addr == r_wr_addr_limit -1) begin
-                        mem_rd_swapping <= 0;
-                        wr_addr <= 0;
-                    end  
-                 end
-                 default: begin 
-                        mem_rd_swapping <= 0;
-                        wr_addr <= 0;
-                 end
+//                 DONE: begin
+//                    o_wr_mem_stega_ena <= {{3{i_adder_vld}}};
+//                    o_wr_mem_stega_addr <= wr_addr;
+//                    wr_addr <= wr_addr + 1;
+//                    if (wr_addr == r_wr_addr_limit -1) begin
+//                        mem_rd_swapping <= 0;
+//                        wr_addr <= 0;
+//                    end  
+//                 end
+//                 default: begin 
+//                        mem_rd_swapping <= 0;
+//                        wr_addr <= 0;
+//                 end
+                default: begin
+                end
             endcase
         end
     end

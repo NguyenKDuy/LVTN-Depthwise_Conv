@@ -27,13 +27,15 @@ module adder_tree #(
     input                      i_clk,
     input                      i_rst_n,
     input                      i_rst_adder_done,
-    input                      i_vld,    // Tín hi?u báo d? li?u ğ?u vào h?p l?
+    input                      i_vld,   
+    input                      m_axis_tready, 
     input [WIDTH*NUM_CH-1:0]   i_data_a, 
     input [WIDTH*NUM_CH-1:0]   i_data_b,
     
     output reg [47:0]          o_sum,
     output reg                 o_vld,     // Kh?p chính xác v?i d? li?u sau Pipeline
-    output reg                 o_adder_done
+    output reg                 o_adder_done,
+    output                  m_axis_tlast
 );
 
     // H?ng s? Saturation
@@ -84,6 +86,7 @@ module adder_tree #(
     end
     
     reg [13:0] counter;
+    reg [13:0] counter_tlast;
     
     always @(posedge i_clk) begin
         if (!i_rst_n) begin
@@ -102,5 +105,18 @@ module adder_tree #(
         end
     end
     
-
+     always @(posedge i_clk) begin
+        if (!i_rst_n) begin
+            counter_tlast <= 0;
+        end
+        else if (m_axis_tready && o_vld) begin
+            if (counter_tlast == 16383) begin
+                counter_tlast <= 0;
+            end
+            else begin
+                counter_tlast <= counter_tlast + 1;
+            end
+        end
+    end
+assign m_axis_tlast = (counter == 16383 && o_vld) ? 1: 0;
 endmodule
