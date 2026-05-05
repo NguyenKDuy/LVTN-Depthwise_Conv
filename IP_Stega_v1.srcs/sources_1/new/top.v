@@ -232,13 +232,13 @@ module top #(
 
 //////////////////////////////////////////////////////////////////
 //MODULE: STEGA_INTERFACE  (support write 16bit-2-64bit)
-    wire [11:0]             top_stega_addr; // Ð?a ch? d?ng (64-bit row)
-    wire [191:0]            top_stega_data; // D? li?u 3 banks x 64-bit = 192 bits
-    wire [2:0]              top_stega_ena;  // L?nh ghi cho t?ng bank
+//    wire [11:0]             top_stega_addr; // Ð?a ch? d?ng (64-bit row)
+//    wire [191:0]            top_stega_data; // D? li?u 3 banks x 64-bit = 192 bits
+//    wire [2:0]              top_stega_ena;  // L?nh ghi cho t?ng bank
     
-    wire [511:0]            top_mem1_mux_data; // 16-bit * 8 banks = 128 bits
-    wire [11:0]             top_mem1_mux_addr;
-    wire [7:0]              top_mem1_mux_ena;
+//    wire [511:0]            top_mem1_mux_data; // 16-bit * 8 banks = 128 bits
+//    wire [11:0]             top_mem1_mux_addr;
+//    wire [7:0]              top_mem1_mux_ena;
     
     wire top_stage_done;   
     wire wb_ld_done, wb_ld_enable, top_last_loop;
@@ -260,7 +260,7 @@ module top #(
 //Dua 128 bit sang 192 bit
 
 
-pre_process pre_pro(
+pre_process pre_process(
     .i_clk (i_clk),
     .i_rst_n(i_rst_n),
     .s_axis_tvalid (s_axis_tvalid1),
@@ -280,8 +280,8 @@ u_receptor (
     .s_axis_tvalid1  (top_pre_vld),
     .s_axis_tdata0   (s_axis_tdata0),
     .s_axis_tdata1   (top_pre_data),
-    .s_axis_tready0   (s_axis_tready0),
-    .s_axis_tready1   (s_axis_tready1),
+    .s_axis_tready0  (s_axis_tready0),
+    .s_axis_tready1  (s_axis_tready1),
     .i_done          (top_done),           //Use when finish one image
     .o_data0         (w_shared_data0),
     .o_data1         (w_shared_data1),
@@ -382,10 +382,6 @@ u_rd_select (
 //    .o_mem_stega_enb   (top_rd_mem_stega_enb)
     );
 
-// --- K?t n?i ngý?c l?i module mem_0 (Ví d?) ---
-// Sau khi g?i rd_select, Duy nh? c?p nh?t l?i các c?ng ð?c c?a module nh?:
-//assign w_mem0_rd_addr     = w_sel_mem0_addr;
-//assign w_mem0_rd_enb_mask = w_sel_mem0_enb;
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -428,42 +424,6 @@ mem_0 (
     .o_data_vld_all    (top_vld_mem_0)                           //connect to MUX           
     );
 
-/////////////////////////////////////////////////////////////////////////////////
-//STEGA_MEM_INTERFACE: This module is take the output of add operation between
-//cover and residual => Save in 16*3 bit in MEM1
-//stega_mem_interface #(
-//    .ADDR_W(12),
-//    .DATA_W(64),
-//    .NUM_BANKS(3)) 
-//u_stega_bridge (
-//    .i_clk              (i_clk),
-//    .i_rst_n            (i_rst_n),
-//    .i_stega_wr_addr    (top_wr_stega_addr), 
-//    .i_stega_wr_data    (top_wr_data_mem_stega), // top_wr_data_mem_stega Duy ð?nh ngh?a trý?c ðó
-//    .i_stega_wr_en      (top_wr_stega_ena),
-    
-//    .o_gen_wr_addr      (top_stega_addr),
-//    .o_gen_wr_data      (top_stega_data),
-//    .o_gen_wr_en        (top_stega_ena)
-//    );
-///////////////////////////////////////////////////////////////
-//mux_mem1 #(
-//    .ADDR(12)) 
-//u_mux_mem1 (
-//    .i_stage            (top_stage),             
-   
-//    .i_wr_stega_ena     (top_stega_ena),    
-//    .i_wr_stega_addr    (top_stega_addr),
-//    .i_wr_stega_data    (top_stega_data),
-   
-//    .i_wr_mem_ena       (top_wr_mem1_ena),          
-//    .i_wr_mem_addr      (top_wr_mem1_addr),           
-//    .i_wr_mem_data      (top_wr_data_mem1),    
-    
-//    .o_wr_mem_mux_data  (top_mem1_mux_data),
-//    .o_wr_mem_mux_addr  (top_mem1_mux_addr),
-//    .o_wr_mem_mux_ena   (top_mem1_mux_ena)
-//    );
 
 //MEM1: 8 banks
 mem_banks_inst #(
@@ -895,21 +855,7 @@ u_adder_stega (
     .m_axis_tlast (m_axis_tlast)
 );
     
-    //Already pipeline
-//stream_out 
-//u_stream_out (
-//    .i_clk (i_clk),
-//    .i_rst_n (i_rst_n),
-//    .i_stage (top_stage),
-//    .i_vld(top_vld_mem_1[2:0]),
-//    .i_stream_rst (top_rst_pw_cmp),
-//    .m_axis_tready(m_axis_tready),
-//    .i_data(top_data_mem_1[191:0]),
-//    .o_vld(m_axis_tvalid),
-//    .o_data(m_axis_tdata),
-//    .o_stream_done (top_stream_done),
-//    .m_axis_tlast  (m_axis_tlast)
-//    );
+
 
 endmodule
 

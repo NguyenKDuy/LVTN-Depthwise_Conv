@@ -55,8 +55,6 @@ module rd_fsm_control(
 // PARAMETERs
 parameter ADDRESS_DATA = 14;
 parameter LATENCY = 3;
-//parameter ADDRESS_WEIGHT = 14;
-//parameter ADDRESS_BIAS   = 5;
 /////////////////////////////////////////////////////////////////
 // PORT DECLARATION:
 input   i_clk;
@@ -65,9 +63,7 @@ input   i_rst;
 input   i_stage_done;   
 input   i_n_mem_valid;
 input   i_ld_wb_done;
-   
-//output reg [3:0]  o_sel0                 ;
-//output reg [3:0]  o_sel1                 ;
+
 output reg   o_mode                 ;
 output reg [4:0]  o_config_dep_para      ;
 output reg [4:0]  o_config_point_para    ;
@@ -233,16 +229,16 @@ localparam D_MEM_SEL  = 4;
 localparam D_MAX_ADDRESS_T = 16384;
 localparam D_MAX_ADDRESS_P = 16384/D_MEM_SEL;
 
-localparam SO_DEP_SS   = 0;
-localparam SO_POINT_SS = 0;
-localparam SO_MAX_LI   = 64;
-localparam SO_MAX_LO   = 64;
-localparam SO_MODE     = 0;
-localparam SO_CIL      = 3;
-localparam SO_COL      = 1;
-localparam SO_MEM_SEL  = 3;
-localparam SO_MAX_ADDRESS_T = 4096;
-localparam SO_MAX_ADDRESS_P = 4096;
+//localparam SO_DEP_SS   = 0;
+//localparam SO_POINT_SS = 0;
+//localparam SO_MAX_LI   = 64;
+//localparam SO_MAX_LO   = 64;
+//localparam SO_MODE     = 0;
+//localparam SO_CIL      = 3;
+//localparam SO_COL      = 1;
+//localparam SO_MEM_SEL  = 3;
+//localparam SO_MAX_ADDRESS_T = 4096;
+//localparam SO_MAX_ADDRESS_P = 4096;
 
 
 
