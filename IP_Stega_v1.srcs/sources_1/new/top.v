@@ -26,8 +26,8 @@ module top #(
     parameter DATA_128                  = 128,
     parameter DATA_32                   = 32,
     parameter DATA_64                   = 64, //WEIGHT
-    parameter WEIGHT_MEM_LATENCY    = 2,            //can increase
-    parameter MEM_LATENCY           = 3             //maybe can be 1,2 plus
+    parameter WEIGHT_MEM_LATENCY        = 2,            //can increase
+    parameter MEM_LATENCY               = 3             //maybe can be 1,2 plus
 
 )(
     input           i_clk,
@@ -42,7 +42,7 @@ module top #(
     output          s_axis_tready1,
     // --- AXI Stream out Interface ---
     output wire                m_axis_tvalid,
-    output wire     [DATA_32-1:0]   m_axis_tdata,
+    output wire     [DATA_128-1:0]   m_axis_tdata,
     output wire                m_axis_tlast,
     input                      m_axis_tready
 );
@@ -83,7 +83,7 @@ module top #(
 // --- MODULE IMAGE_MEM
     wire [ADDR_IMG_R-1:0]   top_rd_addr_img; 
     wire [5:0]              top_rd_enb_img ; 
-    wire [6*DATA_16-1:0]    top_data_img   ; 
+    wire [6*DATA_64-1:0]    top_data_img   ; 
     wire [5:0]              top_vld_img    ; 
     
 ///////////////////////////////////////////////////////////////////    
@@ -229,6 +229,22 @@ module top #(
     
     wire [255:0] top_point_computed0, top_point_computed1;  
     wire top_point_computed_vld0, top_point_computed_vld1; 
+///////////////////////////////////////////////////////////////////
+wire [ADDR_IMG-1:0]       top_stega_64_addr;
+wire [DATA_64*3-1:0]     top_stega_64_data;
+wire [2:0]              top_stega_64_ena;
+
+// --- Tín hi?u ð?u vào cho MUX (Thý?ng là input c?a module Top ho?c t? kh?i khác) ---
+// Tín hi?u t? Stega (16-bit)
+wire [ADDR_IMG+1:0]       top_stega_16_addr;
+wire [16*3-1:0]         top_stega_16_data;
+wire [2:0]              top_stega_16_ena;
+
+// --- Tín hi?u ð?u ra cu?i cùng c?a MUX ---
+wire [DATA_64*8-1:0]     top_mem_inf_mux_data;
+wire [ADDR_IMG-1:0]       top_mem_inf_mux_addr;
+wire [7:0]              top_mem_inf_mux_ena;
+
 
 //////////////////////////////////////////////////////////////////
 //MODULE: STEGA_INTERFACE  (support write 16bit-2-64bit)
@@ -242,7 +258,7 @@ module top #(
     
     wire top_stage_done;   
     wire wb_ld_done, wb_ld_enable, top_last_loop;
-    wire [47:0] top_wr_computed_adder, top_computed_adder, top_adder_residual;
+    wire [191:0] top_wr_computed_adder, top_computed_adder, top_adder_residual;
     wire top_vld_adder, top_adder_done;
 //////////////////////////////////////////////////////////////////
 //MODULE: LINE_BUFFER
@@ -395,6 +411,7 @@ mem_img #(
     .LATENCY(MEM_LATENCY)) 
 u_img_mem (
     .i_clk          (i_clk),
+    .i_sel          ((top_stage == DONE)?1:0),
     .i_wr_addr      (w_addr_img_raw[ADDR_IMG-1:0]),
     .i_wr_data_all  ({2{w_shared_data1}}),       // Should have Mux here soon!
     .i_wr_en_mask   (w_valid_img),
@@ -444,6 +461,42 @@ mem_1 (
 
 /////////////////////////////////////////////////////////////////////////////////
 //MEM2: 8 banks
+
+write_16_to_64 u_write_16_to_64 (
+        .i_clk           (i_clk),
+        .i_rst_n         (i_rst_n),
+        
+        // Input t? Stega
+        .i_stega_wr_addr (top_wr_stega_addr),
+        .i_stega_wr_data (top_wr_computed_data[47:0]),
+        .i_stega_wr_en   (top_wr_stega_ena),
+        
+        // Output (ð? g?p thành 64-bit)
+        .o_gen_wr_addr   (top_stega_64_addr),
+        .o_gen_wr_data   (top_stega_64_data),
+        .o_gen_wr_en     (top_stega_64_ena)
+    );
+
+    // 2. Instance b? MUX ð? ch?n ngu?n d? li?u ghi vào RAM
+    mem_interface_mux  u_mem_interface_mux (
+        .i_sel             ((top_stage == TAIL)? 1 :0),
+        
+        .i_wr_stega_ena    (top_stega_64_ena), 
+        .i_wr_stega_addr   (top_stega_64_addr),
+        .i_wr_stega_data   (top_stega_64_data),
+        
+        // Nhánh Memory chính
+        .i_wr_mem_ena      (top_wr_mem2_ena),
+        .i_wr_mem_addr     (top_wr_mem2_addr),
+        .i_wr_mem_data     (top_wr_data_mem2),
+        
+        // Output cu?i cùng
+        .o_wr_mem_mux_data (top_mem_inf_mux_data),
+        .o_wr_mem_mux_addr (top_mem_inf_mux_addr),
+        .o_wr_mem_mux_ena  (top_mem_inf_mux_ena)
+    );
+
+
 mem_banks_inst #(
     .ADDR_W    (ADDR_IMG),
     .DATA_W    (DATA_64),
@@ -451,9 +504,9 @@ mem_banks_inst #(
     .LATENCY   (MEM_LATENCY))
 mem_2 (
     .i_clk             (i_clk),
-    .i_wr_addr         (top_wr_mem2_addr),          //connect to MUX
-    .i_wr_data_all     (top_wr_data_mem2),                          //connect to MUX
-    .i_wr_ena_mask     (top_wr_mem2_ena),           //connect to MUX
+    .i_wr_addr         (top_mem_inf_mux_addr),          //connect to MUX
+    .i_wr_data_all     (top_mem_inf_mux_data),                          //connect to MUX
+    .i_wr_ena_mask     (top_mem_inf_mux_ena),           //connect to MUX
     .i_rd_addr         (top_rd_mem2_addr),                          //connect to MUX
     .i_rd_enb_mask     (top_rd_mem2_enb),                          //connect to MUX
     .o_data_all        (top_data_mem_2),                          //connect to MUX
@@ -521,7 +574,7 @@ data_select0
 u_data_select0 (
     .i_clk             (i_clk),
     .i_rst_n           (i_rst_n),
-    .i_mem_img_data    (top_data_img),
+    .i_mem_img_data    (top_data_img[95:0]),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
     .i_mem_2_data      (top_data_mem_2),
@@ -550,7 +603,7 @@ data_select1
 u_data_select1 (
     .i_clk             (i_clk),
     .i_rst_n           (i_rst_n),
-    .i_mem_img_data    (top_data_img),
+    .i_mem_img_data    (top_data_img[95:0]),
     .i_mem_0_data      (top_data_mem_0),
     .i_mem_1_data      (top_data_mem_1),
     .i_mem_2_data      (top_data_mem_2),
@@ -818,23 +871,23 @@ u_data_sel (
 //    .o_wr_data_mem_stega(top_wr_data_mem_stega)
     );  
     
-mem2_to_adder 
-u_mem2_to_adder (
-    .i_vld (top_vld_mem_2[3:0]),
-    .i_data (top_data_mem_2[255:0]),
-    .o_data (top_adder_residual)
-    );
+//mem2_to_adder 
+//u_mem2_to_adder (
+//    .i_vld (top_vld_mem_2[3:0]),
+//    .i_data (top_data_mem_2[1:0]),
+//    .o_data (top_adder_residual)
+//    );
     
 adder_tree #(
-    .WIDTH(16),
+    .WIDTH(64),
     .NUM_CH(3)) 
 u_adder_stega (
     .i_clk              (i_clk),
     .i_rst_n            (i_rst_n),
     .i_rst_adder_done   (top_rst_pw_cmp),
-    .i_vld      ((|top_vld_mem_2) && (|top_vld_img) && (top_stage == DONE)), // L?y valid t? Pointwise ra
-    .i_data_a   (top_data_img[47:0]), 
-    .i_data_b   (top_adder_residual),    
+    .i_vld      ((|top_vld_mem_2) && (|top_vld_img) && (top_disable_t)), // L?y valid t? Pointwise ra
+    .i_data_a   (top_data_img[191:0]), 
+    .i_data_b   (top_data_mem_2[191:0]),    
     .o_sum      (top_computed_adder), // N?i vào i_adder_data c?a wr_data_select
     .o_vld      (top_vld_adder),
     .o_adder_done (top_adder_done),

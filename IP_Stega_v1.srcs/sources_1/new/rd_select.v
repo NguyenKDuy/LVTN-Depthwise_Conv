@@ -138,9 +138,9 @@ always @(*) begin
 
         DONE: begin
             o_mem_img_enb = 6'h07 & {6{i_mem_rd_enb}};          // 3 channel
-            o_mem2_enb    = (8'h01 << i_mem_rd_swapping[1:0]) & {8{i_mem_rd_enb}};
+            o_mem2_enb    = 6'h07 & {6{i_mem_rd_enb}};  
             o_mem2_addr   =  common_addr;
-            o_mem_img_addr = {i_row[6:0], i_col[6:0]}; 
+            o_mem_img_addr = common_addr; 
 
             //1 bo nho cho 4 channel
         end

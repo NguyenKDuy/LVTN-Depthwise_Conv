@@ -220,14 +220,14 @@ localparam T_MAX_ADDRESS_P = 16384/T_MEM_SEL;
 
 localparam D_DEP_SS   = 0;
 localparam D_POINT_SS = 0;
-localparam D_MAX_LI   = 128;
-localparam D_MAX_LO   = 128;
+localparam D_MAX_LI   = 64;
+localparam D_MAX_LO   = 64;
 localparam D_MODE     = 0;
 localparam D_CIL      = 1;
 localparam D_COL      = 1;
-localparam D_MEM_SEL  = 4;
-localparam D_MAX_ADDRESS_T = 16384;
-localparam D_MAX_ADDRESS_P = 16384/D_MEM_SEL;
+localparam D_MEM_SEL  = 1;
+localparam D_MAX_ADDRESS_T = 4096;
+localparam D_MAX_ADDRESS_P = 4096;
 
 //localparam SO_DEP_SS   = 0;
 //localparam SO_POINT_SS = 0;
@@ -449,7 +449,7 @@ always @(posedge i_clk) begin
                         if (o_stage >= 10) begin
                             o_ld_wb_enable <= 1'b0;
                             addr_stage <= NONE_PADDING; 
-                            o_mem_rd_enb   <= 1'b1;
+//                            o_mem_rd_enb   <= 1'b1;
                         end
                         
                         if (lic_done && loc_done) begin

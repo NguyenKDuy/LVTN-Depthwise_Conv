@@ -427,15 +427,15 @@ localparam WR_ADDR_ADDR_U1 = 256;
 localparam WR_ADDR_ADDR_U2 = 1024;
 localparam WR_ADDR_ADDR_U3 = 4096;
 localparam WR_ADDR_ADDR_U4 = 4096;
-localparam WR_ADDR_ADDR_T = 4096;
-localparam WR_ADDR_ADDR_D = 16384;
+localparam WR_ADDR_ADDR_T = 16384;
+//localparam WR_ADDR_ADDR_D = 16384;
 
 localparam WR_ADDR_ADDR_U1_T = 512;  
 localparam WR_ADDR_ADDR_U2_T = 1024;
 localparam WR_ADDR_ADDR_U3_T = 4096;
 localparam WR_ADDR_ADDR_U4_T = 4096;
-localparam WR_ADDR_ADDR_T_T = 4096;
-localparam WR_ADDR_ADDR_D_T = 16384;
+localparam WR_ADDR_ADDR_T_T = 16384;
+//localparam WR_ADDR_ADDR_D_T = 16384;
 
 
 reg [14:0] r_wr_addr_limit, r_wr_addr_t_limit, tmp_wr_addr;
@@ -484,10 +484,10 @@ always @(*) begin
             r_wr_addr_limit = WR_ADDR_ADDR_T;
             r_wr_addr_t_limit = WR_ADDR_ADDR_T_T;
         end
-        DONE: begin
-            r_wr_addr_limit = WR_ADDR_ADDR_D;
-            r_wr_addr_t_limit = WR_ADDR_ADDR_D_T;
-        end
+//        DONE: begin
+//            r_wr_addr_limit = WR_ADDR_ADDR_D;
+//            r_wr_addr_t_limit = WR_ADDR_ADDR_D_T;
+//        end
         default: ; // S? d?ng giá tr? m?c ð?nh ð? gán ? ð?u block
     endcase
 end
@@ -698,45 +698,49 @@ always @(posedge i_clk) begin
                     
                     TAIL: begin
                         tmp_wr_addr <=  r_wr_addr_limit - 1;
-                        o_wr_mem2_addr  <= wr_addr;
+                        o_wr_mem_stega_ena <= {{3{i_vld}}};
+                        o_wr_mem_stega_addr <= wr_addr;
                         wr_addr <= wr_addr + 1;
-//                        pipe_mem_swap <= mem_rd_swapping;
-                        case (mem_rd_swapping)
-                            0: begin
-                                o_wr_mem2_ena <= {7'b0, {{i_vld}}};
-    //                            o_wr_mem2_addr <= wr_addr;
-    //                            wr_addr <= wr_addr + 1;
-                                if (wr_addr == r_wr_addr_limit -1) begin
-                                    wr_addr <= wr_addr - tmp_wr_addr;
-                                    mem_rd_swapping <= mem_rd_swapping + 1;
-                                end
-                            end
-                            1: begin
-                                o_wr_mem2_ena <= {6'b0, {{i_vld}}, 1'b0};
+                        if (wr_addr == r_wr_addr_limit -1) begin
+                            mem_rd_swapping <= 0;
+                            wr_addr <= 0;
+                        end  
+//                        case (mem_rd_swapping)
+//                            0: begin
+//                                o_wr_mem2_ena <= {7'b0, {{i_vld}}};
+//    //                            o_wr_mem2_addr <= wr_addr;
+//    //                            wr_addr <= wr_addr + 1;
+//                                if (wr_addr == r_wr_addr_limit -1) begin
+//                                    wr_addr <= wr_addr - tmp_wr_addr;
+//                                    mem_rd_swapping <= mem_rd_swapping + 1;
+//                                end
+//                            end
+//                            1: begin
+//                                o_wr_mem2_ena <= {6'b0, {{i_vld}}, 1'b0};
                                 
-                                if (wr_addr == r_wr_addr_limit -1) begin
-                                    wr_addr <= wr_addr - tmp_wr_addr;
-                                    mem_rd_swapping <= mem_rd_swapping + 1;
-                                end
-                            end
-                            2: begin
-                                o_wr_mem2_ena <= {5'b0, {{i_vld}}, 2'b0};
+//                                if (wr_addr == r_wr_addr_limit -1) begin
+//                                    wr_addr <= wr_addr - tmp_wr_addr;
+//                                    mem_rd_swapping <= mem_rd_swapping + 1;
+//                                end
+//                            end
+//                            2: begin
+//                                o_wr_mem2_ena <= {5'b0, {{i_vld}}, 2'b0};
     
-                                if (wr_addr == r_wr_addr_limit -1) begin
-                                    wr_addr <= wr_addr - tmp_wr_addr;
-                                    mem_rd_swapping <= mem_rd_swapping + 1;
-                                end
-                            end
-                            3: begin
-                                o_wr_mem2_ena <= {4'b0,{{i_vld}}, 3'b0};
+//                                if (wr_addr == r_wr_addr_limit -1) begin
+//                                    wr_addr <= wr_addr - tmp_wr_addr;
+//                                    mem_rd_swapping <= mem_rd_swapping + 1;
+//                                end
+//                            end
+//                            3: begin
+//                                o_wr_mem2_ena <= {4'b0,{{i_vld}}, 3'b0};
     
-                                if (wr_addr == r_wr_addr_t_limit - 1) begin
-                                    wr_addr <= 0;
-                                    mem_rd_swapping <= 0;
-//                                    pipe_mem_swap <= 0;
-                                end                  
-                            end
-                        endcase
+//                                if (wr_addr == r_wr_addr_t_limit - 1) begin
+//                                    wr_addr <= 0;
+//                                    mem_rd_swapping <= 0;
+////                                    pipe_mem_swap <= 0;
+//                                end                  
+//                            end
+//                        endcase
                  end
 //                 DONE: begin
 //                    o_wr_mem_stega_ena <= {{3{i_adder_vld}}};
