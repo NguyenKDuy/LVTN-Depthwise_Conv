@@ -12,9 +12,10 @@ module bias_buffer #(
 );
 
 always @(posedge clk) begin
-    if (!rst_n) begin
-        o_data <= 0;
-    end else if (i_valid) begin
+    // if (!rst_n) begin
+    //     o_data <= 0;
+    // end else 
+    if (i_valid) begin
         o_data <= i_data;
     end
 end

@@ -3,7 +3,7 @@ module pw_top #(
     parameter IN_CHANNELS  = 16,
     parameter OUT_CHANNELS = 16,
     parameter FIFO_MAX_PTR = 64*64,
-    parameter PIPE_DEPTH   = 10
+    parameter PIPE_DEPTH   = 11
 )(
     input  wire                                      clk,
     input  wire                                      rst_n,
@@ -78,7 +78,7 @@ localparam WEIGHT_TOTAL_WIDTH = 1024;
 localparam CLUSTER_WIDTH = 256;
 
 reg  [PIPE_DEPTH:0] valid_pipe;
-//reg  [PIPE_DEPTH-1:0] mode_pipe;
+reg  [PIPE_DEPTH-1:0] mode_pipe;
 //reg  [PIPE_DEPTH-1:0] first_pipe;
 //reg  [PIPE_DEPTH-1:0] last_pipe;
 // reg                   weight_pw0_loaded;
@@ -131,22 +131,14 @@ assign feature_fire = i_feature_valid & pw0_weight_valid & pw1_weight_valid;
 always @(posedge clk) begin
     if (!rst_n) begin
         valid_pipe <= 0;
-//        mode_pipe  <= 0;
-//        first_pipe <= 0;
-//        last_pipe  <= 0;
-        // weight_pw0_loaded <= 1'b0;
-        // weight_pw1_loaded <= 1'b0;
     end else begin
-
         valid_pipe <= {valid_pipe[PIPE_DEPTH-1:0], feature_fire};
-//        mode_pipe  <= {mode_pipe[PIPE_DEPTH-2:0], i_mode};
-//        first_pipe <= {first_pipe[PIPE_DEPTH-2:0], i_is_first};
-//        last_pipe  <= {last_pipe[PIPE_DEPTH-2:0], i_is_last};
+
     end
 end
 
-assign fifo0_rd_en = valid_pipe[5] & ~i_is_first;
-assign fifo1_rd_en = valid_pipe[5] & ~i_is_first & ~i_mode;
+assign fifo0_rd_en = valid_pipe[6] & ~i_is_first;
+assign fifo1_rd_en = valid_pipe[6] & ~i_is_first & ~i_mode;
 
 
 // fifo_empty = 1 la trong, fifo_empty = 0 la co du lieu
@@ -156,10 +148,10 @@ assign fifo1_rd_en = valid_pipe[5] & ~i_is_first & ~i_mode;
 always @(posedge clk) begin
     if (!rst_n) begin
         // ===== data =====
-        fifo0_data_delay0 <= 0;
-        fifo0_data_delay1 <= 0;
-        fifo1_data_delay0 <= 0;
-        fifo1_data_delay1 <= 0;
+        // fifo0_data_delay0 <= 0;
+        // fifo0_data_delay1 <= 0;
+        // fifo1_data_delay0 <= 0;
+        // fifo1_data_delay1 <= 0;
 
         // ===== empty =====
         fifo0_empty0 <= 1'b1;
@@ -235,9 +227,9 @@ pw_mac #(
     .OUT_CHANNELS(OUT_CHANNELS)
 ) u_pw_mac0 (
     .clk(clk),
-    .rst_n(rst_n),
+    // .rst_n(rst_n),
     .i_valid(feature_fire),
-    .i_valid_pipe(valid_pipe[6:0]),
+    // .i_valid_pipe(valid_pipe[6:0]),
     .i_data_feature(i_data_feature[IN_CHANNELS*DATA_WIDTH-1:0]),
     .i_data_weight(pw0_weight_buf),
     .o_data(pw0_mac_out)
@@ -249,9 +241,9 @@ pw_mac #(
     .OUT_CHANNELS(OUT_CHANNELS)
 ) u_pw_mac1 (
     .clk(clk),
-    .rst_n(rst_n),
+    // .rst_n(rst_n),
     .i_valid(feature_fire),
-    .i_valid_pipe(valid_pipe[6:0]),
+    // .i_valid_pipe(valid_pipe[6:0]),
     .i_data_feature(i_data_feature[IN_CHANNELS*DATA_WIDTH*2-1:IN_CHANNELS*DATA_WIDTH]),
     .i_data_weight(pw1_weight_buf),
     .o_data(pw1_mac_out)
@@ -264,7 +256,7 @@ pw0_pw1_adder #(
 ) u_pw0_pw1_adder (
     .clk(clk),
     .rst_n(rst_n),
-    .i_valid(valid_pipe[7]),
+    .i_valid(valid_pipe[8]),
     .i_mode(i_mode),
     .i_data_pw0(pw0_mac_out),
     .i_data_pw1(pw1_mac_out),
@@ -313,7 +305,7 @@ psum_adder_pw #(
 ) u_psum_adder0 (
     .clk(clk),
     .rst_n(rst_n),
-    .i_valid(valid_pipe[8]),
+    .i_valid(valid_pipe[9]),
     .i_is_first(i_is_first),
     .i_data(pw0_adder_out),
     .i_fifo_data(fifo0_data_delay1),
@@ -327,7 +319,7 @@ psum_adder_pw #(
 ) u_psum_adder1 (
     .clk(clk),
     .rst_n(rst_n),
-    .i_valid(valid_pipe[8] & ~i_mode),
+    .i_valid(valid_pipe[9] & ~i_mode),
     .i_is_first(i_is_first),
     .i_data(pw1_adder_out),
     .i_fifo_data(fifo1_data_delay1),
@@ -341,7 +333,7 @@ bias_buffer #(
     .CHANNELS(OUT_CHANNELS)
 ) u_bias_buffer0 (
     .clk(clk),
-    .rst_n(rst_n),
+    // .rst_n(rst_n),
     .i_valid(i_bias_valid0), //D: added
     .i_data(i_bias_pw),
     .o_data(bias_pw0)
@@ -352,7 +344,7 @@ bias_buffer #(
     .CHANNELS(OUT_CHANNELS)
 ) u_bias_buffer1 (
     .clk(clk),
-    .rst_n(rst_n),
+    // .rst_n(rst_n),
     .i_valid(i_bias_valid1), //D: added
     .i_data(i_bias_pw),
     .o_data(bias_pw1)
@@ -365,7 +357,7 @@ relu_output #(
 ) u_relu_output0 (
     .clk(clk),
     .rst_n(rst_n),
-    .i_valid(valid_pipe[9]),
+    .i_valid(valid_pipe[10]),
     .i_is_last(i_is_last),
     .i_no_relu (i_no_relu),
     .i_data(pw0_psum_out),
@@ -382,7 +374,7 @@ relu_output #(
 ) u_relu_output1 (
     .clk(clk),
     .rst_n(rst_n),
-    .i_valid(valid_pipe[9] & ~i_mode),
+    .i_valid(valid_pipe[10] & ~i_mode),
     .i_is_last(i_is_last),
     .i_data(pw1_psum_out),
     .i_bias(bias_pw1),
@@ -398,7 +390,7 @@ count_stage_done u_count_stage_done0 (
     .clk(clk),
     .rst_n(rst_n),
     .rst_stage_done(i_rst_stage),
-    .i_valid(valid_pipe[10]),
+    .i_valid(valid_pipe[11]),
     .i_mode(i_fifo_mode),
     .o_stage_done(o_stage_done)
 );
