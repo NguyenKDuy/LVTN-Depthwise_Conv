@@ -54,6 +54,3 @@ module count_stage_done (
     end
 
 endmodule
-
-
-

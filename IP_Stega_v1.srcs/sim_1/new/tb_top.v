@@ -49,7 +49,7 @@ module tb_top;
     initial begin
         // 1. T?o folder (D?ng l?nh shell chu?n)
         $display("--- PREPARING LOG DIRECTORIES ---");
-        $system("mkdir -p img1_logs img2_logs");
+//        $system("mkdir -p img1_logs img2_logs");
         #100;
 
         // 2. M? to?n b? 18 file c?ng l?c ?? tr?nh l?i descriptor
@@ -74,12 +74,13 @@ module tb_top;
         end
 
         // 3. Load Memories
-        $readmemh("input/depthwise_9banks.mem",  mem_file0);
-        $readmemh("input/pointwise_16banks.mem", mem_file1);
-        $readmemh("input/bias_16banks.mem",      mem_file2);
-        $readmemh("input/image_merge_1.hex",       mem_file3);
-        $readmemh("input/image_merge_1.hex",     mem_file4);
-
+// Thay "E:/..." b?ng ðý?ng d?n th?c t? ch?a thý m?c 'input' c?a b?n n?u tôi ðoán sai
+        $readmemh("E:/vivado/stegano/opti5/LVTN-Depthwise_Conv/IP_Stega_v1.sim/sim_1/behav/xsim/input/depthwise_9banks.mem",  mem_file0);
+        $readmemh("E:/vivado/stegano/opti5/LVTN-Depthwise_Conv/IP_Stega_v1.sim/sim_1/behav/xsim/input/pointwise_16banks.mem", mem_file1);
+        $readmemh("E:/vivado/stegano/opti5/LVTN-Depthwise_Conv/IP_Stega_v1.sim/sim_1/behav/xsim/input/bias_16banks.mem",      mem_file2);
+        $readmemh("E:/vivado/stegano/opti5/LVTN-Depthwise_Conv/IP_Stega_v1.sim/sim_1/behav/xsim/input/image_merge_1.hex",     mem_file3);
+        $readmemh("E:/vivado/stegano/opti5/LVTN-Depthwise_Conv/IP_Stega_v1.sim/sim_1/behav/xsim/input/image_merge_1.hex",     mem_file4);
+        
         // 4. Reset Design
         i_rst_n = 0; s_axis_tvalid = 0; m_axis_tready = 1;
         #100; i_rst_n <= 1; #100;

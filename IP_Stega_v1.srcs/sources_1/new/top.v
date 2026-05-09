@@ -20,8 +20,6 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-`timescale 1ns / 1ps
-
 module top #(
     parameter DATA_W                = 64,
     parameter WEIGHT_MEM_LATENCY    = 2,            //can increase
