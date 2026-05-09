@@ -89,7 +89,7 @@ always @(posedge clk) begin
     //         for (ic = 0; ic < IN_CHANNELS; ic = ic + 1)
     //             weight_reg[oc][ic] <= 0;
     // end else 
-    if (i_valid) begin
+//    if (i_valid) begin
         // for (ic = 0; ic < IN_CHANNELS; ic = ic + 1) begin
             // feature_reg[ic] <= $signed(i_data_feature[ic*DATA_WIDTH +: DATA_WIDTH]);
         // end
@@ -99,7 +99,7 @@ always @(posedge clk) begin
                 weight_reg[oc][ic] <= $signed(i_data_weight[(oc*IN_CHANNELS+ic)*DATA_WIDTH +: DATA_WIDTH]);
             end
         end
-    end
+//    end
 end
 
 always @(posedge clk ) begin

@@ -2,8 +2,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Module Name: adder_tree
 // Pipeline: 3 stage
-//   Stage 0 : Input Register   - c?t net dài 192-bit ð?u vào
-//   Stage 1 : Addition         - 12 phép c?ng 16-bit song song
+//   Stage 0 : Input Register   - c?t net dï¿½i 192-bit ï¿½?u vï¿½o
+//   Stage 1 : Addition         - 12 phï¿½p c?ng 16-bit song song
 //   Stage 2 : Saturation       - clamp overflow v? POS_MAX / NEG_MIN
 //////////////////////////////////////////////////////////////////////////////////
 module adder_tree #(
@@ -34,7 +34,7 @@ module adder_tree #(
 
     // =========================================================================
     // Stage 0 - Input Register
-    // M?c ðích: ðóng gói 192-bit bus g?n ngu?n, tránh net dài ð?n 12 adder
+    // M?c ï¿½ï¿½ch: ï¿½ï¿½ng gï¿½i 192-bit bus g?n ngu?n, trï¿½nh net dï¿½i ï¿½?n 12 adder
     // =========================================================================
     reg [WIDTH*NUM_CH-1:0] data_a_s0;
     reg [WIDTH*NUM_CH-1:0] data_b_s0;
@@ -47,15 +47,15 @@ module adder_tree #(
             data_b_s0 <= 0;
         end else begin
             vld_s0 <= i_vld;
-            if (i_vld) begin
+//            if (i_vld) begin
                 data_a_s0 <= i_data_a;
                 data_b_s0 <= i_data_b;
-            end
+//            end
         end
     end
 
     // =========================================================================
-    // Stage 1 - Addition  (12 phép c?ng song song, m?i phép 16-bit ? 17-bit)
+    // Stage 1 - Addition  (12 phï¿½p c?ng song song, m?i phï¿½p 16-bit ? 17-bit)
     // =========================================================================
     reg signed [SUB_WIDTH:0] sum_raw [0:NUM_ADDS-1];
     reg                      vld_s1;
@@ -67,14 +67,14 @@ module adder_tree #(
                 sum_raw[i] <= 0;
         end else begin
             vld_s1 <= vld_s0;
-            if (vld_s0) begin
+//            if (vld_s0) begin
                 for (i = 0; i < NUM_CH; i = i + 1) begin
                     for (j = 0; j < WIDTH/SUB_WIDTH; j = j + 1) begin
                         sum_raw[i*(WIDTH/SUB_WIDTH) + j] <=
                             $signed(data_a_s0[WIDTH*i + SUB_WIDTH*j +: SUB_WIDTH]) +
                             $signed(data_b_s0[WIDTH*i + SUB_WIDTH*j +: SUB_WIDTH]);
                     end
-                end
+//                end
             end
         end
     end
@@ -88,15 +88,15 @@ module adder_tree #(
             o_vld <= 1'b0;
             o_sum <= 0;
         end else begin
-            o_vld <= vld_s1; // o_vld tr? ðúng 3 cycle so v?i i_vld
-            if (vld_s1) begin
+            o_vld <= vld_s1; // o_vld tr? ï¿½ï¿½ng 3 cycle so v?i i_vld
+//            if (vld_s1) begin
                 for (i = 0; i < NUM_ADDS; i = i + 1) begin
                     if (sum_raw[i][SUB_WIDTH] != sum_raw[i][SUB_WIDTH-1])
                         o_sum[SUB_WIDTH*i +: SUB_WIDTH] <=
                             (sum_raw[i][SUB_WIDTH] == 1'b0) ? POS_MAX : NEG_MIN;
                     else
                         o_sum[SUB_WIDTH*i +: SUB_WIDTH] <= sum_raw[i][SUB_WIDTH-1:0];
-                end
+//                end
             end
         end
     end

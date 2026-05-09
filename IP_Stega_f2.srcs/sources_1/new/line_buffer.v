@@ -15,7 +15,7 @@ module line_buffer (
 
     // -------------------------------------------------------------------------
     // 1. Chia nh? b? nh? (Partitioning)
-    // Thay v? 1 m?ng 256-bit, ta chia thành 4 m?ng 64-bit
+    // Thay v? 1 m?ng 256-bit, ta chia thï¿½nh 4 m?ng 64-bit
     // -------------------------------------------------------------------------
     (* ram_style = "distributed" *) reg [63:0] line_b0 [129:0]; 
     (* ram_style = "distributed" *) reg [63:0] line_b1 [129:0];
@@ -23,13 +23,13 @@ module line_buffer (
     (* ram_style = "distributed" *) reg [63:0] line_b3 [129:0];
 
     // -------------------------------------------------------------------------
-    // 2. Nhân b?n Write Pointer (Replication)
-    // Dùng thu?c tính DONT_TOUCH ð? Vivado không g?p chúng l?i thành 1
+    // 2. Nhï¿½n b?n Write Pointer (Replication)
+    // Dï¿½ng thu?c tï¿½nh DONT_TOUCH ï¿½? Vivado khï¿½ng g?p chï¿½ng l?i thï¿½nh 1
     // -------------------------------------------------------------------------
-    (*MAX_FANOUT = 50*) (* dont_touch = "yes" *) reg [7:0] wrPntr_rep0;
-    (*MAX_FANOUT = 50*) (* dont_touch = "yes" *) reg [7:0] wrPntr_rep1;
-    (*MAX_FANOUT = 50*) (* dont_touch = "yes" *) reg [7:0] wrPntr_rep2;
-    (*MAX_FANOUT = 50*) (* dont_touch = "yes" *) reg [7:0] wrPntr_rep3;
+    (*MAX_FANOUT = 50*) reg [7:0] wrPntr_rep0;
+    (*MAX_FANOUT = 50*) reg [7:0] wrPntr_rep1;
+    (*MAX_FANOUT = 50*) reg [7:0] wrPntr_rep2;
+    (*MAX_FANOUT = 50*) reg [7:0] wrPntr_rep3;
 
     reg [7:0] max_line_in_p1;
     reg [7:0] max_line_out_p1;
@@ -48,14 +48,14 @@ module line_buffer (
     end
 
     // -------------------------------------------------------------------------
-    // 3. C?p nh?t Write Logic ð?ng b? cho các b?n sao
+    // 3. C?p nh?t Write Logic ï¿½?ng b? cho cï¿½c b?n sao
     // -------------------------------------------------------------------------
     always @(posedge i_clk) begin
         if (!i_rst_n) begin
             wrPntr_rep0 <= 8'd0; wrPntr_rep1 <= 8'd0;
             wrPntr_rep2 <= 8'd0; wrPntr_rep3 <= 8'd0;
         end else if (i_vld && i_enable) begin
-            // Logic wrap-around gi? nguyên
+            // Logic wrap-around gi? nguyï¿½n
             if (wrPntr_rep0 >= max_line_in_p1) begin
                 wrPntr_rep0 <= 8'd0; wrPntr_rep1 <= 8'd0;
                 wrPntr_rep2 <= 8'd0; wrPntr_rep3 <= 8'd0;
@@ -66,7 +66,7 @@ module line_buffer (
                 wrPntr_rep3 <= wrPntr_rep3 + 8'd1;
             end
             
-            // M?i con tr? ch? ði?u khi?n ghi vào "phân khu" c?a nó
+            // M?i con tr? ch? ï¿½i?u khi?n ghi vï¿½o "phï¿½n khu" c?a nï¿½
             line_b0[wrPntr_rep0] <= i_linedata[63:0];
             line_b1[wrPntr_rep1] <= i_linedata[127:64];
             line_b2[wrPntr_rep2] <= i_linedata[191:128];
@@ -75,7 +75,7 @@ module line_buffer (
     end
 
     // -------------------------------------------------------------------------
-    // 4. Read Logic (Týõng t? có th? nhân b?n rdPntr n?u c?n)
+    // 4. Read Logic (Tï¿½ï¿½ng t? cï¿½ th? nhï¿½n b?n rdPntr n?u c?n)
     // -------------------------------------------------------------------------
     always @(posedge i_clk) begin
         if (!i_rst_n) begin
@@ -95,7 +95,7 @@ module line_buffer (
         if (!i_rst_n) begin
             {line_rd0, line_rd1, line_rd2} <= 768'd0;
         end else begin
-            // Gom d? li?u t? các sub-blocks khi ð?c
+            // Gom d? li?u t? cï¿½c sub-blocks khi ï¿½?c
             line_rd0 <= {line_b3[rdPntr_reg], line_b2[rdPntr_reg], line_b1[rdPntr_reg], line_b0[rdPntr_reg]};
             line_rd1 <= {line_b3[rdPntr_reg + 8'd1], line_b2[rdPntr_reg + 8'd1], line_b1[rdPntr_reg + 8'd1], line_b0[rdPntr_reg + 8'd1]};
             line_rd2 <= {line_b3[rdPntr_reg + 8'd2], line_b2[rdPntr_reg + 8'd2], line_b1[rdPntr_reg + 8'd2], line_b0[rdPntr_reg + 8'd2]};
