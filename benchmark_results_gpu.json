@@ -1,0 +1,239 @@
+{
+  "timestamp": "2026-05-25T00:07:29.580418",
+  "num_samples": 5000,
+  "batch_size": 128,
+  "device": "cuda",
+  "is_cuda": true,
+  "encoder_only": false,
+  "total_time_s": 169.359,
+  "monitor_interval_ms": 50.0,
+  "hw_support": {
+    "cpu_freq": true,
+    "cpu_power": false,
+    "gpu_freq": true,
+    "gpu_power": true
+  },
+  "latency_unit": "ms_per_batch",
+  "models": {
+    "enc_base": {
+      "latency_mean_ms": 91.438,
+      "latency_std_ms": 117.171,
+      "latency_min_ms": 37.439,
+      "latency_max_ms": 818.406,
+      "latency_total_ms": 3657.53,
+      "latency_unit": "ms_per_batch",
+      "throughput_img_per_s": 1367.04,
+      "num_batches": 40,
+      "num_samples": 5000,
+      "psnr_mean": 42.4248,
+      "psnr_std": 2.5058,
+      "psnr_min": 28.3361,
+      "psnr_max": 48.6665,
+      "ssim_mean": 0.9874,
+      "ssim_std": 0.0084,
+      "ssim_min": 0.8795,
+      "ssim_max": 0.9976,
+      "hw": {
+        "cpu_freq_mhz": {
+          "mean": 3201.0,
+          "min": 3201.0,
+          "max": 3201.0,
+          "std": 0.0,
+          "n_samples": 699
+        },
+        "cpu_power_w": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "std": null,
+          "n_samples": 0
+        },
+        "gpu_freq_mhz": {
+          "mean": 900.448,
+          "min": 210.0,
+          "max": 1740.0,
+          "std": 270.511,
+          "n_samples": 699
+        },
+        "gpu_power_w": {
+          "mean": 12.009,
+          "min": 5.799,
+          "max": 23.585,
+          "std": 2.361,
+          "n_samples": 699
+        },
+        "monitoring_available": {
+          "cpu_freq": true,
+          "cpu_power": false,
+          "gpu_freq": true,
+          "gpu_power": true
+        }
+      }
+    },
+    "dec_base": {
+      "latency_mean_ms": 121.037,
+      "latency_std_ms": 22.855,
+      "latency_min_ms": 41.3,
+      "latency_max_ms": 226.098,
+      "latency_total_ms": 4841.5,
+      "latency_unit": "ms_per_batch",
+      "throughput_img_per_s": 1032.74,
+      "num_batches": 40,
+      "num_samples": 5000,
+      "psnr_mean": 33.9798,
+      "psnr_std": 2.0475,
+      "psnr_min": 22.8077,
+      "psnr_max": 40.2261,
+      "ssim_mean": 0.956,
+      "ssim_std": 0.0189,
+      "ssim_min": 0.729,
+      "ssim_max": 0.9833,
+      "hw": {
+        "cpu_freq_mhz": {
+          "mean": 3201.0,
+          "min": 3201.0,
+          "max": 3201.0,
+          "std": 0.0,
+          "n_samples": 754
+        },
+        "cpu_power_w": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "std": null,
+          "n_samples": 0
+        },
+        "gpu_freq_mhz": {
+          "mean": 1763.012,
+          "min": 637.0,
+          "max": 1927.0,
+          "std": 267.023,
+          "n_samples": 754
+        },
+        "gpu_power_w": {
+          "mean": 28.226,
+          "min": 10.207,
+          "max": 55.908,
+          "std": 7.25,
+          "n_samples": 754
+        },
+        "monitoring_available": {
+          "cpu_freq": true,
+          "cpu_power": false,
+          "gpu_freq": true,
+          "gpu_power": true
+        }
+      }
+    },
+    "enc_qat": {
+      "latency_mean_ms": 101.145,
+      "latency_std_ms": 14.416,
+      "latency_min_ms": 15.489,
+      "latency_max_ms": 114.522,
+      "latency_total_ms": 4045.82,
+      "latency_unit": "ms_per_batch",
+      "throughput_img_per_s": 1235.84,
+      "num_batches": 40,
+      "num_samples": 5000,
+      "psnr_mean": 42.6897,
+      "psnr_std": 2.5426,
+      "psnr_min": 28.1997,
+      "psnr_max": 49.1925,
+      "ssim_mean": 0.9876,
+      "ssim_std": 0.0088,
+      "ssim_min": 0.8791,
+      "ssim_max": 0.9976,
+      "hw": {
+        "cpu_freq_mhz": {
+          "mean": 3201.0,
+          "min": 3201.0,
+          "max": 3201.0,
+          "std": 0.0,
+          "n_samples": 781
+        },
+        "cpu_power_w": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "std": null,
+          "n_samples": 0
+        },
+        "gpu_freq_mhz": {
+          "mean": 1845.483,
+          "min": 1155.0,
+          "max": 1912.0,
+          "std": 170.364,
+          "n_samples": 781
+        },
+        "gpu_power_w": {
+          "mean": 30.527,
+          "min": 18.194,
+          "max": 34.768,
+          "std": 3.557,
+          "n_samples": 781
+        },
+        "monitoring_available": {
+          "cpu_freq": true,
+          "cpu_power": false,
+          "gpu_freq": true,
+          "gpu_power": true
+        }
+      }
+    },
+    "dec_qat": {
+      "latency_mean_ms": 166.692,
+      "latency_std_ms": 24.001,
+      "latency_min_ms": 16.804,
+      "latency_max_ms": 170.639,
+      "latency_total_ms": 6667.69,
+      "latency_unit": "ms_per_batch",
+      "throughput_img_per_s": 749.88,
+      "num_batches": 40,
+      "num_samples": 5000,
+      "psnr_mean": 34.2604,
+      "psnr_std": 2.08,
+      "psnr_min": 22.8512,
+      "psnr_max": 40.3106,
+      "ssim_mean": 0.958,
+      "ssim_std": 0.0182,
+      "ssim_min": 0.7501,
+      "ssim_max": 0.984,
+      "hw": {
+        "cpu_freq_mhz": {
+          "mean": 3201.0,
+          "min": 3201.0,
+          "max": 3201.0,
+          "std": 0.0,
+          "n_samples": 850
+        },
+        "cpu_power_w": {
+          "mean": null,
+          "min": null,
+          "max": null,
+          "std": null,
+          "n_samples": 0
+        },
+        "gpu_freq_mhz": {
+          "mean": 1904.545,
+          "min": 1860.0,
+          "max": 1912.0,
+          "std": 4.913,
+          "n_samples": 850
+        },
+        "gpu_power_w": {
+          "mean": 35.822,
+          "min": 29.525,
+          "max": 37.065,
+          "std": 1.303,
+          "n_samples": 850
+        },
+        "monitoring_available": {
+          "cpu_freq": true,
+          "cpu_power": false,
+          "gpu_freq": true,
+          "gpu_power": true
+        }
+      }
+    }
+  }
+}
