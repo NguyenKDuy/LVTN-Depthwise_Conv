@@ -1,0 +1,204 @@
+==========================================================================================
+CUDA BENCHMARK REPORT – STEGANOGRAPHY ENCODER/DECODER
+Includes: Latency · Throughput · PSNR · SSIM · CPU/GPU Frequency · CPU/GPU Power
+==========================================================================================
+
+EXECUTION INFO
+------------------------------------------------------------------------------------------
+  Timestamp:            2026-05-27T13:03:12.517115
+  Total Samples:        10
+  Batch Size:           1
+  Total Wall Time:      1.06 s
+  Monitor Interval:     50 ms
+
+HARDWARE & MONITORING SUPPORT
+------------------------------------------------------------------------------------------
+  Device:               cpu
+  Running on CUDA:      ❌ NO (CPU mode)
+  Encoder-Only Mode:    ❌ NO (full pipeline)
+  CPU Freq (psutil):    ✅
+  CPU Power (RAPL):     ❌ Linux+Intel only
+  GPU Freq+Power (nvml):✅
+
+LATENCY & THROUGHPUT DEFINITION
+------------------------------------------------------------------------------------------
+  Latency  = wall-clock time to process 1 BATCH (ms/batch)
+  Batch size used = 1
+  → batch_size=1: latency per batch == latency per image (single-sample latency)
+  Throughput = total_images / total_time_seconds  (img/s)
+  START: tensors enter model forward()
+  END  : output exits model + torch.cuda.synchronize() (if CUDA)
+  NOTE : image I/O and tensor host→device transfer excluded from timing
+
+HW MONITORING METHODOLOGY
+------------------------------------------------------------------------------------------
+  Each model runs ALL batches sequentially (pass-per-model).
+  Background thread polls every 50 ms.
+  Reported values = aggregate over all samples in that model's pass.
+
+DETAILED RESULTS BY MODEL
+==========================================================================================
+
+BASELINE ENCODER (Float32)
+------------------------------------------------------------------------------------------
+LATENCY METRICS (ms/batch, batch_size=1):
+  Mean:        10.162 ms
+  Std Dev:     3.427 ms
+  Min:         7.505 ms
+  Max:         19.846 ms
+  Total:       101.62 ms (10 batches / 10 images)
+
+THROUGHPUT:
+  98.41 img/s
+  (= 10 images / 0.102 s)
+
+QUALITY METRICS (Stego vs Cover (imperceptibility)):
+  PSNR – mean 41.6363 dB  std 3.2331  range [37.0130, 46.7149]
+  SSIM – mean 0.9836     std 0.0108  range [0.9623, 0.9942]
+  Note: SSIM ∈ [-1, 1], PSNR: higher is better.
+
+HARDWARE MONITORING – BASELINE ENCODER (Float32)
+------------------------------------------------------------------------------------------
+  (Sampled in background thread during entire model pass)
+
+  CPU Frequency (MHz):
+    3201.0 MHz  (min 3201.0 / max 3201.0 / std 0.0 / n=4)
+
+  CPU Package Power (Watts)  [RAPL – Linux/Intel only]:
+    N/A – not Linux or RAPL not accessible
+    Tip: sudo chmod a+r /sys/class/powercap/intel-rapl:0/energy_uj
+
+  GPU Core Frequency (MHz)  [pynvml / NVIDIA only]:
+    1740.0 MHz  (min 1740.0 / max 1740.0 / std 0.0 / n=4)
+
+  GPU Power Draw (Watts)    [pynvml / NVIDIA only]:
+    16.5 W  (min 16.5 / max 16.5 / std 0.0 / n=4)
+
+BASELINE DECODER (Float32)
+------------------------------------------------------------------------------------------
+LATENCY METRICS (ms/batch, batch_size=1):
+  Mean:        23.152 ms
+  Std Dev:     13.465 ms
+  Min:         16.937 ms
+  Max:         63.425 ms
+  Total:       231.52 ms (10 batches / 10 images)
+
+THROUGHPUT:
+  43.19 img/s
+  (= 10 images / 0.232 s)
+
+QUALITY METRICS (Recovered Secret vs Original Secret):
+  PSNR – mean 33.9597 dB  std 2.2058  range [30.6546, 37.5362]
+  SSIM – mean 0.9559     std 0.0144  range [0.9273, 0.9728]
+  Note: SSIM ∈ [-1, 1], PSNR: higher is better.
+
+HARDWARE MONITORING – BASELINE DECODER (Float32)
+------------------------------------------------------------------------------------------
+  (Sampled in background thread during entire model pass)
+
+  CPU Frequency (MHz):
+    3201.0 MHz  (min 3201.0 / max 3201.0 / std 0.0 / n=6)
+
+  CPU Package Power (Watts)  [RAPL – Linux/Intel only]:
+    N/A – not Linux or RAPL not accessible
+    Tip: sudo chmod a+r /sys/class/powercap/intel-rapl:0/energy_uj
+
+  GPU Core Frequency (MHz)  [pynvml / NVIDIA only]:
+    1740.0 MHz  (min 1740.0 / max 1740.0 / std 0.0 / n=6)
+
+  GPU Power Draw (Watts)    [pynvml / NVIDIA only]:
+    16.5 W  (min 16.5 / max 16.5 / std 0.0 / n=6)
+
+QAT ENCODER (Quantized – primary focus)
+------------------------------------------------------------------------------------------
+LATENCY METRICS (ms/batch, batch_size=1):
+  Mean:        13.461 ms
+  Std Dev:     1.685 ms
+  Min:         11.693 ms
+  Max:         17.813 ms
+  Total:       134.61 ms (10 batches / 10 images)
+
+THROUGHPUT:
+  74.29 img/s
+  (= 10 images / 0.135 s)
+
+QUALITY METRICS (Stego vs Cover (imperceptibility)):
+  PSNR – mean 41.7999 dB  std 3.3200  range [36.8425, 46.9600]
+  SSIM – mean 0.9833     std 0.0113  range [0.9590, 0.9943]
+  Note: SSIM ∈ [-1, 1], PSNR: higher is better.
+
+HARDWARE MONITORING – QAT ENCODER (Quantized – primary focus)
+------------------------------------------------------------------------------------------
+  (Sampled in background thread during entire model pass)
+
+  CPU Frequency (MHz):
+    3201.0 MHz  (min 3201.0 / max 3201.0 / std 0.0 / n=4)
+
+  CPU Package Power (Watts)  [RAPL – Linux/Intel only]:
+    N/A – not Linux or RAPL not accessible
+    Tip: sudo chmod a+r /sys/class/powercap/intel-rapl:0/energy_uj
+
+  GPU Core Frequency (MHz)  [pynvml / NVIDIA only]:
+    1740.0 MHz  (min 1740.0 / max 1740.0 / std 0.0 / n=4)
+
+  GPU Power Draw (Watts)    [pynvml / NVIDIA only]:
+    16.6 W  (min 16.5 / max 16.6 / std 0.0 / n=4)
+
+QAT DECODER (Quantized)
+------------------------------------------------------------------------------------------
+LATENCY METRICS (ms/batch, batch_size=1):
+  Mean:        22.247 ms
+  Std Dev:     1.316 ms
+  Min:         20.672 ms
+  Max:         24.303 ms
+  Total:       222.47 ms (10 batches / 10 images)
+
+THROUGHPUT:
+  44.95 img/s
+  (= 10 images / 0.222 s)
+
+QUALITY METRICS (Recovered Secret vs Original Secret):
+  PSNR – mean 34.0621 dB  std 2.1115  range [31.3187, 37.4091]
+  SSIM – mean 0.9582     std 0.0131  range [0.9343, 0.9736]
+  Note: SSIM ∈ [-1, 1], PSNR: higher is better.
+
+HARDWARE MONITORING – QAT DECODER (Quantized)
+------------------------------------------------------------------------------------------
+  (Sampled in background thread during entire model pass)
+
+  CPU Frequency (MHz):
+    3201.0 MHz  (min 3201.0 / max 3201.0 / std 0.0 / n=5)
+
+  CPU Package Power (Watts)  [RAPL – Linux/Intel only]:
+    N/A – not Linux or RAPL not accessible
+    Tip: sudo chmod a+r /sys/class/powercap/intel-rapl:0/energy_uj
+
+  GPU Core Frequency (MHz)  [pynvml / NVIDIA only]:
+    1740.0 MHz  (min 1740.0 / max 1740.0 / std 0.0 / n=5)
+
+  GPU Power Draw (Watts)    [pynvml / NVIDIA only]:
+    16.7 W  (min 16.7 / max 16.8 / std 0.1 / n=5)
+
+PERFORMANCE SUMMARY
+==========================================================================================
+
+BASELINE (Float32) FULL PIPELINE:
+------------------------------------------------------------------------------------------
+  Encode:   10.162 ms/batch
+  Decode:   23.152 ms/batch
+  E2E:      33.314 ms/batch  →  30.02 img/s
+
+QAT (Quantized) FULL PIPELINE:
+------------------------------------------------------------------------------------------
+  Encode:   13.461 ms/batch
+  Decode:   22.247 ms/batch
+  E2E:      35.708 ms/batch  →  28.00 img/s
+
+COMPARISON (QAT vs Baseline):
+------------------------------------------------------------------------------------------
+  E2E Latency  speedup: 0.93x  (Baseline faster)
+  E2E Throughput gain:  0.93x
+
+==========================================================================================
+END OF REPORT
+==========================================================================================

@@ -1107,7 +1107,10 @@ def main():
     parser.add_argument("--output",    default="./benchmark_results.json")
     parser.add_argument("--limit",     type=int, default=None)
     parser.add_argument("--batch-size",type=int, default=1)
-    parser.add_argument("--cpu",       action="store_true")
+    # parser.add_argument("--cpu",       action="store_true")
+    parser.add_argument("--cpu", "--cpu-only", action="store_true",
+                    dest="cpu",
+                    help="Chạy trên CPU thay vì CUDA")
     parser.add_argument("--encoder-only", action="store_true")
     parser.add_argument("--monitor-interval", type=float, default=50.0)
     parser.add_argument("--gpu-index", type=int, default=0)

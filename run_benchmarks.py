@@ -15,8 +15,10 @@ Mỗi benchmark sẽ sinh ra:
 Cách chạy:
   python run_benchmarks.py --image-dir /path/to/5k/images
   python run_benchmarks.py --image-dir /path/to/5k/images --quick-test
-  python run_benchmarks.py --image-dir /path/to/5k/images --limit 500 \\
+  python run_benchmarks.py --image-dir /path/to/5k/images --limit 500 \
                            --monitor-interval 30 --batch-size 4
+  python run_benchmarks.py --image-dir /path/to/5k/images --skip-gpu   # chỉ CPU
+  python run_benchmarks.py --image-dir /path/to/5k/images --cpu-only   # alias
 """
 
 import os
@@ -111,6 +113,9 @@ def main():
                         help="Chạy nhanh với 10 ảnh để kiểm tra")
     parser.add_argument("--skip-cpu", action="store_true",
                         help="Bỏ qua CPU benchmarks (chỉ chạy CUDA)")
+    parser.add_argument("--skip-gpu", "--cpu-only", action="store_true",
+                        dest="skip_gpu",
+                        help="Bỏ qua CUDA benchmarks (chỉ chạy CPU)")
     parser.add_argument("--encoder-only", action="store_true",
                         help="Chỉ chạy encoder-only benchmarks")
 
@@ -119,6 +124,10 @@ def main():
     # Validation
     if not os.path.exists(args.image_dir):
         print(f"❌ Image directory not found: {args.image_dir}")
+        sys.exit(1)
+
+    if args.skip_cpu and args.skip_gpu:
+        print("❌ --skip-cpu và --skip-gpu không thể dùng cùng nhau.")
         sys.exit(1)
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -135,6 +144,7 @@ def main():
     print(f"  Monitor interval: {args.monitor_interval} ms")
     print(f"  GPU index:        {args.gpu_index}")
     print(f"  Skip CPU:         {'YES' if args.skip_cpu else 'NO'}")
+    print(f"  Skip GPU (CPU-only): {'YES' if args.skip_gpu else 'NO'}")
     print(f"  Encoder only:     {'YES' if args.encoder_only else 'NO'}")
     print("=" * 80)
 
@@ -151,6 +161,8 @@ def main():
     benchmarks = []
     for label, cpu, enc_only in all_benchmarks:
         if args.skip_cpu and cpu:
+            continue
+        if args.skip_gpu and not cpu:
             continue
         if args.encoder_only and not enc_only:
             continue
